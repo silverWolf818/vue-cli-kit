@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 const Index =()=>import('@/pages/index')
-const Detail =()=>import('@/pages/example/detail')
-const List =()=>import('@/pages/example/list')
+const Detail =()=>import('@/template/detail')
+const List =()=>import('@/template/list')
 Vue.use(Router)
 
 export default new Router({
