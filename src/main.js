@@ -6,6 +6,7 @@ import router from './router'
 import axios from './assets/js/http.js'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import '@/mock/mocks'
 
 Vue.config.productionTip = false
 window.axios = axios
