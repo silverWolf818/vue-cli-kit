@@ -77,14 +77,14 @@
       </Header>
       <Layout>
         <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :style="{background: '#fff'}">
-          <Menu theme="light" width="auto" :class="menuitemClasses">
+          <Menu theme="light" width="auto" :class="menuitemClasses" @on-select="link">
             <Submenu name="1">
               <template slot="title">
                 <Icon type="ios-navigate"></Icon>
-                Item 1
+                示例 1
               </template>
-              <MenuItem name="1-1">Option 1</MenuItem>
-              <MenuItem name="1-2">Option 2</MenuItem>
+              <MenuItem name="forms">表单</MenuItem>
+              <MenuItem name="list">列表</MenuItem>
               <MenuItem name="1-3">Option 3</MenuItem>
             </Submenu>
             <Submenu name="2">
@@ -111,8 +111,8 @@
             <BreadcrumbItem>Components</BreadcrumbItem>
             <BreadcrumbItem>Layout</BreadcrumbItem>
           </Breadcrumb>
-          <Content :style="{padding: '12px', minHeight: '500px', background: '#fff'}">
-            Content
+          <Content :style="{padding: '12px', minHeight: '580px', background: '#fff'}">
+            <router-view/>
           </Content>
         </Layout>
       </Layout>
@@ -143,6 +143,11 @@
     methods: {
       collapsedSider () {
         this.$refs.side1.toggleCollapse();
+      },
+      link(name) {
+        this.$router.push({
+          name:name
+        });
       }
     }
   }

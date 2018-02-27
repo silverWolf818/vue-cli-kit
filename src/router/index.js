@@ -5,6 +5,7 @@ const Menu =()=>import('@/template/index')
 const Detail =()=>import('@/template/detail')
 const List =()=>import('@/template/list')
 const Cart =()=>import('@/template/cart')
+const Forms =()=>import('@/template/forms')
 Vue.use(Router)
 
 export default new Router({
@@ -20,11 +21,16 @@ export default new Router({
     },{
       path:'/menu',
       name:'Menu',
-      component:Menu
-    },{
-      path:'/list',
-      name:'list',
-      component:List
+      component:Menu,
+      children:[{
+        path: 'forms',
+        name: 'forms',
+        component: Forms
+      },{
+        path:'list',
+        name:'list',
+        component:List
+      }]
     },{
       path:'/detail',
       name:'detail',
