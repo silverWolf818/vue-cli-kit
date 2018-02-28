@@ -49,6 +49,9 @@
       <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
       <Button type="ghost" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
     </FormItem>
+    <div>
+      <ty-test-button></ty-test-button>
+    </div>
   </Form>
 </template>
 <script>

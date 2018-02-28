@@ -7,10 +7,12 @@ import axios from './assets/js/http.js'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import '@/mock/mocks'
+import test from 'ty-vue-component-base1'
 
 Vue.config.productionTip = false
 window.axios = axios
 Vue.use(iView)
+Vue.use(test)
 
 /* eslint-disable no-new */
 new Vue({
