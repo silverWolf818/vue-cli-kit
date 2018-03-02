@@ -1,38 +1,38 @@
 <template>
-  <div id="list">
-    <Form ref="formInline" inline :model="formValidate" :label-width="120" :style="{ padding:'10px' }">
+  <div class="queryPanel__layout">
+    <Form ref="formInline" inline :model="formValidate">
       <Row :gutter="8">
         <Col span="8">
-          <FormItem label="搜索条件1" prop="case1" :style="{ width:'100%' }">
+          <FormItem label="搜索条件1" prop="case1">
             <Input v-model="formValidate.case1" placeholder="请输入"></Input>
           </FormItem>
         </Col>
         <Col span="8">
-        <FormItem label="搜索条件2" prop="case2" :style="{ width:'100%' }">
+        <FormItem label="搜索条件2" prop="case2">
           <Input v-model="formValidate.case2" placeholder="请输入"></Input>
         </FormItem>
         </Col>
         <Col span="8">
-        <FormItem label="搜索条件3" prop="case3" :style="{ width:'100%' }">
+        <FormItem label="搜索条件3" prop="case3">
           <Input v-model="formValidate.case3" placeholder="请输入"></Input>
         </FormItem>
         </Col>
       </Row>
       <Row :gutter="8">
         <Col span="8">
-        <FormItem label="时间选择" :style="{ width:'100%' }">
-          <DatePicker type="date" placeholder="请选择日期" style="width: 100%"></DatePicker>
+        <FormItem label="时间选择">
+          <DatePicker type="date" placeholder="请选择日期"></DatePicker>
         </FormItem>
         </Col>
         <Col span="8">
-        <FormItem label="下拉框" :style="{ width:'100%' }">
-          <Select v-model="formValidate.model1" style="width:100%">
+        <FormItem label="下拉框">
+          <Select v-model="formValidate.model1">
             <Option v-for="item in formValidate.cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
           </Select>
         </FormItem>
         </Col>
         <Col span="8">
-        <FormItem label="搜索条件6" prop="case6" :style="{ width:'100%' }">
+        <FormItem label="搜索条件6" prop="case6">
           <Input v-model="formValidate.case6" placeholder="请输入"></Input>
         </FormItem>
         </Col>
@@ -45,7 +45,7 @@
     </Form>
     <div style="border-top: 1px solid #dddee1;width: 100%;margin:10px 0 20px 0;"></div>
     <Table border :columns="columns1" :data="data1"></Table>
-    <Page :total="40" :page-size-opts="[10,20,30]" size="small" show-elevator show-sizer :style="{ marginTop:'20px',textAlign:'right' }"></Page>
+    <Page @on-change="pages" :total="40" :page-size-opts="[10,20,30]" size="small" show-elevator show-sizer></Page>
   </div>
 </template>
 
@@ -135,10 +135,15 @@
           }
         ]
       }
+    },
+    methods: {
+      pages(index) {
+        console.log(index);
+      }
     }
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
