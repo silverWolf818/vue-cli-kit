@@ -36,11 +36,11 @@ npm run build
 - [vuex](https://vuex.vuejs.org/zh-cn/)
 - [ES6](http://es6.ruanyifeng.com/) 
 - [vue插件库](https://www.awesomes.cn/subject/vue#%E5%BA%94%E7%94%A8-%E6%A1%86%E6%9E%B6)
-- [iview](https://www.iviewui.com/docs/guide/install)基础组件
-- [sass](https://www.sass.hk/docs/) css语法
-- [vue-router](https://router.vuejs.org/zh-cn/) 路由
-- [axios](https://github.com/axios/axios) http请求
-- [lodash](https://www.lodashjs.com/) JavaScript 实用工具库
+- [iview](https://www.iviewui.com/docs/guide/install)
+- [sass](https://www.sass.hk/docs/) 
+- [vue-router](https://router.vuejs.org/zh-cn/) 
+- [axios](https://github.com/axios/axios) 
+- [lodash](https://www.lodashjs.com/)
 - [promise](http://liubin.org/promises-book/)
 
 ### 文件目录
