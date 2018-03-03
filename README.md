@@ -30,14 +30,18 @@ npm run build
 
 ### 项目文档
 
+- [git](https://progit.bootcss.com/)
+- [markdown](https://www.appinn.com/markdown/)
 - [vue](https://cn.vuejs.org/v2/guide/)
-- [vuex](https://vuex.vuejs.org/zh-cn/) 状态管理模式
+- [vuex](https://vuex.vuejs.org/zh-cn/)
 - [ES6](http://es6.ruanyifeng.com/) 
+- [vue插件库](https://www.awesomes.cn/subject/vue#%E5%BA%94%E7%94%A8-%E6%A1%86%E6%9E%B6)
 - [iview](https://www.iviewui.com/docs/guide/install)基础组件
 - [sass](https://www.sass.hk/docs/) css语法
 - [vue-router](https://router.vuejs.org/zh-cn/) 路由
 - [axios](https://github.com/axios/axios) http请求
 - [lodash](https://www.lodashjs.com/) JavaScript 实用工具库
+- [promise](http://liubin.org/promises-book/)
 
 ### 文件目录
 
@@ -91,3 +95,14 @@ project/
 |
 └── README.md
 ```
+
+### 项目规范
+
+- css采用[BEM](https://www.w3cplus.com/css/bem-definitions.html)命名规范
+- javascript采用[ES2015](http://babeljs.io/learn-es2015/)标准
+- 页面及组件命名规范后续补充
+
+### 开发工具
+
+- 建议使用[webStorm](http://www.jetbrains.com/webstorm/)进行开发
+- 建议使用腾讯提供的[在线文档](https://363420113.docs.qq.com/QZADuvFTZJl#BB08J2)进行业务开发记录
