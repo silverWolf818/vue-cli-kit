@@ -1,21 +1,40 @@
 # vue-base-project
 
-> A Vue.js project
+> A base Vue.js project
 
-## Build Setup
+## 环境依赖
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+```
+ "node": ">= 6.0.0",
+ "npm": ">= 3.0.0"
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 项目构建及运行
+
+``` bash
+# 安装淘宝镜像，如果已经安装可以换忽略，如果有vpn可以忽略(npm包一般需要翻墙下载，故选择淘宝镜像安装)
+npm i cnpm -g
+
+# 安装项目依赖
+
+cnpm i
+
+# 启动项目及代码热更新，访问路径localhost:8080（默认端口8080可以在config/index.js修改端口）
+npm run dev
+
+# 构建生产发布（此步骤一般在服务器端完成）
+npm run build
+
+```
+
+## 项目说明
+
+### 项目文档
+
+- [vue](https://cn.vuejs.org/v2/guide/)
+- [ES6](http://es6.ruanyifeng.com/) 
+- [iview](https://www.iviewui.com/docs/guide/install)基础组件
+- [sass](https://www.sass.hk/docs/) css语法
+- [vue-router](https://router.vuejs.org/zh-cn/) 路由
+- [axios](https://github.com/axios/axios) http请求
+- [lodash](https://www.lodashjs.com/) JavaScript 实用工具库
