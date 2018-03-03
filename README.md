@@ -44,48 +44,48 @@ npm run build
 ```bash
 project/
 |
-├── build           //项目构建目录
+├── build                       //项目构建目录
 |  ├── build.js
 |  ├── check-versions.js
 |  ├── utils.js
-|  ├── vue-loader.conf.js
-|  ├── webpack.base.conf.js
-|  ├── webpack.dev.conf.js
-|  └── webpack.prod.conf.js
+|  ├── vue-loader.conf.js       
+|  ├── webpack.base.conf.js     //webpack基础配置
+|  ├── webpack.dev.conf.js      //开发配置
+|  └── webpack.prod.conf.js     //生成配置
 |
 ├── config
 |   ├── dev.env.js
-|   ├── index.js
-|   └── rod.env.js
+|   ├── index.js                //模板配置，端口配置
+|   └── prod.env.js
 |
-├── node_modules
+├── node_modules                //npm包管理
 |
-├── src
-|   ├── assets
+├── src                        
+|   ├── assets                  //静态文件
 |   |   ├── css   
 |   |   ├── images
 |   |   └── js
 |   |
-|   ├── components
-|   ├── mock
-|   ├── pages
-|   ├── router
-|   ├── template
-|   └── vuex
+|   ├── components              //组件
+|   ├── mock                    //mock数据  
+|   ├── pages                   //页面
+|   ├── router                  //路由
+|   ├── template                //模板页面
+|   └── vuex                    //状态管理
+| 
+├── App.vue                     //入口页面
 |
-├── App.vue
-|
-├── main.js
+├── main.js                     //入口js
 |
 ├── static
 |
-├── .babelrc
+├── .babelrc                    //es6版本配置
 |
-├── .gitignore
+├── .gitignore                  //忽略文件
 |
-├── index.html
+├── index.html                  //首页
 |
-├── package.json
+├── package.json                
 |
 ├── package-lock.json
 |
