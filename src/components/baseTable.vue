@@ -1,9 +1,13 @@
 <template>
- <div class="baseTable">
+ <div class="baseTable" style="margin-top: 20px">
    <Table border v-bind="$props" :data="props_data"></Table>
    <div style="margin: 10px;overflow: hidden">
      <div style="float: right;">
-       <Page :total="props_total" :page-size-opts="[10,20,30]" size="small" show-elevator show-sizer></Page>
+       <Page :total="props_total"
+             :page-size-opts="pageSizeOpt"
+             size="small" show-elevator show-sizer
+             @on-change="changedNo"
+             @on-page-size-change="changedSize"></Page>
      </div>
    </div>
  </div>
@@ -33,17 +37,27 @@
               return [];
             }
           },
+          pageSizeOpt:{
+            type: Array,
+            default() {
+              return [10,20,30];
+            }
+          },
           data: {
             type: Array,
             default() {
               return [];
             }
+          },
+          queryParam: {
+            type: Function
           }
         },
         data() {
           return {
             props_data:this.data,
             props_total:0,
+            props_pageNo:this.pageNo,
             props_query:{
               pageNo: this.pageNo,
               pageSize: this.pageSize
@@ -54,16 +68,25 @@
           this.query();
         },
         methods: {
-          query(){
-            axios.post(this.url,{
-              pageSize:10,
-              pageNo:1,
-              isEffect:0
-            }).then((res) => {
+          query(arg){
+            let param = _.assign(this.props_query,arg || {});
+            this.queryParam && _.assign(param,this.queryParam(param));
+            axios.post(this.url,param).then((res) => {
               this.props_data = res.rows;
               this.props_total = res.recordsTotal;
             },(err) => {
 
+            });
+          },
+          changedNo(page){
+            this.query({
+              pageNo:page
+            });
+          },
+          changedSize(size){
+            this.query({
+              pageNo:1,
+              pageSize:size
             });
           }
         }

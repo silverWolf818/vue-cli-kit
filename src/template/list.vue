@@ -1,6 +1,6 @@
 <template>
   <div class="queryPanel__layout">
-    <Form ref="formInline" inline :model="query">
+    <Form ref="form" inline :model="query">
       <Row :gutter="8">
         <Col span="8">
           <FormItem label="平台协议编号" prop="plaAgreementCode">
@@ -19,15 +19,40 @@
         </Col>
       </Row>
       <Row :gutter="8">
+        <Col span="8">
+        <FormItem label="协议分类" prop="agreementType">
+          <Select v-model="query.agreementType">
+            <Option v-for="item in dic.agreementType" :value="item.value" :key="item.value">{{ item.label }}</Option>
+          </Select>
+        </FormItem>
+        </Col>
+        <Col span="8">
+        <FormItem label="协议状态" prop="agreementStatus">
+          <Select v-model="query.agreementStatus">
+            <Option v-for="item in dic.agreementStatus" :value="item.value" :key="item.value">{{ item.label }}</Option>
+          </Select>
+        </FormItem>
+        </Col>
+      </Row>
+      <Row :gutter="8">
+        <Col span="8">
+        <FormItem label="签订开始时间" prop="signTimeStart">
+          <DatePicker v-model="query.signTimeStart" format="yyyy-MM-dd" type="date" placeholder="签订开始时间"></DatePicker>
+        </FormItem>
+        </Col>
+        <Col span="8">
+        <FormItem label="签订结束时间" prop="signTimeEnd">
+          <DatePicker v-model="query.signTimeEnd" format="yyyy-MM-dd" type="date" placeholder="签订结束时间"></DatePicker>
+        </FormItem>
+        </Col>
+      </Row>
+      <Row :gutter="8">
         <Col span="8" :style="{ paddingLeft:'58px' }">
-          <Button type="primary" :style="{ marginRight:'10px' }" @click="search">搜 索</Button><Button>重 置</Button>
+          <Button type="primary" :style="{ marginRight:'10px' }" @click="search">搜 索</Button><Button @click="reset">重 置</Button>
         </Col>
       </Row>
     </Form>
-    <div style="border-top: 1px solid #dddee1;width: 100%;margin:10px 0 20px 0;"></div>
-    <BaseTable v-bind="table"></BaseTable>
-    <!--<Table border height="350" :columns="columns" :data="tableData"></Table>-->
-    <!--<Page @on-change="pages" :total="40" :page-size-opts="[10,20,30]" size="small" show-elevator show-sizer></Page>-->
+    <BaseTable v-bind="table" ref="basetable"></BaseTable>
   </div>
 </template>
 
@@ -43,40 +68,51 @@
     },
     data() {
       return {
-        formValidate: {
-          case1: '',
-          case2: '',
-          case3: '',
-          case4: '',
-          case5: '',
-          case6: '',
-          cityList: [
+        dic:{
+          agreementType:[
             {
-              value: 'New York',
-              label: 'New York'
+              label:"全部",
+              value:''
             },
             {
-              value: 'London',
-              label: 'London'
+              label:"集团集采协议",
+              value:0
             },
             {
-              value: 'Sydney',
-              label: 'Sydney'
-            },
-            {
-              value: 'Ottawa',
-              label: 'Ottawa'
-            },
-            {
-              value: 'Paris',
-              label: 'Paris'
-            },
-            {
-              value: 'Canberra',
-              label: 'Canberra'
+              label:"区域集采协议",
+              value:1
             }
           ],
-          model1: ''
+          agreementStatus:[
+            {
+              label:"全部",
+              value:""
+            },
+            {
+              label:"草稿",
+              value:0
+            },
+            {
+              label:"驳回",
+              value:1
+            },
+            {
+              label:"审核中",
+              value:2
+            },
+            {
+              label:"暂停",
+              value:3
+            },
+            {
+              label:"启用",
+              value:4
+            },
+            {
+              label:"冻结",
+              value:5
+            }
+          ]
         },
         query:{
           plaAgreementCode:'',
@@ -101,6 +137,11 @@
               width: 60,
               align: 'center'
             },{
+            type: 'index',
+            title:'序号',
+            width: 60,
+            align: 'center'
+            },{
               title: '平台协议编号',
               width:140,
               key: 'plaAgreementCode',
@@ -109,13 +150,14 @@
               title: '企业协议编号',
               width:130,
               key: 'entAgreementCode',
-              align: 'center'
+              align: 'center',
+              ellipsis:true
             },{
               title: '协议名称',
               width:120,
               key: 'agreementName',
               align: 'center',
-              ellipsis:true,
+              ellipsis:true
             },{
               title: '标的物名称',
               width:120,
@@ -123,14 +165,50 @@
               align: 'center'
             },{
               title: '协议分类',
-              width:80,
+              width:110,
               key: 'agreementType',
-              align: 'center'
+              align: 'center',
+              render:(h,{row,column,index}) => {
+                let data = '';
+                switch (row.agreementType){
+                  case 0:
+                    data = '集团集采协议';
+                    break;
+                  case 1:
+                    data = '区域集采协议';
+                    break;
+                }
+                return h('div', data);
+              }
             },{
               title: '协议状态',
               width:80,
               key: 'agreementStatus',
-              align: 'center'
+              align: 'center',
+              render:(h,{row,column,index}) => {
+                let data = '';
+                switch (row.agreementStatus){
+                  case 0:
+                    data = '草稿';
+                    break;
+                  case 1:
+                    data = '驳回';
+                    break;
+                  case 2:
+                    data = '审核中';
+                    break;
+                  case 3:
+                    data = '暂停';
+                    break;
+                  case 4:
+                    data = '启用';
+                    break;
+                  case 5:
+                    data = '冻结';
+                    break;
+                }
+                return h('div', data);
+              }
             },{
               title: '是否配送',
               width:80,
@@ -153,21 +231,33 @@
               align: 'center'
             },{
               title: '签订时间',
-              width:130,
+              width:120,
               key: 'signTime',
-              align: 'center'
+              align: 'center',
+              render:(h,{row,column,index}) => {
+                return h('div', moment(row.signTime).format("YYYY-MM-DD"));
+              }
             }
-
-          ]
+          ],
+          queryParam(param) {
+            return _.assign({
+              isEffect:0
+            }, param);
+          }
         }
       }
     },
     methods: {
       search(){
-        console.log(this.formValidate);
+        let data = this.query;
+        data.pageNo = 1;
+        data.signTimeStart && (data.signTimeStart = moment(data.signTimeStart).format("YYYY-MM-DD"));
+        data.signTimeEnd && (data.signTimeEnd = moment(data.signTimeEnd).format("YYYY-MM-DD"));
+        this.$refs['basetable'].query(data);
       },
-      pages(index) {
-        console.log(index);
+      reset(){
+        this.$refs['form'].resetFields();
+        this.search();
       }
     }
   }

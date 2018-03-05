@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import axios from './assets/js/http.js'
 import iView from 'iview'
+import lodash from 'lodash'
+import moment from 'moment'
 import '@/assets/css/layout.scss'
 import 'iview/dist/styles/iview.css'
 import '@/mock/mocks'
@@ -12,6 +14,8 @@ import test from 'ty-vue-component-base1'
 
 Vue.config.productionTip = false
 window.axios = axios
+window.moment = moment
+window._ = lodash
 Vue.use(iView)
 Vue.use(test)
 
