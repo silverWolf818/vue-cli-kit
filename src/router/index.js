@@ -4,6 +4,7 @@ const Index =()=>import('@/pages/index')
 const Menu =()=>import('@/template/index')
 const Detail =()=>import('@/template/detail')
 const List =()=>import('@/template/list')
+const TabList =()=>import('@/template/tabList')
 const Cart =()=>import('@/template/cart')
 const Forms =()=>import('@/template/forms')
 Vue.use(Router)
@@ -30,6 +31,10 @@ export default new Router({
         path:'list',
         name:'list',
         component:List
+      },{
+        path:'tabList',
+        name:'tabList',
+        component:TabList
       }]
     },{
       path:'/detail',

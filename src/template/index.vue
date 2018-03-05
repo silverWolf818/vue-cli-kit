@@ -85,7 +85,7 @@
               </template>
               <MenuItem name="forms">表单</MenuItem>
               <MenuItem name="list">列表</MenuItem>
-              <MenuItem name="1-3">Option 3</MenuItem>
+              <MenuItem name="tabList">选项卡列表</MenuItem>
             </Submenu>
             <Submenu name="2">
               <template slot="title">
