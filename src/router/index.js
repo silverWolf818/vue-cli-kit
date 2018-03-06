@@ -21,7 +21,7 @@ export default new Router({
       component:Index
     },{
       path:'/menu',
-      name:'Menu',
+      name:'menu',
       component:Menu,
       children:[{
         path: 'forms',

@@ -4,6 +4,7 @@
    <div style="margin: 10px;overflow: hidden">
      <div style="float: right;">
        <Page :total="props_total"
+             :current="props_pageNo"
              :page-size-opts="pageSizeOpt"
              size="small" show-elevator show-sizer
              @on-change="changedNo"
@@ -74,6 +75,7 @@
             axios.post(this.url,param).then((res) => {
               console.log(res);
               this.props_data = res.rows;
+              this.props_pageNo = res.pageNo;
               this.props_total = res.recordsTotal;
             },(err) => {
 

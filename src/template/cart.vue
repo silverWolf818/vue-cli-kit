@@ -91,7 +91,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 table th,
 table td{
   border: 1px solid #ddd;

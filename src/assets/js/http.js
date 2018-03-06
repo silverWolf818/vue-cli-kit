@@ -53,6 +53,7 @@ axios.interceptors.response.use(function (res) {
     //在这里对返回的数据进行处理
     return result;
   }, function (error) {
+    Spin.hide();
     return Promise.reject(error);
   });
 

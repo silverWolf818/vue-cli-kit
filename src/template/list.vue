@@ -34,21 +34,22 @@
         </FormItem>
         </Col>
       </Row>
-      <Row :gutter="8">
-        <Col span="8">
-        <FormItem label="签订开始时间" prop="signTimeStart">
-          <DatePicker v-model="query.signTimeStart" format="yyyy-MM-dd" type="date" placeholder="签订开始时间"></DatePicker>
-        </FormItem>
-        </Col>
-        <Col span="8">
-        <FormItem label="签订结束时间" prop="signTimeEnd">
-          <DatePicker v-model="query.signTimeEnd" format="yyyy-MM-dd" type="date" placeholder="签订结束时间"></DatePicker>
-        </FormItem>
-        </Col>
-      </Row>
+        <Row :gutter="8" v-show="visible">
+          <Col span="8">
+          <FormItem label="签订开始时间" prop="signTimeStart">
+            <DatePicker v-model="query.signTimeStart" format="yyyy-MM-dd" type="date" placeholder="签订开始时间"></DatePicker>
+          </FormItem>
+          </Col>
+          <Col span="8">
+          <FormItem label="签订结束时间" prop="signTimeEnd">
+            <DatePicker v-model="query.signTimeEnd" format="yyyy-MM-dd" type="date" placeholder="签订结束时间"></DatePicker>
+          </FormItem>
+          </Col>
+        </Row>
       <Row :gutter="8">
         <Col span="8" :style="{ paddingLeft:'58px' }">
           <Button type="primary" :style="{ marginRight:'10px' }" @click="search">搜 索</Button><Button @click="reset">重 置</Button>
+          <Button type="text" @click="toggle">展开 <Icon :type="isToggle"></Icon></Button>
         </Col>
       </Row>
     </Form>
@@ -68,6 +69,7 @@
     },
     data() {
       return {
+        visible:false,
         dic:{
           agreementType:[
             {
@@ -247,6 +249,11 @@
         }
       }
     },
+    computed: {
+      isToggle(){
+        return this.visible?'arrow-up-b':'arrow-down-b';
+      }
+    },
     methods: {
       search(){
         let data = this.query;
@@ -258,6 +265,9 @@
       reset(){
         this.$refs['form'].resetFields();
         this.search();
+      },
+      toggle(){
+        this.visible = !this.visible;
       }
     }
   }
