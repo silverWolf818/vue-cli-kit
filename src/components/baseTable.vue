@@ -72,6 +72,7 @@
             let param = _.assign(this.props_query,arg || {});
             this.queryParam && _.assign(param,this.queryParam(param));
             axios.post(this.url,param).then((res) => {
+              console.log(res);
               this.props_data = res.rows;
               this.props_total = res.recordsTotal;
             },(err) => {

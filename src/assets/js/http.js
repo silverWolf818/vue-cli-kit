@@ -6,22 +6,26 @@
 
 import axios from 'axios'
 import qs from 'qs'
+import { Spin,Modal } from 'iview'
 
 axios.defaults.timeout = 1000 * 50;
 //添加一个请求拦截器
 axios.interceptors.request.use(function (config) {
-    if (config.method === "post"){
+  Spin.show({
+    size:'large'
+  });
+  if(config.method === "post") {
       config.data = qs.stringify(config.data);
       config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
     }
     return config;
   }, function (error) {
-    //Do something with request error
     return Promise.reject(error);
   });
 //添加一个响应拦截器
 axios.interceptors.response.use(function (res) {
     let result;
+    Spin.hide();
     switch (res.status) {
       case 404:
         console.log("404");
@@ -33,10 +37,18 @@ axios.interceptors.response.use(function (res) {
         console.log("401");
         break;
       case 200:
-        if (res.data.respCode === '0000') {
-          result = res.data.data;
+        let data = res.data;
+        if (data.respCode === '0000') {
+          result = data.data;
+        }else{
+          Modal.error({
+            title: '错误',
+            content: data.respDesc,
+            width:'300'
+          });
         }
         break;
+
     }
     //在这里对返回的数据进行处理
     return result;
