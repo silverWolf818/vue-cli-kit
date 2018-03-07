@@ -1,6 +1,8 @@
 <template>
  <div class="baseTable" style="margin-top: 20px">
-   <Table border v-bind="$props" :data="props_data"></Table>
+   <Table border v-bind="$props"
+          :data="props_data"
+          @on-selection-change="selectionChange"></Table>
    <div style="margin: 10px;overflow: hidden">
      <div style="float: right;">
        <Page :total="props_total"
@@ -91,6 +93,9 @@
               pageNo:1,
               pageSize:size
             });
+          },
+          selectionChange(data){
+            this.$emit('selectionChange',data);
           }
         }
     }

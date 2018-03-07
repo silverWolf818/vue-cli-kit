@@ -52,8 +52,13 @@
           <Button type="text" @click="toggle">展开 <Icon :type="isToggle"></Icon></Button>
         </Col>
       </Row>
+      <Row :gutter="8" :style="{ marginTop:'20px' }">
+        <Col span="8">
+          <Button type="ghost">新增</Button> <Button type="ghost" @click="modify">修改</Button> <Button type="ghost">删除</Button>
+        </Col>
+      </Row>
     </Form>
-    <BaseTable v-bind="table" ref="basetable"></BaseTable>
+    <BaseTable @selectionChange="selectionChange" v-bind="table" ref="basetable"></BaseTable>
   </div>
 </template>
 
@@ -69,6 +74,7 @@
     },
     data() {
       return {
+        selection:[],
         visible:false,
         dic:{
           agreementType:[
@@ -130,7 +136,7 @@
           signTimeEnd:''
         },
         table:{
-          url:'http://www.neepp.net/rest/service/routing/qryAgrsByCurrManagerService',
+          url:'http://47.94.134.239:8080/rest/service/routing/qryAgrsByCurrManagerService',
           pageNo:1,
           pageSize:10,
           columns: [
@@ -268,6 +274,12 @@
       },
       toggle(){
         this.visible = !this.visible;
+      },
+      modify(){
+        console.log(this.selection);
+      },
+      selectionChange(data){
+        this.selection = data;
       }
     }
   }
