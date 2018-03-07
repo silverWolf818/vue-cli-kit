@@ -7,6 +7,7 @@ const List =()=>import('@/template/list')
 const TabList =()=>import('@/template/tabList')
 const Cart =()=>import('@/template/cart')
 const Forms =()=>import('@/template/forms')
+const Navigation =()=>import('@/template/navigation')
 Vue.use(Router)
 
 export default new Router({
@@ -44,6 +45,10 @@ export default new Router({
       path:'/cart',
       name:'cart',
       component:Cart
+    },{
+      path:'/navigation',
+      name:'navigation',
+      component:Navigation
     }
   ]
 })
