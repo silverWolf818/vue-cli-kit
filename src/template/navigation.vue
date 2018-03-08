@@ -65,12 +65,12 @@
       </Header>
       <Layout>
         <Sider hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :style="{background: '#fff'}">
-          <Menu ref="sub" :active-name="subActive" theme="light" width="auto" :class="menuitemClasses" @on-select="link" :open-names="[sub]">
+          <Menu ref="sub" :active-name="subActive" theme="light" width="auto" :class="menuitemClasses" @on-select="link" :open-names="[openName]">
             <Submenu v-for="sub in subMenu" :name="sub.menuCode" :key="sub.menuCode">
                 <template slot="title">
                   {{ sub.menuName }}
                 </template>
-              <MenuItem v-for="item in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
+              <MenuItem @on-select="subSelection" v-for="item in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
                 {{ item.menuName }}
               </MenuItem>
             </Submenu>
@@ -78,9 +78,9 @@
         </Sider>
         <Layout :style="{padding: '0 12px 12px'}">
           <Breadcrumb :style="{margin: '12px 0'}">
-            <BreadcrumbItem>Home</BreadcrumbItem>
-            <BreadcrumbItem>Components</BreadcrumbItem>
-            <BreadcrumbItem>Layout</BreadcrumbItem>
+            <BreadcrumbItem>{{ step1 }}</BreadcrumbItem>
+            <BreadcrumbItem>{{ step2 }}</BreadcrumbItem>
+            <BreadcrumbItem>{{ step3 }}</BreadcrumbItem>
           </Breadcrumb>
           <Content :style="{padding: '12px', minHeight: '580px', background: '#fff'}">
             <router-view/>
@@ -97,9 +97,12 @@
         isCollapsed: false,
         active:'',
         subActive:'',
-        sub:'',
+        openName:'',
         menu:[],
-        subMenu:[]
+        subMenu:[],
+        step1:'',
+        step2:'',
+        step3:'',
       }
     },
     created() {
@@ -130,11 +133,16 @@
         });
       },
       initSubMenu(data) {
+        //面包屑
+        //
         this.active = this.menu[0].menuCode;
         let active = data ? data : this.active;
         this.subMenu = this.menu.filter(item => item.menuCode === active)[0].subMenus;
-        this.subActive = this.menu.filter(item => item.menuCode === active)[0].subMenus[0].subMenus[0].menuCode;
-        this.sub = this.menu.filter(item => item.menuCode === active)[0].subMenus[0].menuCode;
+        this.step1 = this.menu.filter(item => item.menuCode === active)[0].menuName;
+        this.openName = this.subMenu[0].menuCode;
+        this.step2 = this.subMenu[0].menuName;
+        this.subActive = this.subMenu[0].subMenus[0].menuCode;
+        this.step3 = this.subMenu[0].subMenus[0].menuName;
         this.$nextTick(()=> {
           this.$refs.sub.updateOpened();
           this.$refs.sub.updateActiveName();
@@ -142,6 +150,9 @@
       },
       selection(data){
         this.initSubMenu(data);
+      },
+      subSelection(data){
+        console.log(data);
       },
       link(name) {
         console.log(name);
