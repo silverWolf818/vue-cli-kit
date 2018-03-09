@@ -70,7 +70,7 @@
                 <template slot="title">
                   {{ sub.menuName }}
                 </template>
-              <MenuItem @on-select="subSelection" v-for="item in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
+              <MenuItem v-for="item in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
                 {{ item.menuName }}
               </MenuItem>
             </Submenu>
@@ -133,8 +133,6 @@
         });
       },
       initSubMenu(data) {
-        //面包屑
-        //
         this.active = this.menu[0].menuCode;
         let active = data ? data : this.active;
         this.subMenu = this.menu.filter(item => item.menuCode === active)[0].subMenus;
@@ -151,11 +149,21 @@
       selection(data){
         this.initSubMenu(data);
       },
-      subSelection(data){
-        console.log(data);
-      },
-      link(name) {
-        console.log(name);
+      link(active) {
+        let id = '',
+            data = [];
+        this.subMenu.forEach((value)=>{
+          data = value.subMenus.filter(item => item.menuCode === active)[0];
+          if(data){
+            this.step3 = data.menuName;
+            id = data.parentId;
+          }
+          if(value.autoId === id){
+            this.step2 = value.menuName;
+          }
+        });
+
+        //console.log(data);
         // this.$router.push({
         //   name:name
         // });
