@@ -1,22 +1,22 @@
 <template>
-  <div>{{ products }}</div>
+  <div>{{ getCount }}</div>
 </template>
 
 <script>
   import { mapGetters,mapActions } from 'vuex'
     export default {
       computed: {
-        ...mapGetters({
-         products: 'getCount'
-       })
+        ...mapGetters([
+          'getCount'
+        ])
       },
       methods: {
-        ...mapActions({
-          add: 'increment'
-        })
+        ...mapActions([
+          'increment'
+        ])
       },
       created(){
-        this.add();
+        this.increment();
       }
     }
 </script>
