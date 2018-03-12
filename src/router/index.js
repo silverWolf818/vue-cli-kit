@@ -11,7 +11,7 @@ const Navigation =()=>import('@/template/navigation')
 const Entinvinfo =()=>import('@/template/entinvinfo')
 const Entusermgr =()=>import('@/template/entusermgr')
 const Ideinfomgr =()=>import('@/template/ideinfomgr')
-
+const Store =()=>import('@/template/store')
 Vue.use(Router)
 
 export default new Router({
@@ -68,6 +68,10 @@ export default new Router({
           component:Ideinfomgr
         }
       ]
+    },{
+      path:'/store',
+      name:'store',
+      component:Store
     }
   ]
 })
