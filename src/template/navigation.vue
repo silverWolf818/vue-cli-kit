@@ -150,6 +150,7 @@
         this.initSubMenu(data);
       },
       selectItem(active) {
+        console.log(active);
         let id = '',
             data = [];
         this.subMenu.forEach((value)=>{
@@ -162,11 +163,9 @@
             this.step2 = value.menuName;
           }
         });
-
-        //console.log(data);
-        // this.$router.push({
-        //   name:name
-        // });
+        this.$router.push({
+          name:active
+        });
       }
     }
   }

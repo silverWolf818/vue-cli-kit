@@ -8,6 +8,10 @@ const TabList =()=>import('@/template/tabList')
 const Cart =()=>import('@/template/cart')
 const Forms =()=>import('@/template/forms')
 const Navigation =()=>import('@/template/navigation')
+const Entinvinfo =()=>import('@/template/entinvinfo')
+const Entusermgr =()=>import('@/template/entusermgr')
+const Ideinfomgr =()=>import('@/template/ideinfomgr')
+
 Vue.use(Router)
 
 export default new Router({
@@ -48,7 +52,22 @@ export default new Router({
     },{
       path:'/navigation',
       name:'navigation',
-      component:Navigation
+      component:Navigation,
+      children:[
+        {
+          path:'entinvinfo',
+          name:'entinvinfo',
+          component:Entinvinfo
+        },{
+          path:'entusermgr',
+          name:'entusermgr',
+          component:Entusermgr
+        },{
+          path:'ideinfomgr',
+          name:'ideinfomgr',
+          component:Ideinfomgr
+        }
+      ]
     }
   ]
 })
