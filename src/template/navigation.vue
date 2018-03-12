@@ -65,7 +65,7 @@
       </Header>
       <Layout>
         <Sider hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :style="{background: '#fff'}">
-          <Menu ref="sub" :active-name="subActive" theme="light" width="auto" :class="menuitemClasses" @on-select="link" :open-names="[openName]">
+          <Menu ref="sub" :active-name="subActive" theme="light" width="auto" :class="menuitemClasses" @on-select="selectItem" :open-names="[openName]">
             <Submenu v-for="sub in subMenu" :name="sub.menuCode" :key="sub.menuCode">
                 <template slot="title">
                   {{ sub.menuName }}
@@ -149,7 +149,7 @@
       selection(data){
         this.initSubMenu(data);
       },
-      link(active) {
+      selectItem(active) {
         let id = '',
             data = [];
         this.subMenu.forEach((value)=>{

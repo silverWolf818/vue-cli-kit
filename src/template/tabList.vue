@@ -106,7 +106,7 @@
                   align: 'center'
                 },{
                   title: '企业协议编号',
-                  width:130,
+                  width:220,
                   key: 'entAgreementCode',
                   align: 'center',
                   ellipsis:true
@@ -219,7 +219,7 @@
                   align: 'center'
                 },{
                   title: '平台协议编号',
-                  width:140,
+                  width:220,
                   key: 'plaAgreementCode',
                   align: 'center'
                 },{

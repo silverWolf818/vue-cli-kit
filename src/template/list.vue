@@ -136,7 +136,7 @@
           signTimeEnd:''
         },
         table:{
-          url:'http://47.94.134.239:8080/rest/service/routing/qryAgrsByCurrManagerService',
+          url:'http://www.neepp.net/rest/service/routing/qryAgrsByCurrManagerService',
           pageNo:1,
           pageSize:10,
           columns: [
@@ -151,7 +151,7 @@
             align: 'center'
             },{
               title: '平台协议编号',
-              width:140,
+              width:220,
               key: 'plaAgreementCode',
               align: 'center'
             },{
