@@ -10,15 +10,18 @@ const getters = {
 
 // mutations
 const mutations = {
-  increment(state) {
-    state.count++
+  increment(state,param) {
+    state.count += param.amount;
   }
 };
 
 // actions
 const actions = {
-  increment ({ commit }) {
-    commit('increment')
+  increment ({ commit },param) {
+    console.log(param);
+    commit('increment',{
+      amount:10
+    });
   }
 };
 

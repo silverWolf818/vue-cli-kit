@@ -16,7 +16,9 @@
         ])
       },
       created(){
-        this.increment();
+        this.increment({
+          x:1
+        });
       }
     }
 </script>
