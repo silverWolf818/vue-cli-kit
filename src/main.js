@@ -11,10 +11,12 @@ import moment from 'moment'
 import '@/assets/css/layout.scss'
 import 'iview/dist/styles/iview.css'
 import '@/mock/mocks'
+import conf from '@/assets/js/config.js'
 
 Vue.config.productionTip = false
 window.axios = axios
 window.moment = moment
+window.conf = conf
 window._ = lodash
 Vue.use(iView)
 

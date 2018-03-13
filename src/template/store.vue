@@ -16,6 +16,7 @@
         ])
       },
       created(){
+        console.log(conf.api());
         this.increment({
           x:1
         });

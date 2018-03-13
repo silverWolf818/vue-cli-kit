@@ -1,4 +1,6 @@
 'use strict'
+const st = process.env.test;
+console.log(st);
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -46,7 +48,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': require('../config/dev.env')
+      'process.env': require('../config/dev.env'),
+      'SERVICE_URL': 1
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
