@@ -1,24 +1,23 @@
 const config = {
   serverUrl () {
     switch (ENV_TYPE) {
-      case 1:
-        return 'http://39.107.71.15:8080/';
-      case 2:
-        return 'http://127.0.0.1:9081/';
-      case 3:
-        return 'http://39.107.71.15:8080/';
+      case 1://开发
+        return 'http://47.94.134.239:8080/';
+      case 2://测试
+        return 'http://www.neepp.net/';
     }
   },
   api (service, type) {
+    let url = this.serverUrl();
     switch (type) {
       case 'menu':
-        return this.serverUrl() + 'pages/user/menus';
+        return url + 'pages/user/menus';
       case 'upload':
-        return this.serverUrl() +'rest/upload/uploadfiletooss'
+        return url + 'rest/upload/uploadfiletooss';
       case 'down':
-        return this.serverUrl() +'rest/download'+ service
+        return url + 'rest/download'+ service;
       default:
-        return this.serverUrl() + 'rest/service/routing/' + service
+        return url + 'rest/service/routing/' + service;
     }
   },
 }
