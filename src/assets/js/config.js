@@ -1,7 +1,6 @@
 const config = {
-  type: SERVICE_URL,
   apiUrl () {
-    switch (this.type) {
+    switch (ENV_TYPE) {
       case 1:
         return 'http://39.107.71.15:8080/';
       case 2:

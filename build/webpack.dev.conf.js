@@ -1,6 +1,4 @@
 'use strict'
-const st = process.env.test;
-console.log(st);
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -14,6 +12,7 @@ const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
+
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -49,7 +48,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env'),
-      'SERVICE_URL': 1
+      'ENV_TYPE': process.env.api
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
