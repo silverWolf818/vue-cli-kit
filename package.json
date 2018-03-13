@@ -9,7 +9,8 @@
     "test": "cross-env api=2 webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build_dev": "cross-env api=1 node build/build.js",
-    "build_test": "cross-env api=2 node build/build.js"
+    "build_test": "cross-env api=2 node build/build.js",
+    "build_prod": "cross-env api=3 node build/build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

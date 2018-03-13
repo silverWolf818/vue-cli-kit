@@ -1,5 +1,5 @@
 const config = {
-  apiUrl () {
+  serverUrl () {
     switch (ENV_TYPE) {
       case 1:
         return 'http://39.107.71.15:8080/';
@@ -12,13 +12,13 @@ const config = {
   api (service, type) {
     switch (type) {
       case 'menu':
-        return this.apiUrl() + 'pages/user/menus';
+        return this.serverUrl() + 'pages/user/menus';
       case 'upload':
-        return this.apiUrl() +'rest/upload/uploadfiletooss'
+        return this.serverUrl() +'rest/upload/uploadfiletooss'
       case 'down':
-        return this.apiUrl() +'rest/download'+ service
+        return this.serverUrl() +'rest/download'+ service
       default:
-        return this.apiUrl() + 'rest/service/routing/' + service
+        return this.serverUrl() + 'rest/service/routing/' + service
     }
   },
 }
