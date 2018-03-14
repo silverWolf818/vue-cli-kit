@@ -5,12 +5,12 @@
   "author": "Zhou <363420113@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "cross-env api=1 webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "test": "cross-env api=2 webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "cross-env api={\\\"service\\\":\\\"dev\\\"} webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "test": "cross-env api={\\\"service\\\":\\\"test\\\"} webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build_dev": "cross-env api=1 node build/build.js",
-    "build_test": "cross-env api=2 node build/build.js",
-    "build_prod": "cross-env api=3 node build/build.js"
+    "build_dev": "cross-env api={\\\"service\\\":\\\"dev\\\"} node build/build.js",
+    "build_test": "cross-env api={\\\"service\\\":\\\"test\\\"} node build/build.js",
+    "build_prod": "cross-env api={\\\"service\\\":\\\"prod\\\"} node build/build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

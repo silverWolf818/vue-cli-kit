@@ -1,9 +1,9 @@
 const config = {
   serverUrl () {
-    switch (ENV_TYPE) {
-      case 1://开发
+    switch (ENV_TYPE.service) {
+      case 'dev'://开发
         return 'http://47.94.134.239:8080/';
-      case 2://测试
+      case 'test'://测试
         return 'http://www.neepp.net/';
     }
   },
@@ -20,5 +20,5 @@ const config = {
         return url + 'rest/service/routing/' + service;
     }
   },
-}
+};
 export default config
