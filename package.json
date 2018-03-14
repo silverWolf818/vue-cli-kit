@@ -1,9 +1,8 @@
 {
-  "name": "vue-base-project",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "Zhou <363420113@qq.com>",
-  "private": true,
+  "name": "{{projectName}}",
+  "description": "{{projectDescription}}",
+  "version": "{{projectVersion}}",
+  "author": "{{projectAuthor}}",
   "scripts": {
     "dev": "cross-env api={\\\"service\\\":\\\"dev\\\"} webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "test": "cross-env api={\\\"service\\\":\\\"test\\\"} webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
