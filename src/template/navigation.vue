@@ -3,26 +3,22 @@
     border: 1px solid #d7dde4;
     background: #f5f7f9;
     position: relative;
+    border-radius: 4px;
     overflow: hidden;
   }
   .layout-logo{
     width: 100px;
     height: 30px;
     background: #5b6270;
+    border-radius: 3px;
     float: left;
     position: relative;
     top: 15px;
     left: 20px;
   }
   .layout-nav{
-    width: 872px;
-    margin: 0 auto;
-  }
-  .menu-icon{
-    transition: all .3s;
-  }
-  .rotate-icon{
-    transform: rotate(-90deg);
+    width: 420px;
+    margin: 0 20px 0 auto;
   }
   .menu-item span{
     display: inline-block;
@@ -40,7 +36,7 @@
     font-size: 16px;
   }
   .collapsed-menu span{
-    width: 0px;
+    width: 0;
     transition: width .2s ease;
   }
   .collapsed-menu i{
@@ -109,12 +105,6 @@
       this.initMenu();
     },
     computed: {
-      rotateIcon () {
-        return [
-          'menu-icon',
-          this.isCollapsed ? 'rotate-icon' : ''
-        ];
-      },
       menuitemClasses () {
         return [
           'menu-item',

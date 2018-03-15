@@ -12,14 +12,19 @@ const Entinvinfo =()=>import('@/template/entinvinfo')
 const Entusermgr =()=>import('@/template/entusermgr')
 const Ideinfomgr =()=>import('@/template/ideinfomgr')
 const Store =()=>import('@/template/store')
+const Test =()=>import('@/template/test')
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   routes: [
     {
       path: '*',
       redirect: '/'
+    },{
+      path:'/test',
+      name:'test',
+      component:Test
     },{
       path:'/',
       name:'index',
