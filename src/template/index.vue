@@ -36,13 +36,14 @@
                 列表页
               </template>
               <MenuItem name="list">查询表格</MenuItem>
+              <MenuItem name="tabList">选项卡表格</MenuItem>
             </Submenu>
             <Submenu name="3">
               <template slot="title">
                 <Icon type="ios-paper"></Icon>
                 详情页
               </template>
-              <MenuItem name="3-1">Option 1</MenuItem>
+              <MenuItem name="detail">基础详情页</MenuItem>
             </Submenu>
           </Menu>
         </Sider>
