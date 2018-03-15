@@ -6,12 +6,18 @@
 </template>
 
 <script>
+  // import { query } from '../service/api'
   export default {
     name: "index",
     methods:{
       go(){
         this.$router.push({ name:'menu' });
       }
+    },
+    created() {
+      // query().then((v)=>{
+      //   console.log(v);
+      // })
     }
   }
 </script>

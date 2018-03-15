@@ -13,6 +13,8 @@ import 'iview/dist/styles/iview.css'
 import './mock/mocks'
 import conf from './assets/js/config.js'
 
+console.log(iView);
+
 Vue.config.productionTip = false
 window.axios = axios
 window.moment = moment
