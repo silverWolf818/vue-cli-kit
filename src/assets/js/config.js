@@ -1,6 +1,6 @@
 const config = {
   serverUrl () {
-    switch (ENV_TYPE.service) {
+    switch (ENV_TYPE) {
       case 'dev'://开发
         return 'http://47.94.134.239:8080/';
       case 'test'://测试
