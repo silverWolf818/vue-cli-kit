@@ -9,19 +9,19 @@
           <div class="layout-logo"></div>
           <div class="layout-nav">
             <MenuItem name="1">
-              一级菜单
+              展示菜单
             </MenuItem>
             <MenuItem name="2">
-              一级菜单
+              展示菜单
             </MenuItem>
             <MenuItem name="3">
-              一级菜单
+              展示菜单
             </MenuItem>
           </div>
         </Menu>
       </Header>
       <Layout>
-        <Sider ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :style="{background: '#fff'}">
+        <Sider :width="256" ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :style="{background: '#fff'}">
           <Menu theme="light" width="auto" :class="menuitemClasses" @on-select="link">
             <Submenu name="1">
               <template slot="title">
@@ -29,16 +29,13 @@
                 表单页
               </template>
               <MenuItem name="forms">基础表单</MenuItem>
-              <MenuItem name="list">列表</MenuItem>
-              <MenuItem name="tabList">选项卡列表</MenuItem>
             </Submenu>
             <Submenu name="2">
               <template slot="title">
                 <Icon type="ios-grid-view"></Icon>
                 列表页
               </template>
-              <MenuItem name="2-1">Option 1</MenuItem>
-              <MenuItem name="2-2">Option 2</MenuItem>
+              <MenuItem name="list">查询表格</MenuItem>
             </Submenu>
             <Submenu name="3">
               <template slot="title">
@@ -46,7 +43,6 @@
                 详情页
               </template>
               <MenuItem name="3-1">Option 1</MenuItem>
-              <MenuItem name="3-2">Option 2</MenuItem>
             </Submenu>
           </Menu>
         </Sider>
@@ -56,7 +52,7 @@
             <BreadcrumbItem>Components</BreadcrumbItem>
             <BreadcrumbItem>Layout</BreadcrumbItem>
           </Breadcrumb>
-          <Content :style="{padding: '12px', minHeight: '580px', background: '#fff'}">
+          <Content :style="{padding: '24px', minHeight: '600px', background: '#fff'}">
             <router-view/>
           </Content>
         </Layout>
