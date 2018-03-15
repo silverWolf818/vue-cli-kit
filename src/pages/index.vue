@@ -1,5 +1,8 @@
 <template>
-  <div @click="go">项目首页</div>
+  <div style="margin: 10px">
+    <div>welcome to vue project</div>
+    <Button type="primary" @click="go">demo</Button>
+  </div>
 </template>
 
 <script>
@@ -9,9 +12,6 @@
       go(){
         this.$router.push({ name:'menu' });
       }
-    },
-    created() {
-      console.log(conf.serverUrl());
     }
   }
 </script>
