@@ -92,7 +92,7 @@
           },
           table:{
             effect:{
-              url:'http://www.neepp.net/rest/service/routing/qryAgrsByCurrManagerService',
+              url:conf.api('qryAgrsByCurrManagerService'),
               pageNo:1,
               pageSize:10,
               columns: [
@@ -210,7 +210,7 @@
               }
             },
             abate:{
-              url:'http://www.neepp.net/rest/service/routing/qryAgrsByCurrManagerService',
+              url:conf.api('qryAgrsByCurrManagerService'),
               pageNo:1,
               pageSize:10,
               columns: [

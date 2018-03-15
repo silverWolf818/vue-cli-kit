@@ -144,7 +144,7 @@
           signTimeEnd:''
         },
         table:{
-          url:'http://www.neepp.net/rest/service/routing/qryAgrsByCurrManagerService',
+          url:conf.api('qryAgrsByCurrManagerService'),
           pageNo:1,
           pageSize:10,
           columns: [
