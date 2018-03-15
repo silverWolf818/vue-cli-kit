@@ -20,9 +20,9 @@
               </FormItem>
               </Col>
             </Row>
-            <Row :gutter="8">
-              <Col span="8" :style="{ paddingLeft:'58px' }">
-              <Button type="primary" :style="{ marginRight:'10px' }" @click="search">搜 索</Button><Button @click="reset">重 置</Button>
+            <Row :gutter="8" class="query-btns">
+              <Col span="8">
+              <Button type="primary" @click="search">搜 索</Button><Button @click="reset">重 置</Button>
               </Col>
             </Row>
           </Form>
@@ -41,9 +41,10 @@
               </FormItem>
               </Col>
             </Row>
-            <Row :gutter="8">
-              <Col span="8" :style="{ paddingLeft:'58px' }">
-              <Button type="primary" :style="{ marginRight:'10px' }" @click="search">搜 索</Button><Button @click="reset">重 置</Button>
+            <Row :gutter="8" class="query-btns">
+              <Col span="8">
+              <Button type="primary" @click="search">搜 索</Button>
+              <Button @click="reset">重 置</Button>
               </Col>
             </Row>
           </Form>
