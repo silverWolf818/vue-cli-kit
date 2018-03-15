@@ -44,7 +44,7 @@ axios.interceptors.response.use(function (res) {
           Modal.error({
             title: '错误',
             content: data.respDesc ? data.respDesc :'网络繁忙！',
-            width:'300'
+            className:'skdfj'
           });
         }
         break;
