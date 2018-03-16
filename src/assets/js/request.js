@@ -63,6 +63,6 @@ export default function request(url, options) {
     method:'POST',
     url:url
   }).then((response) => {
-      return JSON.stringify(response);
+      return response
   })
 }
