@@ -23,20 +23,24 @@ const config = {
     }
   },
 };
+//参数说明
+// url:后端接口地址url
+// data:接口入参
+// option:axios options
 //查询
-export async function query(url,params) {
-  return request(config.api() + url,params);
+export async function queryApi(url,data,option) {
+  return request(config.api() + url,data,option);
 }
 //新增
-export async function add(url,params) {
-  return request(config.api() + url,params);
+export async function addApi(url,data,option) {
+  return request(config.api() + url,data,option);
 }
 //删除
-export async function remove(url,params) {
-  return request(config.api() + url,params);
+export async function removeApi(url,data,option) {
+  return request(config.api() + url,data,option);
 }
 //更新
-export async function update(url,params) {
-  return request(config.api() + url,params);
+export async function updateApi(url,data,option) {
+  return request(config.api() + url,data,option);
 }
 

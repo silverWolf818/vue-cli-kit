@@ -145,7 +145,7 @@
           signTimeEnd:''
         },
         table:{
-          url:conf.api('qryAgrsByCurrManagerService'),
+          url:'qryAgrsByCurrManagerService',
           pageNo:1,
           pageSize:10,
           columns: [

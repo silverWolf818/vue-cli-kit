@@ -6,8 +6,7 @@
 </template>
 
 <script>
-  import { query } from '../service/api'
-  import { remove } from '../service/api'
+  import { queryApi } from '../service/api'
   export default {
     name: "index",
     methods:{
@@ -16,11 +15,7 @@
       }
     },
     created() {
-      query('nouser/SelectUserInfoBusiService',{
-        data:{
-          a:1
-        }
-      }).then((v)=>{
+      queryApi('nouser/SelectUserInfoBusiService').then((v)=>{
         console.log(v);
       })
     }
