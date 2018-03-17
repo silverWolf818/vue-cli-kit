@@ -57,11 +57,15 @@ axios.interceptors.response.use(function (res) {
 });
 
 export default function request(url, options) {
-  const defaultOptions = {};
+  const defaultOptions = {
+    method:'POST',
+    data:{}
+  };
   const newOptions = { ...defaultOptions, ...options };
   return axios({
-    method:'POST',
-    url:url
+    method:newOptions.method,
+    url:url,
+    data:newOptions.data
   }).then((response) => {
       return response
   })
