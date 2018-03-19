@@ -28,19 +28,24 @@ const config = {
 // data:接口入参
 // option:axios options
 //查询
-export async function queryApi(url,data,option) {
+async function queryApi(url,data,option) {
   return request(config.api() + url,data,option);
 }
 //新增
-export async function addApi(url,data,option) {
+async function addApi(url,data,option) {
   return request(config.api() + url,data,option);
 }
 //删除
-export async function removeApi(url,data,option) {
+async function removeApi(url,data,option) {
   return request(config.api() + url,data,option);
 }
 //更新
-export async function updateApi(url,data,option) {
+async function updateApi(url,data,option) {
   return request(config.api() + url,data,option);
 }
-
+export {
+  queryApi,
+  addApi,
+  removeApi,
+  updateApi
+}
