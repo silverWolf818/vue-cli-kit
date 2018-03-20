@@ -13,6 +13,9 @@ const Entusermgr =()=>import('@/template/entusermgr')
 const Ideinfomgr =()=>import('@/template/ideinfomgr')
 const Store =()=>import('@/template/store')
 const Test =()=>import('@/template/test')
+const Index2 =()=>import('@/template/index2')
+const Index3 =()=>import('@/template/index3')
+const Home =()=>import('@/pages/home')
 Vue.use(Router)
 
 export default new Router({
@@ -28,7 +31,20 @@ export default new Router({
     },{
       path:'/',
       name:'index',
-      component:Index
+      component:Index,
+      children:[{
+        path: 'home',
+        name: 'home',
+        component: Home
+      }]
+    },{
+      path:'/index2',
+      name:'index2',
+      component:Index2
+    },{
+      path:'/index3',
+      name:'index3',
+      component:Index3
     },{
       path:'/menu',
       name:'menu',

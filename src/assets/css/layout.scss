@@ -1,114 +1,125 @@
-$width120:120px;
-
-//导航布局
-.layout{
-  border: 1px solid #d7dde4;
-  background: #f5f7f9;
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.layout-logo{
-  width: 100px;
-  height: 30px;
-  background: #5b6270;
-  border-radius: 3px;
-  float: left;
-  position: relative;
-  top: 15px;
-  left: 20px;
-}
-.layout-nav{
-  width: 420px;
-  margin: 0 20px 0 auto;
-}
-.menu-item span{
-  display: inline-block;
-  overflow: hidden;
-  width: 69px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  vertical-align: bottom;
-  transition: width .2s ease .2s;
-}
-.menu-item i{
-  transform: translateX(0px);
-  transition: font-size .2s ease, transform .2s ease;
-  vertical-align: middle;
-  font-size: 16px;
-}
-.collapsed-menu span{
-  width: 0;
-  transition: width .2s ease;
-}
-.collapsed-menu i{
-  transform: translateX(5px);
-  transition: font-size .2s ease .2s, transform .2s ease .2s;
-  vertical-align: middle;
-  font-size: 22px;
-}
-.ivu-layout-sider{
-  margin-bottom: 12px;
-}
-.ivu-layout-footer{
-  text-align: center;
-}
-.tips{
-  padding-bottom: 24px;
-  margin-bottom: 24px;
-  border-bottom: 1px solid #d7dde5;
-}
-//列表查询样式
-.queryPanel__layout .ivu-form-inline{
-  .ivu-form-item-label{
-    width: $width120;
-  }
-  .ivu-form-item-content{
-    margin-left: $width120;
-  }
-  .ivu-form-item,
-  .ivu-date-picker{
-    width: 100%;
-  }
-}
-.queryPanel__layout{
-  .ivu-page{
-    margin-top: 20px;
-    text-align: right;
-  }
-  .ivu-table-cell{
-    padding: 0 10px;
-  }
-}
-body .ivu-spin-fix{
-  background: inherit;
-}
-//表单样式
-.base-form{
-  width: 600px;
-  margin: 0 auto;
-}
-//列表搜索，重置按钮
-.query-btns{
-  .ivu-col{
-    padding-left: 62px !important;
-  }
-  .ivu-btn{
-    margin-left: 8px;
-  }
-  .ivu-btn-text:focus{
-    box-shadow:none;
-  }
-}
-//操作按钮
-.op-btns{
-  margin-top: 20px;
-  .ivu-col{
-    text-align: right;
-  }
-  .ivu-btn{
-    margin-left: 8px;
-  }
-}
-//修改弹出层居中
-
+//$width120:120px;
+//body{
+//  overflow: hidden;
+//}
+////导航布局
+//.layout{
+//  border: 1px solid #d7dde4;
+//  background: #f5f7f9;
+//  position: relative;
+//  border-radius: 4px;
+//  overflow: hidden;
+//}
+//.layout-logo{
+//  width: 100px;
+//  height: 30px;
+//  background: #5b6270;
+//  border-radius: 3px;
+//  float: left;
+//  position: relative;
+//  top: 15px;
+//  left: 20px;
+//}
+//.layout-nav{
+//  width: 420px;
+//  margin: 0 20px 0 auto;
+//}
+//.menu-item span{
+//  display: inline-block;
+//  overflow: hidden;
+//  width: 69px;
+//  text-overflow: ellipsis;
+//  white-space: nowrap;
+//  vertical-align: bottom;
+//  transition: width .2s ease .2s;
+//}
+//.menu-item i{
+//  transform: translateX(0px);
+//  transition: font-size .2s ease, transform .2s ease;
+//  vertical-align: middle;
+//  font-size: 16px;
+//}
+//.collapsed-menu span{
+//  width: 0;
+//  transition: width .2s ease;
+//}
+//.collapsed-menu i{
+//  transform: translateX(5px);
+//  transition: font-size .2s ease .2s, transform .2s ease .2s;
+//  vertical-align: middle;
+//  font-size: 22px;
+//}
+//.ivu-layout-sider{
+//  margin-bottom: 12px;
+//}
+//.ivu-layout-footer{
+//  text-align: center;
+//}
+//.tips{
+//  padding-bottom: 24px;
+//  margin-bottom: 24px;
+//  border-bottom: 1px solid #d7dde5;
+//}
+////列表查询样式
+//.queryPanel__layout .ivu-form-inline{
+//  .ivu-form-item-label{
+//    width: $width120;
+//  }
+//  .ivu-form-item-content{
+//    margin-left: $width120;
+//  }
+//  .ivu-form-item,
+//  .ivu-date-picker{
+//    width: 100%;
+//  }
+//}
+//.queryPanel__layout{
+//  .ivu-page{
+//    margin-top: 20px;
+//    text-align: right;
+//  }
+//  .ivu-table-cell{
+//    padding: 0 10px;
+//  }
+//}
+//body .ivu-spin-fix{
+//  background: inherit;
+//}
+////表单样式
+//.base-form{
+//  width: 600px;
+//  margin: 0 auto;
+//}
+////列表搜索，重置按钮
+//.query-btns{
+//  .ivu-col{
+//    padding-left: 62px !important;
+//  }
+//  .ivu-btn{
+//    margin-left: 8px;
+//  }
+//  .ivu-btn-text:focus{
+//    box-shadow:none;
+//  }
+//}
+////操作按钮
+//.op-btns{
+//  margin-top: 20px;
+//  .ivu-col{
+//    text-align: right;
+//  }
+//  .ivu-btn{
+//    margin-left: 8px;
+//  }
+//}
+//.page-layout{
+//  position: absolute;
+//  top: 100px;
+//  right: 0;
+//  bottom: 0;
+//  overflow: auto;
+//  background-color: #F0F0F0;
+//  z-index: 1;
+//  transition: left .3s;
+//}
+//

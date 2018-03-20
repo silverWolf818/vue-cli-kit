@@ -1,6 +1,6 @@
 import request from '../assets/js/request'
 const config = {
-  type:ENV_TYPE,
+  type:'dev',
   serverUrl () {
     switch (this.type) {
       case 'dev'://开发
@@ -43,9 +43,14 @@ async function removeApi(url,data,option) {
 async function updateApi(url,data,option) {
   return request(config.api() + url,data,option);
 }
+//请求菜单
+async function queryMenu(option) {
+  return request(config.api('menu'),{},option);
+}
 export {
   queryApi,
   addApi,
   removeApi,
-  updateApi
+  updateApi,
+  queryMenu
 }

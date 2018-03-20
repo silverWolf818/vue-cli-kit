@@ -1,27 +1,124 @@
+<style scoped>
+  .layout-app{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .layout-header{
+    box-sizing: border-box;
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100px;
+    z-index: 20;
+    box-shadow: 0 2px 1px 1px rgba(100, 100, 100, 0.1);
+    transition: padding .3s;
+  }
+  .layout-sider{
+    height: 100%;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: 21;
+    transition: width .3s;
+    width: 200px;
+    border-right: 1px solid #dddee1;
+  }
+  .layout-content{
+    position: absolute;
+    top: 100px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background-color: #F0F0F0;
+    z-index: 1;
+    transition: left .3s;
+    left: 200px;
+    padding: 10px;
+  }
+  .layout-breadCrumb{
+    margin: 12px 12px 12px 220px;
+  }
+  .layout-logo{
+    width: 100px;
+    height: 30px;
+    background: #5b6270;
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 20px;
+  }
+  .menu-icon{
+    transition: all .3s;
+  }
+  .rotate-icon{
+    transform: rotate(-90deg);
+  }
+  .menu-item span{
+    display: inline-block;
+    overflow: hidden;
+    width: 69px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    transition: width .2s ease .2s;
+  }
+  .menu-item i{
+    transform: translateX(0px);
+    transition: font-size .2s ease, transform .2s ease;
+    vertical-align: middle;
+    font-size: 16px;
+  }
+  .layout-nav{
+    margin-left: 200px;
+  }
+  .collapsed-menu span{
+    width: 0;
+    transition: width .2s ease;
+  }
+  .collapsed-menu i{
+    transform: translateX(5px);
+    transition: font-size .2s ease .2s, transform .2s ease .2s;
+    vertical-align: middle;
+    font-size: 22px;
+  }
+</style>
 <template>
-  <div style="margin: 10px">
-    <div>welcome to vue project</div>
-    <Button type="primary" @click="go">demo</Button>
+  <div class="layout-app">
+    <div class="layout-header">
+      <Head :menu="menu"></Head>
+    </div>
+    <div class="layout-sider">
+      <Side :menu="subMenu"></Side>
+    </div>
+    <div class="layout-content"></div>
   </div>
 </template>
-
 <script>
-  import { queryApi } from '../service/api'
+  import { mapGetters,mapActions } from 'vuex'
+  import Head from '../components/head'
+  import Side from '../components/side'
   export default {
-    name: "index",
-    methods:{
-      go(){
-        this.$router.push({ name:'menu' });
+    components:{
+      Head,
+      Side
+    },
+    computed: {
+      menu() {
+        return this.$store.state.app.menu;
+      },
+      subMenu() {
+        return this.$store.state.app.subMenu;
       }
     },
-    created() {
-      queryApi('nouser/SelectUserInfoBusiService').then((v)=>{
-        console.log(v);
-      })
+    methods: {
+      ...mapActions([
+        'initMenu'
+      ])
+    },
+    created(){
+      this.initMenu();
     }
   }
 </script>
-
-<style scoped>
-
-</style>
