@@ -81,10 +81,6 @@ export default new Router({
         path:'tabList',
         name:'tabList',
         component:TabList
-      },{
-        path:'/detail',
-        name:'detail',
-        component:Detail
       }]
     },{
       path:'/index2',

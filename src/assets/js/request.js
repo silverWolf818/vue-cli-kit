@@ -11,6 +11,9 @@ import { Spin,Modal } from 'iview'
 axios.defaults.timeout = 1000 * 50;
 //添加一个请求拦截器
 axios.interceptors.request.use(function (config) {
+  Spin.show({
+    size:'large'
+  });
   if(config.method === "post") {
     config.data = qs.stringify(config.data);
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -22,6 +25,7 @@ axios.interceptors.request.use(function (config) {
 //添加一个响应拦截器
 axios.interceptors.response.use(function (res) {
   let result;
+  //Spin.hide();
   switch (res.status) {
     case 404:
       console.log("404");
@@ -43,7 +47,6 @@ axios.interceptors.response.use(function (res) {
         });
       }
       break;
-
   }
   //在这里对返回的数据进行处理
   return result;
@@ -62,6 +65,7 @@ export default function request(url,data,option) {
     url:url,
     data:data
   }).then((response) => {
+      Spin.hide();
       return response
   })
 }
