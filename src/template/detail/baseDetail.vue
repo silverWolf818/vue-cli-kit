@@ -1,9 +1,9 @@
 <template>
-  <div class="detail">
+  <div class="layout-form">
     <div class="tips">
       <h2>基础详情页</h2>
     </div>
-    <Form ref="formValidate" :model="formValue" :label-width="80" :style="{width:'600px',margin: '0 auto'}">
+    <Form ref="formValidate" :model="formValue" :label-width="80" style="margin-left: 200px">
       <FormItem label="用户名：">
         <p>{{ formValue.name }}</p>
       </FormItem>
@@ -36,23 +36,23 @@
 </template>
 
 <script>
-    export default {
-        data() {
-          return {
-            formValue: {
-              name: '呵呵哒',
-              email:'363420113@qq.com',
-              tel:'13164621126',
-              order:'2018030300001386',
-              time:'2018-03-03 16:40:07',
-              unit:'国电物资集团有限公司上海分公司',
-              supplier:'京东',
-              type:'预付款',
-              send:'工作日'
-            }
-          }
+  export default {
+    data() {
+      return {
+        formValue: {
+          name: '呵呵哒',
+          email:'363420113@qq.com',
+          tel:'13164621126',
+          order:'2018030300001386',
+          time:'2018-03-03 16:40:07',
+          unit:'国电物资集团有限公司上海分公司',
+          supplier:'京东',
+          type:'预付款',
+          send:'工作日'
         }
+      }
     }
+  }
 </script>
 
 <style scoped>

@@ -1,10 +1,10 @@
 <template>
-  <div style="height: 900px; background: #fff;">entusermgr</div>
+
 </template>
 
 <script>
     export default {
-        name: "entusermgr"
+        name: "querylist"
     }
 </script>
 

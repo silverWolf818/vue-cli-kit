@@ -3,7 +3,7 @@
    <Table border v-bind="$props"
           :data="props_data"
           @on-selection-change="selectionChange"></Table>
-   <div style="margin: 10px;overflow: hidden">
+   <div style="padding:15px;overflow: hidden;background: #fff">
      <div style="float: right;">
        <Page :total="props_total"
              :current="props_pageNo"

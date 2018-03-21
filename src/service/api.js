@@ -1,6 +1,6 @@
 import request from '../assets/js/request'
 const config = {
-  type:'dev',
+  type:'test',
   serverUrl () {
     switch (this.type) {
       case 'dev'://开发

@@ -1,4 +1,5 @@
 import { queryMenu } from "../../service/api"
+import axios from 'axios'
 // initial state
 const state = {
   isCollapsed: false,
@@ -7,36 +8,71 @@ const state = {
   openName:'',
   menu:[],
   subMenu:[],
-  step1:'',
-  step2:'',
-  step3:'',
+  flag:'',
+  item1:'',
+  item2:'',
+  step:[{
+    name:'我的首页',
+    route:'/'
+  },{
+    name:'',
+    route:'/'
+  },{
+    name:'',
+    route:'/'
+  }]
 };
 
 // getters
 const getters = {
-
+  getCrumbs:state => {
+    let data = [],
+        id = '';
+    if(state.menu.length !== 0 && state.item1){
+      state.step[0].name = state.menu.filter(item => item.menuCode === state.item1)[0].menuName;
+      state.item2 && state.subMenu.forEach(value => {
+        data = value.subMenus.filter(item => item.menuCode === state.item2)[0];
+        if(data && value.autoId === data.parentId){
+          state.step[1].name = value.menuName;
+          state.step[1].route = '/';
+          state.step[2].name = data.menuName;
+          state.step[2].route = '/';
+        }
+      });
+      return state.flag ? state.step.filter((item,index) => index === 0) : state.step;
+    }
+  }
 };
 
 // mutations
 const mutations = {
   initMenu(state,param){
-    console.log(param);
     state.menu = param;
   },
   changeSubMenu(state,param){
+    state.flag = true;
+    state.item1 = param;
     state.subMenu = state.menu.filter(item => item.menuCode === param)[0].subMenus;
+  },
+  changeItem(state,param){
+    state.flag = false;
+    state.item2 = param;
   }
 };
 
 // actions
 const actions = {
   initMenu({ commit }){
-    queryMenu({ method:'GET' }).then((res)=>{
+    axios.post('menu').then(res => {
       commit('initMenu',res);
+      commit('changeSubMenu','home');
     });
   },
   changeSubMenu({ commit },param){
     commit('changeSubMenu',param);
+  },
+  changeItem({ commit },param){
+    commit('changeItem',param);
   }
 };
 

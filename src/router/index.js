@@ -1,21 +1,26 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-const Index =()=>import('@/pages/index')
 const Menu =()=>import('@/template/index')
-const Detail =()=>import('@/template/detail')
 const List =()=>import('@/template/list')
 const TabList =()=>import('@/template/tabList')
 const Cart =()=>import('@/template/cart')
 const Forms =()=>import('@/template/forms')
 const Navigation =()=>import('@/template/navigation')
-const Entinvinfo =()=>import('@/template/entinvinfo')
-const Entusermgr =()=>import('@/template/entusermgr')
-const Ideinfomgr =()=>import('@/template/ideinfomgr')
 const Store =()=>import('@/template/store')
 const Test =()=>import('@/template/test')
 const Index2 =()=>import('@/template/index2')
 const Index3 =()=>import('@/template/index3')
 const Home =()=>import('@/pages/home')
+const Index =()=>import('@/pages/index/index')
+const Baseform =()=>import('@/template/form/baseForm')
+const Advform =()=>import('@/template/form/advForm')
+const Basequery =()=>import('@/template/query/baseQuery')
+const Tabquery =()=>import('@/template/query/tabQuery')
+const BaseDetail =()=>import('@/template/detail/baseDetail')
+const Test11 =()=>import('@/template/test1/test11')
+const Test12 =()=>import('@/template/test1/test12')
+const Test21 =()=>import('@/template/test1/test21')
+const Test22 =()=>import('@/template/test1/test22')
 Vue.use(Router)
 
 export default new Router({
@@ -36,6 +41,50 @@ export default new Router({
         path: 'home',
         name: 'home',
         component: Home
+      },{
+        path: 'form/baseForm',
+        name: 'baseForm',
+        component: Baseform
+      },{
+        path:'form/advForm',
+        name:'advForm',
+        component:Advform
+      },{
+        path: 'query/baseQuery',
+        name: 'baseQuery',
+        component: Basequery
+      },{
+        path:'query/tabQuery',
+        name:'tabQuery',
+        component:Tabquery
+      },{
+        path:'detail/baseDetail',
+        name:'baseDetail',
+        component:BaseDetail
+      },{
+        path:'test/test11',
+        name:'test11',
+        component:Test11
+      },{
+        path:'test/test12',
+        name:'test12',
+        component:Test12
+      },{
+        path:'test/test21',
+        name:'test21',
+        component:Test21
+      },{
+        path:'test/test22',
+        name:'test22',
+        component:Test22
+      },{
+        path:'tabList',
+        name:'tabList',
+        component:TabList
+      },{
+        path:'/detail',
+        name:'detail',
+        component:Detail
       }]
     },{
       path:'/index2',
@@ -48,24 +97,7 @@ export default new Router({
     },{
       path:'/menu',
       name:'menu',
-      component:Menu,
-      children:[{
-        path: 'forms',
-        name: 'forms',
-        component: Forms
-      },{
-        path:'list',
-        name:'list',
-        component:List
-      },{
-        path:'tabList',
-        name:'tabList',
-        component:TabList
-      },{
-        path:'/detail',
-        name:'detail',
-        component:Detail
-      }]
+      component:Menu
     },{
       path:'/cart',
       name:'cart',
@@ -73,22 +105,7 @@ export default new Router({
     },{
       path:'/navigation',
       name:'navigation',
-      component:Navigation,
-      children:[
-        {
-          path:'entinvinfo',
-          name:'entinvinfo',
-          component:Entinvinfo
-        },{
-          path:'entusermgr',
-          name:'entusermgr',
-          component:Entusermgr
-        },{
-          path:'ideinfomgr',
-          name:'ideinfomgr',
-          component:Ideinfomgr
-        }
-      ]
+      component:Navigation
     },{
       path:'/store',
       name:'store',
