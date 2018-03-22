@@ -26,6 +26,11 @@
           ]),
           selection(data) {
             this.changeSubMenu(data);
+            if(data === 'home'){
+              this.$router.push({
+                name:data
+              })
+            }
           }
         }
     }

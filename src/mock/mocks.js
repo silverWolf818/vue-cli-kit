@@ -72,14 +72,7 @@ Mock.mock('menu', 'post', {
             "menuName": "高级表单",
             "menuCode": "advForm",
             "menuUrl": "/form/advForm"
-          }, {
-            "autoId": 10004,
-            "parentId": 100,
-            "menuName": "表单测试",
-            "menuCode": "testForm",
-            "menuUrl": "/"
-          }
-          ]
+          }]
         },{
           "autoId": 102,
           "parentId": 8,
@@ -116,44 +109,50 @@ Mock.mock('menu', 'post', {
     },{
       "autoId": 9,
       "parentId": 2,
-      "menuName": "测试菜单1",
-      "menuCode": "test1",
+      "menuName": "组件",
+      "menuCode": "component",
       "menuUrl": "",
       "subMenus":[{
         "autoId": 201,
         "parentId": 9,
-        "menuName": "二级测试菜单1",
-        "menuCode": "test1-1",
+        "menuName": "表单类",
+        "menuCode": "formComponent",
         "subMenus":[{
           "autoId": 2001,
           "parentId": 201,
-          "menuName": "三级测试菜单1",
-          "menuCode": "test11",
-          "menuUrl": "/test/test11"
+          "menuName": "输入框",
+          "menuCode": "input",
+          "menuUrl": "/formComponent/input"
         },{
           "autoId": 2002,
           "parentId": 201,
-          "menuName": "三级测试菜单2",
-          "menuCode": "test12",
-          "menuUrl": "/test/test12"
-        }]
-      },{
-        "autoId": 202,
-        "parentId": 9,
-        "menuName": "二级测试菜单2",
-        "menuCode": "test1-2",
-        "subMenus":[{
+          "menuName": "单选框",
+          "menuCode": "radio",
+          "menuUrl": "/formComponent/radio"
+        },{
           "autoId": 2003,
-          "parentId": 202,
-          "menuName": "三级测试菜单1",
-          "menuCode": "test21",
-          "menuUrl": "/test/test21"
+          "parentId": 201,
+          "menuName": "多选框",
+          "menuCode": "checkbox",
+          "menuUrl": "/formComponent/checkbox"
         },{
           "autoId": 2004,
-          "parentId": 202,
-          "menuName": "三级测试菜单2",
-          "menuCode": "test22",
-          "menuUrl": "/test/test22"
+          "parentId": 201,
+          "menuName": "选择框",
+          "menuCode": "select",
+          "menuUrl": "/formComponent/select"
+        },{
+          "autoId": 2005,
+          "parentId": 201,
+          "menuName": "日期选择器",
+          "menuCode": "date",
+          "menuUrl": "/formComponent/date"
+        },{
+          "autoId": 2006,
+          "parentId": 201,
+          "menuName": "级联选择",
+          "menuCode": "cascader",
+          "menuUrl": "/formComponent/cascader"
         }]
       }]
     }],

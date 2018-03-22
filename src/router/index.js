@@ -17,10 +17,12 @@ const Advform =()=>import('@/template/form/advForm')
 const Basequery =()=>import('@/template/query/baseQuery')
 const Tabquery =()=>import('@/template/query/tabQuery')
 const BaseDetail =()=>import('@/template/detail/baseDetail')
-const Test11 =()=>import('@/template/test1/test11')
-const Test12 =()=>import('@/template/test1/test12')
-const Test21 =()=>import('@/template/test1/test21')
-const Test22 =()=>import('@/template/test1/test22')
+const Input =()=>import('@/template/formComponent/input')
+const Radio =()=>import('@/template/formComponent/radio')
+const Checkbox =()=>import('@/template/formComponent/checkbox')
+const Select =()=>import('@/template/formComponent/select')
+const Date =()=>import('@/template/formComponent/date')
+const Cascader =()=>import('@/template/formComponent/cascader')
 Vue.use(Router)
 
 export default new Router({
@@ -62,21 +64,29 @@ export default new Router({
         name:'baseDetail',
         component:BaseDetail
       },{
-        path:'test/test11',
-        name:'test11',
-        component:Test11
+        path:'formComponent/input',
+        name:'input',
+        component:Input
       },{
-        path:'test/test12',
-        name:'test12',
-        component:Test12
+        path:'formComponent/radio',
+        name:'radio',
+        component:Radio
       },{
-        path:'test/test21',
-        name:'test21',
-        component:Test21
+        path:'formComponent/checkbox',
+        name:'checkbox',
+        component:Checkbox
       },{
-        path:'test/test22',
-        name:'test22',
-        component:Test22
+        path:'formComponent/select',
+        name:'select',
+        component:Select
+      },{
+        path:'formComponent/date',
+        name:'date',
+        component:Date
+      },{
+        path:'formComponent/cascader',
+        name:'cascader',
+        component:Cascader
       },{
         path:'tabList',
         name:'tabList',

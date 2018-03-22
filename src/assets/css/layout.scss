@@ -2,11 +2,16 @@ $width120:120px;
 .layout-form{
   background: #fff;
   padding: 15px;
+  min-height: 400px;
 }
 .tips{
   padding-bottom: 24px;
   margin-bottom: 24px;
   border-bottom: 1px solid #d7dde5;
+  div{
+    margin-top: 5px;
+    font-size: 14px;
+  }
 }
 .layout-queryPanel{
   background: #fff;
@@ -51,5 +56,8 @@ $width120:120px;
     background: #fff;
     margin-bottom: 0;
   }
+}
+.tip-title{
+  margin-bottom: 10px;
 }
 
