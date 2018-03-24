@@ -8,9 +8,7 @@
       <Side :menu="subMenu"></Side>
     </div>
     <div class="layout-content">
-      <keep-alive>
-        <router-view/>
-      </keep-alive>
+      <router-view/>
     </div>
   </div>
 </template>

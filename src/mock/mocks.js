@@ -153,6 +153,24 @@ Mock.mock('menu', 'post', {
           "menuName": "级联选择",
           "menuCode": "cascader",
           "menuUrl": "/formComponent/cascader"
+        },{
+          "autoId": 2007,
+          "parentId": 201,
+          "menuName": "地址选择",
+          "menuCode": "area",
+          "menuUrl": "/formComponent/area"
+        },{
+          "autoId": 2007,
+          "parentId": 201,
+          "menuName": "上传",
+          "menuCode": "upload",
+          "menuUrl": "/formComponent/upload"
+        },{
+          "autoId": 2008,
+          "parentId": 201,
+          "menuName": "富文本编辑器",
+          "menuCode": "textEditor",
+          "menuUrl": "/formComponent/textEditor"
         }]
       }]
     }],

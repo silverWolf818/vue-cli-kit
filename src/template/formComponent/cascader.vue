@@ -1,8 +1,8 @@
 <template>
     <div class="layout-form">
       <div class="tips">
-        <h2>单选框</h2>
-        <div>基本组件-单选框。主要用于一组可选项单项选择，或者单独用于切换到选中状态。</div>
+        <h2>级联选择</h2>
+        <div>从一组相关联的数据集合中进行选择，常用于省市区、公司级层、事务分类等。 相比 Select 组件，可以一次性完成选择，体验更好。</div>
       </div>
       <Cascader :data="data" v-model="value1" style="width: 200px"></Cascader>
       <div class="tip-title">级联选择对数据有较严格要求，请参照示例的格式使用data，每项数据至少包含 value、label 两项，子集为 children，以此类推。</div>

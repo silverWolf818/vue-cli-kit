@@ -23,6 +23,9 @@ const Checkbox =()=>import('@/template/formComponent/checkbox')
 const Select =()=>import('@/template/formComponent/select')
 const Date =()=>import('@/template/formComponent/date')
 const Cascader =()=>import('@/template/formComponent/cascader')
+const Area =()=>import('@/template/formComponent/area')
+const Upload =()=>import('@/template/formComponent/upload')
+const Texteditor =()=>import('@/template/formComponent/textEditor')
 Vue.use(Router)
 
 export default new Router({
@@ -87,6 +90,18 @@ export default new Router({
         path:'formComponent/cascader',
         name:'cascader',
         component:Cascader
+      },{
+        path:'formComponent/area',
+        name:'area',
+        component:Area
+      },{
+        path:'formComponent/upload',
+        name:'upload',
+        component:Upload
+      },{
+        path:'formComponent/textEditor',
+        name:'textEditor',
+        component:Texteditor
       },{
         path:'tabList',
         name:'tabList',
