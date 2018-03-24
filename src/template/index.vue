@@ -3,26 +3,22 @@
     border: 1px solid #d7dde4;
     background: #f5f7f9;
     position: relative;
+    border-radius: 4px;
     overflow: hidden;
   }
   .layout-logo{
     width: 100px;
     height: 30px;
     background: #5b6270;
+    border-radius: 3px;
     float: left;
     position: relative;
     top: 15px;
     left: 20px;
   }
   .layout-nav{
-    width: 872px;
-    margin: 0 auto;
-  }
-  .menu-icon{
-    transition: all .3s;
-  }
-  .rotate-icon{
-    transform: rotate(-90deg);
+    width: 420px;
+    margin: 0 20px 0 auto;
   }
   .menu-item span{
     display: inline-block;
@@ -40,7 +36,7 @@
     font-size: 16px;
   }
   .collapsed-menu span{
-    width: 0px;
+    width: 0;
     transition: width .2s ease;
   }
   .collapsed-menu i{
@@ -48,6 +44,12 @@
     transition: font-size .2s ease .2s, transform .2s ease .2s;
     vertical-align: middle;
     font-size: 22px;
+  }
+  .ivu-layout-sider{
+    margin-bottom: 12px;
+  }
+  .ivu-layout-footer{
+    text-align: center;
   }
 </style>
 <template>
@@ -58,50 +60,41 @@
           <div class="layout-logo"></div>
           <div class="layout-nav">
             <MenuItem name="1">
-              <Icon type="ios-navigate"></Icon>
-              Item 1
+              展示菜单
             </MenuItem>
             <MenuItem name="2">
-              <Icon type="ios-keypad"></Icon>
-              Item 2
+              展示菜单
             </MenuItem>
             <MenuItem name="3">
-              <Icon type="ios-analytics"></Icon>
-              Item 3
-            </MenuItem>
-            <MenuItem name="4">
-              <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
+              展示菜单
             </MenuItem>
           </div>
         </Menu>
       </Header>
       <Layout>
-        <Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :style="{background: '#fff'}">
+        <Sider :width="256" ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :style="{background: '#fff'}">
           <Menu theme="light" width="auto" :class="menuitemClasses" @on-select="link">
             <Submenu name="1">
               <template slot="title">
-                <Icon type="ios-navigate"></Icon>
-                示例 1
+                <Icon type="compose"></Icon>
+                表单页
               </template>
-              <MenuItem name="forms">表单</MenuItem>
-              <MenuItem name="list">列表</MenuItem>
-              <MenuItem name="tabList">选项卡列表</MenuItem>
+              <MenuItem name="forms">基础表单</MenuItem>
             </Submenu>
             <Submenu name="2">
               <template slot="title">
-                <Icon type="ios-keypad"></Icon>
-                Item 2
+                <Icon type="ios-grid-view"></Icon>
+                列表页
               </template>
-              <MenuItem name="2-1">Option 1</MenuItem>
-              <MenuItem name="2-2">Option 2</MenuItem>
+              <MenuItem name="list">查询表格</MenuItem>
+              <MenuItem name="tabList">选项卡表格</MenuItem>
             </Submenu>
             <Submenu name="3">
               <template slot="title">
-                <Icon type="ios-analytics"></Icon>
-                Item 3
+                <Icon type="ios-paper"></Icon>
+                详情页
               </template>
-              <MenuItem name="3-1">Option 1</MenuItem>
-              <MenuItem name="3-2">Option 2</MenuItem>
+              <MenuItem name="detail">基础详情页</MenuItem>
             </Submenu>
           </Menu>
         </Sider>
@@ -111,11 +104,12 @@
             <BreadcrumbItem>Components</BreadcrumbItem>
             <BreadcrumbItem>Layout</BreadcrumbItem>
           </Breadcrumb>
-          <Content :style="{padding: '12px', minHeight: '580px', background: '#fff'}">
+          <Content :style="{padding: '24px', minHeight: '600px', background: '#fff'}">
             <router-view/>
           </Content>
         </Layout>
       </Layout>
+      <Footer class="layout-footer-center">2018-2019 &copy; 天源迪科</Footer>
     </Layout>
   </div>
 </template>
@@ -127,12 +121,6 @@
       }
     },
     computed: {
-      rotateIcon () {
-        return [
-          'menu-icon',
-          this.isCollapsed ? 'rotate-icon' : ''
-        ];
-      },
       menuitemClasses () {
         return [
           'menu-item',
@@ -142,7 +130,7 @@
     },
     methods: {
       collapsedSider () {
-        this.$refs.side1.toggleCollapse();
+        this.$refs.side.toggleCollapse();
       },
       link(name) {
         this.$router.push({

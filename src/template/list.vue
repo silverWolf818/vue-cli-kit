@@ -1,39 +1,44 @@
 <template>
-  <div class="queryPanel__layout">
-    <Form ref="form" inline :model="query">
-      <Row :gutter="8">
-        <Col span="8">
+  <div class="list">
+    <div class="tips">
+      <h2>查询表格</h2>
+      <div>基础的查询表格。</div>
+    </div>
+    <div class="queryPanel__layout">
+      <Form ref="form" inline :model="query">
+        <Row :gutter="8">
+          <Col span="8">
           <FormItem label="平台协议编号" prop="plaAgreementCode">
-            <Input v-model="query.plaAgreementCode" placeholder="请输入"></Input>
+            <Input v-model="query.plaAgreementCode" placeholder="请输入" />
           </FormItem>
-        </Col>
-        <Col span="8">
-        <FormItem label="企业协议编号" prop="entAgreementCode">
-          <Input v-model="query.entAgreementCode" placeholder="请输入"></Input>
-        </FormItem>
-        </Col>
-        <Col span="8">
-        <FormItem label="协议名称" prop="agreementName">
-          <Input v-model="query.agreementName" placeholder="请输入"></Input>
-        </FormItem>
-        </Col>
-      </Row>
-      <Row :gutter="8">
-        <Col span="8">
-        <FormItem label="协议分类" prop="agreementType">
-          <Select v-model="query.agreementType">
-            <Option v-for="item in dic.agreementType" :value="item.value" :key="item.value">{{ item.label }}</Option>
-          </Select>
-        </FormItem>
-        </Col>
-        <Col span="8">
-        <FormItem label="协议状态" prop="agreementStatus">
-          <Select v-model="query.agreementStatus">
-            <Option v-for="item in dic.agreementStatus" :value="item.value" :key="item.value">{{ item.label }}</Option>
-          </Select>
-        </FormItem>
-        </Col>
-      </Row>
+          </Col>
+          <Col span="8">
+          <FormItem label="企业协议编号" prop="entAgreementCode">
+            <Input v-model="query.entAgreementCode" placeholder="请输入" />
+          </FormItem>
+          </Col>
+          <Col span="8">
+          <FormItem label="协议名称" prop="agreementName">
+            <Input v-model="query.agreementName" placeholder="请输入" />
+          </FormItem>
+          </Col>
+        </Row>
+        <Row :gutter="8">
+          <Col span="8">
+          <FormItem label="协议分类" prop="agreementType">
+            <Select v-model="query.agreementType">
+              <Option v-for="item in dic.agreementType" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+          </FormItem>
+          </Col>
+          <Col span="8">
+          <FormItem label="协议状态" prop="agreementStatus">
+            <Select v-model="query.agreementStatus">
+              <Option v-for="item in dic.agreementStatus" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+          </FormItem>
+          </Col>
+        </Row>
         <Row :gutter="8" v-show="visible">
           <Col span="8">
           <FormItem label="签订开始时间" prop="signTimeStart">
@@ -46,19 +51,23 @@
           </FormItem>
           </Col>
         </Row>
-      <Row :gutter="8">
-        <Col span="8" :style="{ paddingLeft:'58px' }">
-          <Button type="primary" :style="{ marginRight:'10px' }" @click="search">搜 索</Button><Button @click="reset">重 置</Button>
+        <Row :gutter="8" class="query-btns">
+          <Col span="8">
+          <Button type="primary" @click="search">查询</Button>
+          <Button @click="reset">重置</Button>
           <Button type="text" @click="toggle">展开 <Icon :type="isToggle"></Icon></Button>
-        </Col>
-      </Row>
-      <Row :gutter="8" :style="{ marginTop:'20px' }">
-        <Col span="8">
-          <Button type="ghost">新增</Button> <Button type="ghost" @click="modify">修改</Button> <Button type="ghost">删除</Button>
-        </Col>
-      </Row>
-    </Form>
-    <BaseTable @selectionChange="selectionChange" v-bind="table" ref="basetable"></BaseTable>
+          </Col>
+        </Row>
+        <Row :gutter="8" class="op-btns">
+          <Col span="8" offset="16">
+          <Button type="primary"><Icon type="plus"></Icon> 新增</Button>
+          <Button type="primary" @click="modify"><Icon type="edit"></Icon> 修改</Button>
+          <Button type="primary"><Icon type="trash-a"></Icon> 删除</Button>
+          </Col>
+        </Row>
+      </Form>
+      <BaseTable @selectionChange="selectionChange" v-bind="table" ref="basetable"></BaseTable>
+    </div>
   </div>
 </template>
 
@@ -136,7 +145,7 @@
           signTimeEnd:''
         },
         table:{
-          url:'http://www.neepp.net/rest/service/routing/qryAgrsByCurrManagerService',
+          url:'qryAgrsByCurrManagerService',
           pageNo:1,
           pageSize:10,
           columns: [

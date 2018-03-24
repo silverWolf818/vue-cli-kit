@@ -22,7 +22,7 @@ const actions = {
     commit('increment',{
       amount:10
     });
-  }
+  },
 };
 
 export default {

@@ -48,7 +48,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env'),
-      'ENV_TYPE': process.env.api
+      'ENV_TYPE': JSON.stringify(process.env.api)
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
@@ -65,6 +65,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../static'),
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
+      },{
+        from: 'src/assets/tinymce',
+        ignore: [
+          'text-editor.vue'
+        ]
       }
     ])
   ]

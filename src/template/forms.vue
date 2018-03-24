@@ -1,55 +1,60 @@
 <template>
-  <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80" :style="{width:'400px'}">
-    <FormItem label="用户名" prop="name">
-      <Input v-model="formValidate.name" placeholder="请输入用户名"></Input>
-    </FormItem>
-    <FormItem label="邮箱" prop="mail">
-      <Input v-model="formValidate.mail" placeholder="请输入邮箱"></Input>
-    </FormItem>
-    <FormItem label="下拉框" prop="city">
-      <Select v-model="formValidate.city" placeholder="请选择">
-        <Option value="beijing">北京</Option>
-        <Option value="shanghai">上海</Option>
-        <Option value="shenzhen">深圳</Option>
-      </Select>
-    </FormItem>
-    <FormItem label="日期">
-      <Row>
-        <Col span="11">
-        <FormItem prop="date">
-          <DatePicker type="date" placeholder="选择日期" v-model="formValidate.date"></DatePicker>
-        </FormItem>
-        </Col>
-        <Col span="2" style="text-align: center">-</Col>
-        <Col span="11">
-        <FormItem prop="time">
-          <TimePicker type="time" placeholder="选择时间" v-model="formValidate.time"></TimePicker>
-        </FormItem>
-        </Col>
-      </Row>
-    </FormItem>
-    <FormItem label="性别" prop="gender">
-      <RadioGroup v-model="formValidate.gender">
-        <Radio label="male">男</Radio>
-        <Radio label="female">女</Radio>
-      </RadioGroup>
-    </FormItem>
-    <FormItem label="爱好" prop="interest">
-      <CheckboxGroup v-model="formValidate.interest">
-        <Checkbox label="吃"></Checkbox>
-        <Checkbox label="睡"></Checkbox>
-        <Checkbox label="跑步"></Checkbox>
-        <Checkbox label="电影"></Checkbox>
-      </CheckboxGroup>
-    </FormItem>
-    <FormItem label="描述" prop="desc">
-      <Input v-model="formValidate.desc" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入"></Input>
-    </FormItem>
-    <FormItem>
-      <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
-      <Button type="ghost" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
-    </FormItem>
-  </Form>
+  <div class="forms">
+    <div class="tips">
+      <h2>基础表单</h2>
+      <div>表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。</div>
+    </div>
+    <Form class="base-form" ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+      <FormItem label="用户名" prop="name">
+        <Input v-model="formValidate.name" placeholder="请输入用户名"></Input>
+      </FormItem>
+      <FormItem label="邮箱" prop="mail">
+        <Input v-model="formValidate.mail" placeholder="请输入邮箱"></Input>
+      </FormItem>
+      <FormItem label="下拉框" prop="city">
+        <Select v-model="formValidate.city" placeholder="请选择">
+          <Option value="beijing">北京</Option>
+          <Option value="shanghai">上海</Option>
+          <Option value="shenzhen">深圳</Option>
+        </Select>
+      </FormItem>
+      <FormItem label="日期">
+        <Row>
+          <Col span="12">
+          <FormItem prop="date">
+            <DatePicker type="date" placeholder="选择日期" v-model="formValidate.date"></DatePicker>
+          </FormItem>
+          </Col>
+          <Col span="12">
+          <FormItem prop="time">
+            <TimePicker type="time" placeholder="选择时间" v-model="formValidate.time"></TimePicker>
+          </FormItem>
+          </Col>
+        </Row>
+      </FormItem>
+      <FormItem label="性别" prop="gender">
+        <RadioGroup v-model="formValidate.gender">
+          <Radio label="male">男</Radio>
+          <Radio label="female">女</Radio>
+        </RadioGroup>
+      </FormItem>
+      <FormItem label="爱好" prop="interest">
+        <CheckboxGroup v-model="formValidate.interest">
+          <Checkbox label="吃"></Checkbox>
+          <Checkbox label="睡"></Checkbox>
+          <Checkbox label="跑步"></Checkbox>
+          <Checkbox label="电影"></Checkbox>
+        </CheckboxGroup>
+      </FormItem>
+      <FormItem label="描述" prop="desc">
+        <Input v-model="formValidate.desc" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入"></Input>
+      </FormItem>
+      <FormItem>
+        <Button type="primary" size="large" @click="handleSubmit('formValidate')">提交</Button>
+        <Button type="ghost" size="large" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
+      </FormItem>
+    </Form>
+  </div>
 </template>
 <script>
   export default {

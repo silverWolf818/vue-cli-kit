@@ -3,7 +3,7 @@
    <Table border v-bind="$props"
           :data="props_data"
           @on-selection-change="selectionChange"></Table>
-   <div style="margin: 10px;overflow: hidden">
+   <div style="padding:15px;overflow: hidden;background: #fff">
      <div style="float: right;">
        <Page :total="props_total"
              :current="props_pageNo"
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+    import { queryApi } from "../service/api"
     export default {
         props:{
           height: {
@@ -74,7 +75,7 @@
           query(arg){
             let param = _.assign(this.props_query,arg || {});
             this.queryParam && _.assign(param,this.queryParam(param));
-            axios.post(this.url,param).then((res) => {
+            queryApi(this.url,param).then((res) => {
               console.log(res);
               this.props_data = res.rows;
               this.props_pageNo = res.pageNo;

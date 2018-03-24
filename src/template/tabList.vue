@@ -1,51 +1,58 @@
 <template>
-  <div class="queryPanel__layout">
-    <Tabs :animated="false" v-model="activeName">
-      <TabPane label="生效协议" name="effect">
-        <Form ref="form_effect" inline :model="query_effect">
-          <Row :gutter="8">
-            <Col span="8">
-            <FormItem label="平台协议编号1" prop="plaAgreementCode">
-              <Input v-model="query_effect.plaAgreementCode" placeholder="请输入"></Input>
-            </FormItem>
-            </Col>
-            <Col span="8">
-            <FormItem label="企业协议编号1" prop="entAgreementCode">
-              <Input v-model="query_effect.entAgreementCode" placeholder="请输入"></Input>
-            </FormItem>
-            </Col>
-          </Row>
-          <Row :gutter="8">
-            <Col span="8" :style="{ paddingLeft:'58px' }">
-            <Button type="primary" :style="{ marginRight:'10px' }" @click="search">搜 索</Button><Button @click="reset">重 置</Button>
-            </Col>
-          </Row>
-        </Form>
-      </TabPane>
-      <TabPane label="失效协议" name="abate">
-        <Form ref="form_abate" inline :model="query_abate">
-          <Row :gutter="8">
-            <Col span="8">
-            <FormItem label="平台协议编号2" prop="plaAgreementCode">
-              <Input v-model="query_abate.plaAgreementCode" placeholder="请输入"></Input>
-            </FormItem>
-            </Col>
-            <Col span="8">
-            <FormItem label="企业协议编号2" prop="entAgreementCode">
-              <Input v-model="query_abate.entAgreementCode" placeholder="请输入"></Input>
-            </FormItem>
-            </Col>
-          </Row>
-          <Row :gutter="8">
-            <Col span="8" :style="{ paddingLeft:'58px' }">
-            <Button type="primary" :style="{ marginRight:'10px' }" @click="search">搜 索</Button><Button @click="reset">重 置</Button>
-            </Col>
-          </Row>
-        </Form>
-      </TabPane>
-    </Tabs>
-    <BaseTable v-if="activeName === 'effect'" key="1" v-bind="table.effect" ref="table_effect"></BaseTable>
-    <BaseTable v-if="activeName === 'abate'" key="2" v-bind="table.abate" ref="table_abate"></BaseTable>
+  <div class="tabList">
+    <div class="tips">
+      <h2>选项卡表格</h2>
+      <div>带选项卡的查询表格。</div>
+    </div>
+    <div class="queryPanel__layout">
+      <Tabs :animated="false" v-model="activeName">
+        <TabPane label="生效协议" name="effect">
+          <Form ref="form_effect" inline :model="query_effect">
+            <Row :gutter="8">
+              <Col span="8">
+              <FormItem label="平台协议编号1" prop="plaAgreementCode">
+                <Input v-model="query_effect.plaAgreementCode" placeholder="请输入"></Input>
+              </FormItem>
+              </Col>
+              <Col span="8">
+              <FormItem label="企业协议编号1" prop="entAgreementCode">
+                <Input v-model="query_effect.entAgreementCode" placeholder="请输入"></Input>
+              </FormItem>
+              </Col>
+            </Row>
+            <Row :gutter="8" class="query-btns">
+              <Col span="8">
+              <Button type="primary" @click="search">搜 索</Button><Button @click="reset">重 置</Button>
+              </Col>
+            </Row>
+          </Form>
+        </TabPane>
+        <TabPane label="失效协议" name="abate">
+          <Form ref="form_abate" inline :model="query_abate">
+            <Row :gutter="8">
+              <Col span="8">
+              <FormItem label="平台协议编号2" prop="plaAgreementCode">
+                <Input v-model="query_abate.plaAgreementCode" placeholder="请输入"></Input>
+              </FormItem>
+              </Col>
+              <Col span="8">
+              <FormItem label="企业协议编号2" prop="entAgreementCode">
+                <Input v-model="query_abate.entAgreementCode" placeholder="请输入"></Input>
+              </FormItem>
+              </Col>
+            </Row>
+            <Row :gutter="8" class="query-btns">
+              <Col span="8">
+              <Button type="primary" @click="search">搜 索</Button>
+              <Button @click="reset">重 置</Button>
+              </Col>
+            </Row>
+          </Form>
+        </TabPane>
+      </Tabs>
+      <BaseTable v-if="activeName === 'effect'" key="1" v-bind="table.effect" ref="table_effect"></BaseTable>
+      <BaseTable v-if="activeName === 'abate'" key="2" v-bind="table.abate" ref="table_abate"></BaseTable>
+    </div>
   </div>
 </template>
 
@@ -86,7 +93,7 @@
           },
           table:{
             effect:{
-              url:'http://www.neepp.net/rest/service/routing/qryAgrsByCurrManagerService',
+              url:conf.api('qryAgrsByCurrManagerService'),
               pageNo:1,
               pageSize:10,
               columns: [
@@ -204,7 +211,7 @@
               }
             },
             abate:{
-              url:'http://www.neepp.net/rest/service/routing/qryAgrsByCurrManagerService',
+              url:conf.api('qryAgrsByCurrManagerService'),
               pageNo:1,
               pageSize:10,
               columns: [
@@ -336,6 +343,7 @@
           this.$refs[`table_${this.activeName}`].query(data);
         },
         reset() {
+          console.log(this.activeName);
           this.$refs[`form_${this.activeName}`].resetFields();
           this.search();
         }
