@@ -26,6 +26,7 @@ const Cascader =()=>import('@/template/formComponent/cascader')
 const Area =()=>import('@/template/formComponent/area')
 const Upload =()=>import('@/template/formComponent/upload')
 const Texteditor =()=>import('@/template/formComponent/textEditor')
+
 Vue.use(Router)
 
 export default new Router({
