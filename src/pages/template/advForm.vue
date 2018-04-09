@@ -1,10 +1,10 @@
 <template>
-  <div></div>
+  <div>asdad</div>
 </template>
 
 <script>
     export default {
-        name: "adv-form"
+
     }
 </script>
 
