@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
+
 function importRoutes(r) {
   return r.keys().map(key => r(key).default);
 }
