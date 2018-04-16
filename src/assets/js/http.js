@@ -47,7 +47,6 @@ axios.interceptors.response.use(function (res) {
           });
         }
         break;
-
     }
     //在这里对返回的数据进行处理
     return result;

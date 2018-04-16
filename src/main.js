@@ -8,8 +8,8 @@ import iView from 'iview'
 import iviewArea from 'iview-area'
 import lodash from 'lodash'
 import moment from 'moment'
-import './assets/css/layout.scss'
 import 'iview/dist/styles/iview.css'
+import './assets/css/layout.scss'
 import './mock/mocks'
 
 Vue.config.productionTip = false

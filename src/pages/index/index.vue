@@ -15,9 +15,9 @@
 <script>
   import './index.scss'
   import { mapGetters,mapActions } from 'vuex'
-  import Head from '../../components/index/head'
-  import Crumbs from '../../components/index/crumbs'
-  import Side from '../../components/index/side'
+  import Head from '@/components/index/head'
+  import Crumbs from '@/components/index/crumbs'
+  import Side from '@/components/index/side'
   export default {
     components:{
       Head,

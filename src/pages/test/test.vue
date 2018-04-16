@@ -1,10 +1,10 @@
 <template>
-
+    <div>tewewewst</div>
 </template>
 
 <script>
     export default {
-        name: "querylist"
+
     }
 </script>
 
