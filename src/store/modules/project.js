@@ -1,6 +1,6 @@
 // initial state
 const state = {
-  formValue:{},
+  type:'',//计划类型
   formBase:{
     purchaseAccount:'',//项目单位
     planName:'',//计划名称
@@ -14,29 +14,47 @@ const state = {
     remarks:'',
   },
   wz:{
-    reqArriveDate:''
+    deliveryDateMethod:'',//交货期要求方式
+    reqArrivalDate:'',//要求到货日期
+    reqArrivalTimeInt:''//要求到货时间
   },
   sg:{
-
+    completionPeriodMethod:'',//要求完工日期
+    reqCompletionDate:'',//要求完工日期
+    reqCompletionTimeInt:''//要求完工时间
   },
   fw:{
-
+    completionPeriodMethod:'',//完成期要求方式
+    reqCompletionDate:'',//要求完成日期
+    reqCompletionTimeInt:''//要求完成时间
   }
 };
 
 // getters
 const getters = {
-
+  form:state => {
+    return { ...state.formBase,...state[state.type] }
+  }
 };
 
 // mutations
 const mutations = {
-
+  init(state,payload){
+    state.type = payload;
+  },
+  setForm(state,payload){
+    state = { ...state, ...payload }
+  }
 };
 
 // actions
 const actions = {
-
+  init({ commit },payload) {
+    commit('init',payload);
+  },
+  setForm({ commit },payload) {
+    commit('setForm',payload);
+  }
 };
 
 export default {
