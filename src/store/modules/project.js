@@ -1,3 +1,4 @@
+import { INIT,SET_FORM } from '../mutation-types'
 // initial state
 const state = {
   type:'',//计划类型
@@ -39,10 +40,10 @@ const getters = {
 
 // mutations
 const mutations = {
-  init(state,payload){
+  [INIT](state,payload){
     state.type = payload;
   },
-  setForm(state,payload){
+  [SET_FORM](state,payload){
     state = { ...state, ...payload }
   }
 };
@@ -50,10 +51,10 @@ const mutations = {
 // actions
 const actions = {
   init({ commit },payload) {
-    commit('init',payload);
+    commit(INIT,payload);
   },
   setForm({ commit },payload) {
-    commit('setForm',payload);
+    commit(SET_FORM,payload);
   }
 };
 
