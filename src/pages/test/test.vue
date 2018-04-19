@@ -3,7 +3,9 @@
 </template>
 
 <script>
-    export default {
+  import {firstName, lastName, f} from '../../assets/test/a';
+  console.log(firstName, lastName, f());
+  export default {
 
     }
 </script>
