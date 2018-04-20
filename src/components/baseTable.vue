@@ -75,7 +75,7 @@
           query(arg){
             let param = _.assign(this.props_query,arg || {});
             this.queryParam && _.assign(param,this.queryParam(param));
-            queryApi(this.url,param).then((res) => {
+            queryApi(this.url,{ data:param }).then((res) => {
               console.log(res);
               this.props_data = res.rows;
               this.props_pageNo = res.pageNo;

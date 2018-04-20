@@ -8,12 +8,39 @@ import axios from 'axios'
 import qs from 'qs'
 import { Spin,Modal } from 'iview'
 
+const mockUrl = 'http://yapi.demo.qunar.com/mock/6440/';
+const config = {
+  type:ENV_TYPE,
+  serverUrl () {
+    switch (this.type) {
+      case 'dev'://开发
+        return 'http://39.107.101.54:8080/';
+      case 'test'://测试
+        return 'http://www.neepp.net/';
+    }
+  },
+  api (param) {
+    let url = this.serverUrl();
+    switch (param) {
+      case 'menu':
+        return url + 'pages/user/menus';
+      case 'upload':
+        return url + 'rest/upload/uploadfiletooss';
+      case 'down':
+        return url + 'rest/download';
+      case 'havePerms':
+        return url + 'rest/user/havePerms?';
+      default:
+        return url + 'rest/service/routing/' + param;
+    }
+  }
+};
+
+//axios默认参数配置
 axios.defaults.timeout = 1000 * 50;
 //添加一个请求拦截器
 axios.interceptors.request.use(function (config) {
-  Spin.show({
-    size:'large'
-  });
+  Spin.show();
   if(config.method === "post") {
     config.data = qs.stringify(config.data);
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -25,7 +52,6 @@ axios.interceptors.request.use(function (config) {
 //添加一个响应拦截器
 axios.interceptors.response.use(function (res) {
   let result;
-  Spin.hide();
   switch (res.status) {
     case 404:
       console.log("404");
@@ -49,22 +75,23 @@ axios.interceptors.response.use(function (res) {
       break;
   }
   //在这里对返回的数据进行处理
+  Spin.hide();
   return result;
 }, function (error) {
   Spin.hide();
   return Promise.reject(error);
 });
 
-export default function request(url,data,option) {
+export default function request(url,option) {
+  const requestUrl = option.mock ? mockUrl + url : config.api(url);
   const defaultOptions = {
-    method:'POST'
+    method:'POST',
+    url:(option.body.method === 'GET') ? requestUrl + option.body.data : requestUrl
   };
-  const newOptions = { ...defaultOptions, ...option };
+  const newOptions = { ...defaultOptions, ...option.body };
   return axios({
-    method:newOptions.method,
-    url:url,
-    data:data
-  }).then((response) => {
-      return response
+    ...newOptions
+  }).then((res) => {
+      return res
   })
 }
