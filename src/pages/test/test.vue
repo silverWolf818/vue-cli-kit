@@ -1,19 +1,33 @@
 <template>
-    <div>tewewewst</div>
+    <div>
+      <div>tewewewst</div>
+    </div>
 </template>
 
 <script>
-  import { queryTest,queryPerms } from '../../service/api'
+  import { queryTest } from '../../service/api'
 export default {
   mounted() {
+    console.log(this.$test);
+    this.$test.show({
+      render: (h) => {
+        return h('div', [
+          h('Icon', {
+            'class': 'demo-spin-icon-load',
+            props: {
+              type: 'load-c',
+              size: 18
+            }
+          }),
+          h('div', 'Loading')
+        ])
+      }
+    });
     let obj = {
       name:'z',
       ee:'z'
     }
     queryTest({ data:obj });
-    queryPerms({
-      data:'authority=vw_homepage_backlog_approve,vw_homepage_check_accept_1'
-    });
   },
   methods: {
 

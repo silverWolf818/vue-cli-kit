@@ -39,13 +39,7 @@ export async function updateApi(url,params) {
 export async function queryMenu(params) {
   return request('menu');
 }
-export async function queryTable(params) {
-  return request('qryAgrsByCurrManagerService',{
-    body:{
-      ...params
-    }
-  });
-}
+
 export async function queryTest(params) {
   return request('test',{
     mock:true,
