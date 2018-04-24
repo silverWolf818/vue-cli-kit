@@ -24,6 +24,10 @@
             type: [Number, String],
             default: 300
           },
+          mock:{
+            type: Boolean,
+            default: false
+          },
           url: {
             type: String
           },
@@ -75,13 +79,11 @@
           query(arg){
             let param = _.assign(this.props_query,arg || {});
             this.queryParam && _.assign(param,this.queryParam(param));
-            queryApi(this.url,{ data:param }).then((res) => {
+            queryApi(this.url,{ data:param },this.mock).then((res) => {
               console.log(res);
               this.props_data = res.rows;
               this.props_pageNo = res.pageNo;
               this.props_total = res.recordsTotal;
-            },(err) => {
-
             });
           },
           changedNo(page){

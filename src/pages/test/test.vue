@@ -8,7 +8,6 @@
   import { queryTest } from '../../service/api'
 export default {
   mounted() {
-    console.log(this.$test);
     this.$test.show({
       render: (h) => {
         return h('div', [

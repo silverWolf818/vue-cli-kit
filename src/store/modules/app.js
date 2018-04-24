@@ -1,4 +1,4 @@
-import { queryMenu } from "../../service/api"
+import '../../assets/js/request'
 import axios from 'axios'
 // initial state
 const state = {
@@ -65,7 +65,7 @@ const actions = {
   initMenu({ commit }){
     axios.post('menu').then(res => {
       commit('initMenu',res);
-      commit('changeSubMenu','home');
+      commit('changeSubMenu','index');
     });
   },
   changeSubMenu({ commit },param){

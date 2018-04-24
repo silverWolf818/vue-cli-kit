@@ -50,8 +50,8 @@ Mock.mock('menu', 'post', {
       "autoId": 8,
       "parentId": 1,
       "menuName": "首页",
-      "menuCode": "home",
-      "menuUrl": "/home",
+      "menuCode": "index",
+      "menuUrl": "/index",
       "subMenus": [
         {
           "autoId": 100,

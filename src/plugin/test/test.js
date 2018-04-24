@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Test from './test.vue'
 
-let $vm
-
 Test.newInstance = properties => {
   const _props = properties || {};
   const Instance = new Vue({

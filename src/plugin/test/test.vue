@@ -2,7 +2,9 @@
     <div>
       <p>{{ text }}</p>
       <div>{{ visible }}</div>
-      <div><slot></slot></div>
+      <div>
+        <slot></slot>
+      </div>
     </div>
 </template>
 
