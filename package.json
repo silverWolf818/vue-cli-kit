@@ -6,11 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "cross-env api=dev webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "test": "cross-env api=test webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build_dev": "cross-env api=dev node build/build.js",
-    "build_test": "cross-env api=test node build/build.js",
-    "build_prod": "cross-env api=prod node build/build.js"
+    "build": "cross-env api=build node build/build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -8,30 +8,35 @@ import axios from 'axios'
 import qs from 'qs'
 import { Spin,Modal } from 'iview'
 
+//mock地址
 const mockUrl = 'http://yapi.demo.qunar.com/mock/6440/';
+
+//http请求地址配置
 const config = {
   type:ENV_TYPE,
   serverUrl () {
     switch (this.type) {
+      case 'build':
+        return location.origin;
       case 'dev'://开发
-        return 'http://39.107.101.54:8080/';
+        return 'http://39.107.101.54:8080';
       case 'test'://测试
-        return 'http://www.neepp.net/';
+        return 'http://www.neepp.net';
     }
   },
   api (param) {
     let url = this.serverUrl();
     switch (param) {
       case 'menu':
-        return url + 'pages/user/menus';
+        return url + '/pages/user/menus';
       case 'upload':
-        return url + 'rest/upload/uploadfiletooss';
+        return url + '/rest/upload/uploadfiletooss';
       case 'down':
-        return url + 'rest/download';
+        return url + '/rest/download';
       case 'havePerms':
-        return url + 'rest/user/havePerms?';
+        return url + '/rest/user/havePerms?';
       default:
-        return url + 'rest/service/routing/' + param;
+        return url + '/rest/service/routing/' + param;
     }
   }
 };
@@ -83,10 +88,11 @@ axios.interceptors.response.use(function (res) {
 });
 
 export default function request(url,option) {
-  const requestUrl = option.mock ? mockUrl + url : config.api(url);
+  const httpUrl = option.mock ? mockUrl + url : config.api(url);
+  const reqUrl = option.body.method === 'GET' ? httpUrl + option.body.data : httpUrl;
   const defaultOptions = {
     method:'POST',
-    url:(option.body.method === 'GET') ? requestUrl + option.body.data : requestUrl
+    url:reqUrl
   };
   const newOptions = { ...defaultOptions, ...option.body };
   return axios({
