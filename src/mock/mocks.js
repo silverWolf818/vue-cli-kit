@@ -176,3 +176,68 @@ Mock.mock('menu', 'post', {
     }],
   "respCode": "0000"
 });
+
+
+Mock.mock('menus', 'post', {
+  "respDesc": "success",
+  "data": [
+    {
+      "menuName": "表单页",
+      "menuCode": "",
+      "menuUrl": "",
+      "subMenus": [
+        {
+          "menuName": "基础表单",
+          "menuCode": "",
+          "menuUrl": ""
+        },{
+          "menuName": "高级表单",
+          "menuCode": "",
+          "menuUrl": ""
+        }]
+    }, {
+      "menuName": "列表页",
+      "menuCode": "",
+      "menuUrl": "",
+      "subMenus": [
+        {
+          "menuName": "查询表格",
+          "menuCode": "",
+          "menuUrl": ""
+        },{
+          "menuName": "标准",
+          "menuCode": "",
+          "menuUrl": ""
+        }]
+    }, {
+      "menuName": "详情页",
+      "menuCode": "",
+      "menuUrl": "",
+      "subMenus": [
+        {
+          "menuName": "基础详情页",
+          "menuCode": "",
+          "menuUrl": ""
+        },{
+          "menuName": "高级详情页",
+          "menuCode": "",
+          "menuUrl": ""
+        }]
+    }, {
+      "menuName": "结果页",
+      "menuCode": "",
+      "menuUrl": "",
+      "subMenus": [
+        {
+          "menuName": "成功",
+          "menuCode": "",
+          "menuUrl": ""
+        },
+        {
+          "menuName": "失败",
+          "menuCode": "",
+          "menuUrl": ""
+        }]
+    }],
+  "respCode": "0000"
+});

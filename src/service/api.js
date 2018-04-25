@@ -46,6 +46,16 @@ export async function queryMenu(params) {
   return request('menu');
 }
 
+export async function menu(params,mock) {
+  return request('menu',{
+    mock:mock ? mock : false,
+    body:{
+      ...params
+    }
+  });
+}
+
+
 export async function queryTest(params) {
   return request('test',{
     mock:true,
