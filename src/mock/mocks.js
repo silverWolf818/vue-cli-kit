@@ -183,60 +183,64 @@ Mock.mock('menus', 'post', {
   "data": [
     {
       "menuName": "表单页",
-      "menuCode": "",
+      "menuIcon":"",
+      "menuCode": "form",
       "menuUrl": "",
       "subMenus": [
         {
           "menuName": "基础表单",
-          "menuCode": "",
-          "menuUrl": ""
+          "menuCode": "baseForm",
+          "menuUrl": "/baseForm"
         },{
           "menuName": "高级表单",
-          "menuCode": "",
-          "menuUrl": ""
+          "menuCode": "advForm",
+          "menuUrl": "/advForm"
         }]
     }, {
       "menuName": "列表页",
-      "menuCode": "",
+      "menuIcon":"",
+      "menuCode": "list",
       "menuUrl": "",
       "subMenus": [
         {
           "menuName": "查询表格",
-          "menuCode": "",
-          "menuUrl": ""
+          "menuCode": "baseQuery",
+          "menuUrl": "/baseQuery"
         },{
-          "menuName": "标准",
-          "menuCode": "",
-          "menuUrl": ""
+          "menuName": "选项卡表格",
+          "menuCode": "tabQuery",
+          "menuUrl": "/tabQuery"
         }]
     }, {
       "menuName": "详情页",
-      "menuCode": "",
+      "menuIcon":"",
+      "menuCode": "detail",
       "menuUrl": "",
       "subMenus": [
         {
           "menuName": "基础详情页",
-          "menuCode": "",
-          "menuUrl": ""
+          "menuCode": "baseDetail",
+          "menuUrl": "/baseDetail"
         },{
           "menuName": "高级详情页",
-          "menuCode": "",
-          "menuUrl": ""
+          "menuCode": "advDetail",
+          "menuUrl": "/advDetail"
         }]
     }, {
       "menuName": "结果页",
-      "menuCode": "",
+      "menuIcon":"",
+      "menuCode": "result",
       "menuUrl": "",
       "subMenus": [
         {
           "menuName": "成功",
-          "menuCode": "",
-          "menuUrl": ""
+          "menuCode": "success",
+          "menuUrl": "/success"
         },
         {
           "menuName": "失败",
-          "menuCode": "",
-          "menuUrl": ""
+          "menuCode": "fail",
+          "menuUrl": "/fail"
         }]
     }],
   "respCode": "0000"

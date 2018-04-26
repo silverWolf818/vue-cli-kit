@@ -6,7 +6,7 @@
 
 import axios from 'axios'
 import qs from 'qs'
-import { Spin,Modal } from 'iview'
+import { Modal } from 'iview'
 
 //mock地址
 const mockUrl = 'http://yapi.demo.qunar.com/mock/6440/';
@@ -45,7 +45,6 @@ const config = {
 axios.defaults.timeout = 1000 * 50;
 //添加一个请求拦截器
 axios.interceptors.request.use(function (config) {
-  Spin.show();
   if(config.method === "post") {
     config.data = qs.stringify(config.data);
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -80,10 +79,8 @@ axios.interceptors.response.use(function (res) {
       break;
   }
   //在这里对返回的数据进行处理
-  Spin.hide();
   return result;
 }, function (error) {
-  Spin.hide();
   return Promise.reject(error);
 });
 

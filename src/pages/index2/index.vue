@@ -5,14 +5,16 @@
         <p class="logo-title">Vue admin</p>
       </div>
       <Menu theme="dark" width="auto" :class="menuitemClasses" :accordion="true" @on-select="select" @on-open-change="changed">
-        <Submenu v-for="(sub,index) in menu" :name="sub.menuName" :key="sub.index" v-toggle="isCollapsed">
+        <Submenu v-for="(sub,index) in menu" :name="sub.menuCode" :key="sub.menuCode">
           <template slot="title">
             <Icon type="settings"></Icon>
             <span v-if="!isCollapsed">{{ sub.menuName }}</span>
           </template>
-          <MenuItem v-for="(item,index) in sub.subMenus" :name="item.menuName" :key="item.index">
-            {{ item.menuName }}
-          </MenuItem>
+          <div v-if="!isCollapsed">
+            <MenuItem v-for="(item,index) in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
+              {{ item.menuName }}
+            </MenuItem>
+          </div>
         </Submenu>
       </Menu>
     </Sider>
@@ -20,7 +22,7 @@
       <Header :style="{padding: 0}" class="layout-header-bar">
         <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
       </Header>
-      <Content>
+      <Content style="margin: 24px 24px 0;">
         <router-view />
       </Content>
     </Layout>
@@ -60,25 +62,16 @@
       collapsedSider () {
         this.$refs.side.toggleCollapse();
       },
-      select(e) {
-
+      select(data) {
+        this.$router.push({
+          name:data
+        });
       },
       changed() {
         if(this.isCollapsed){
-          console.log(window.document.querySelectorAll('.ivu-menu-submenu .ivu-menu'));
+
         }else{
-          console.log(2);
-        }
-      }
-    },
-    directives: {
-      toggle:{
-        componentUpdated(el,binding) {
-          if(binding.value){
-            console.log(el);
-            console.log(el.className);
-            el.children()
-          }
+
         }
       }
     },

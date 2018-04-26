@@ -3,46 +3,39 @@
       <Form ref="form" inline :model="query" class="layout-queryPanel">
         <Row :gutter="8">
           <Col span="8">
-          <FormItem label="平台协议编号" prop="plaAgreementCode">
-            <Input v-model="query.plaAgreementCode" placeholder="请输入" />
+          <FormItem label="名称" prop="name">
+            <Input v-model="query.name" placeholder="请输入" />
           </FormItem>
           </Col>
           <Col span="8">
-          <FormItem label="企业协议编号" prop="entAgreementCode">
-            <Input v-model="query.entAgreementCode" placeholder="请输入" />
+          <FormItem label="地址" prop="address">
+            <Input v-model="query.address" placeholder="请输入" />
           </FormItem>
           </Col>
           <Col span="8">
-          <FormItem label="协议名称" prop="agreementName">
-            <Input v-model="query.agreementName" placeholder="请输入" />
+          <FormItem label="年龄" prop="age">
+            <Input v-model="query.age" placeholder="请输入" />
           </FormItem>
           </Col>
         </Row>
         <Row :gutter="8">
           <Col span="8">
-          <FormItem label="协议分类" prop="agreementType">
-            <Select v-model="query.agreementType">
-              <Option v-for="item in dic.agreementType" :value="item.value" :key="item.value">{{ item.label }}</Option>
-            </Select>
-          </FormItem>
-          </Col>
-          <Col span="8">
-          <FormItem label="协议状态" prop="agreementStatus">
-            <Select v-model="query.agreementStatus">
-              <Option v-for="item in dic.agreementStatus" :value="item.value" :key="item.value">{{ item.label }}</Option>
+          <FormItem label="状态" prop="status">
+            <Select v-model="query.status">
+              <Option v-for="item in dic.status" :value="item.value" :key="item.value">{{ item.label }}</Option>
             </Select>
           </FormItem>
           </Col>
         </Row>
         <Row :gutter="8" v-show="visible">
           <Col span="8">
-          <FormItem label="签订开始时间" prop="signTimeStart">
-            <DatePicker v-model="query.signTimeStart" format="yyyy-MM-dd" type="date" placeholder="签订开始时间"></DatePicker>
+          <FormItem label="开始时间" prop="timeStart">
+            <DatePicker v-model="query.timeStart" format="yyyy-MM-dd" type="date" placeholder="开始时间"></DatePicker>
           </FormItem>
           </Col>
           <Col span="8">
-          <FormItem label="签订结束时间" prop="signTimeEnd">
-            <DatePicker v-model="query.signTimeEnd" format="yyyy-MM-dd" type="date" placeholder="签订结束时间"></DatePicker>
+          <FormItem label="结束时间" prop="timeEnd">
+            <DatePicker v-model="query.timeEnd" format="yyyy-MM-dd" type="date" placeholder="结束时间"></DatePicker>
           </FormItem>
           </Col>
         </Row>
@@ -80,21 +73,7 @@
         selection:[],
         visible:false,
         dic:{
-          agreementType:[
-            {
-              label:"全部",
-              value:''
-            },
-            {
-              label:"集团集采协议",
-              value:0
-            },
-            {
-              label:"区域集采协议",
-              value:1
-            }
-          ],
-          agreementStatus:[
+          status:[
             {
               label:"全部",
               value:""
@@ -126,130 +105,58 @@
           ]
         },
         query:{
-          plaAgreementCode:'',
-          entAgreementCode:'',
-          agreementName:'',
-          agreementType:'',
-          agreementStatus:'',
-          isDispatch:'',
-          adjustPrice:'',
-          vendorName:'',
-          materialId:'',
-          signTimeStart:'',
-          signTimeEnd:''
+          name:'',
+          address:'',
+          age:'',
+          status:'',
+          timeStart:'',
+          timeEnd:''
         },
         table:{
-          url:'qryAgrsByCurrManagerService',
+          mock:true,
+          url:'list',
           pageNo:1,
           pageSize:10,
           columns: [
             {
               type: 'selection',
-              width: 60,
-              align: 'center'
+              width:60,
             },{
               type: 'index',
               title:'序号',
-              width: 80,
-              align: 'center'
-            },{
-              title: '平台协议编号',
-              width:220,
-              key: 'plaAgreementCode',
-              align: 'center'
-            },{
-              title: '企业协议编号',
-              width:130,
-              key: 'entAgreementCode',
-              align: 'center',
-              ellipsis:true
-            },{
-              title: '协议名称',
-              width:120,
-              key: 'agreementName',
-              align: 'center',
-              ellipsis:true
-            },{
-              title: '标的物名称',
-              width:120,
-              key: 'matterName',
-              align: 'center'
-            },{
-              title: '协议分类',
-              width:110,
-              key: 'agreementType',
-              align: 'center',
-              render:(h,{row,column,index}) => {
-                let data = '';
-                switch (row.agreementType){
-                  case 0:
-                    data = '集团集采协议';
-                    break;
-                  case 1:
-                    data = '区域集采协议';
-                    break;
-                }
-                return h('div', data);
-              }
-            },{
-              title: '协议状态',
               width:80,
-              key: 'agreementStatus',
-              align: 'center',
-              render:(h,{row,column,index}) => {
-                let data = '';
-                switch (row.agreementStatus){
-                  case 0:
-                    data = '草稿';
-                    break;
-                  case 1:
-                    data = '驳回';
-                    break;
-                  case 2:
-                    data = '审核中';
-                    break;
-                  case 3:
-                    data = '暂停';
-                    break;
-                  case 4:
-                    data = '启用';
-                    break;
-                  case 5:
-                    data = '冻结';
-                    break;
-                }
-                return h('div', data);
-              }
+              align:'center'
             },{
-              title: '是否配送',
-              width:80,
-              key: 'isDispatch',
-              align: 'center'
+              title: '名称',
+              key: 'name',
             },{
-              title: '调价机制',
-              width:80,
-              key: 'adjustPrice',
-              align: 'center'
+              title: '地址',
+              key: 'address',
             },{
-              title: '供应商名称',
-              width:180,
-              key: 'vendorName',
-              align: 'center'
+              title: '年龄',
+              key: 'age',
             },{
-              title: '协议经办人',
-              width:100,
-              key: 'producerName',
-              align: 'center'
+              title: '职业',
+              key: 'occupation'
             },{
-              title: '签订时间',
-              width:120,
-              key: 'signTime',
-              align: 'center',
+              title: '邮箱',
+              key: 'email',
+            },{
+              title: '收入',
+              key: 'income',
+            },{
+              title: '类型',
+              key: 'type',
+            },
+            {
+              title: '时间',
+              key: 'date',
               render:(h,{row,column,index}) => {
                 return h('div', moment(row.signTime).format("YYYY-MM-DD"));
               }
             }
           ],
+          //额外参数传递
           queryParam(param) {
             return _.assign({
               isEffect:0
@@ -267,8 +174,8 @@
       search(){
         let data = this.query;
         data.pageNo = 1;
-        data.signTimeStart && (data.signTimeStart = moment(data.signTimeStart).format("YYYY-MM-DD"));
-        data.signTimeEnd && (data.signTimeEnd = moment(data.signTimeEnd).format("YYYY-MM-DD"));
+        data.timeStart && (data.timeStart = moment(data.timeStart).format("YYYY-MM-DD"));
+        data.timeEnd && (data.timeEnd = moment(data.timeEnd).format("YYYY-MM-DD"));
         this.$refs['basetable'].query(data);
       },
       reset(){

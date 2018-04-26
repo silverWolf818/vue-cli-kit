@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { queryTest } from '../../service/api'
+  import { queryApi,queryTest } from '../../service/api'
 export default {
   mounted() {
     this.$test.show({
@@ -27,6 +27,7 @@ export default {
       ee:'z'
     }
     queryTest({ data:obj });
+    queryApi('list',{},true);
   },
   methods: {
 

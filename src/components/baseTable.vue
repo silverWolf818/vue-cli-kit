@@ -1,6 +1,6 @@
 <template>
- <div class="baseTable" style="margin-top: 20px">
-   <Table border v-bind="$props"
+ <div class="baseTable" style="margin-top: 20px;">
+   <Table :loading="loading" border v-bind="$props"
           :data="props_data"
           @on-selection-change="selectionChange"></Table>
    <div style="padding:15px;overflow: hidden;background: #fff">
@@ -63,6 +63,7 @@
         },
         data() {
           return {
+            loading:true,
             props_data:this.data,
             props_total:0,
             props_pageNo:this.pageNo,
@@ -80,7 +81,7 @@
             let param = _.assign(this.props_query,arg || {});
             this.queryParam && _.assign(param,this.queryParam(param));
             queryApi(this.url,{ data:param },this.mock).then((res) => {
-              console.log(res);
+              this.loading = false;
               this.props_data = res.rows;
               this.props_pageNo = res.pageNo;
               this.props_total = res.recordsTotal;
