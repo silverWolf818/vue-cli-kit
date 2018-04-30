@@ -55,6 +55,15 @@ export async function menu(params,mock) {
   });
 }
 
+export async function user(params,mock) {
+  return request('user',{
+    mock:mock ? mock : false,
+    body:{
+      ...params
+    }
+  });
+}
+
 
 export async function queryTest(params) {
   return request('test',{

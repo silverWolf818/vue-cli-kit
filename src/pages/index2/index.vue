@@ -7,7 +7,7 @@
       <Menu theme="dark" width="auto" :class="menuitemClasses" :accordion="true" @on-select="select" @on-open-change="changed">
         <Submenu v-for="(sub,index) in menu" :name="sub.menuCode" :key="sub.menuCode">
           <template slot="title">
-            <Icon type="settings"></Icon>
+            <Icon :type="sub.menuIcon"></Icon>
             <span v-if="!isCollapsed">{{ sub.menuName }}</span>
           </template>
           <div v-if="!isCollapsed">
@@ -21,6 +21,7 @@
     <Layout>
       <Header :style="{padding: 0}" class="layout-header-bar">
         <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
+        <Avator></Avator>
       </Header>
       <Content style="margin: 24px 24px 0;">
         <router-view />
@@ -31,8 +32,12 @@
 
 <script>
   import './index.scss'
+  import Avator from '../../components/avator'
   import { mapGetters,mapActions } from 'vuex'
   export default {
+    components:{
+      Avator
+    },
     data () {
       return {
         isCollapsed: false
@@ -57,7 +62,8 @@
     },
     methods: {
       ...mapActions([
-        'initMenu'
+        'initMenu',
+        'userInfo'
       ]),
       collapsedSider () {
         this.$refs.side.toggleCollapse();
@@ -77,6 +83,7 @@
     },
     created() {
       this.initMenu();
+      this.userInfo();
     }
   }
 </script>

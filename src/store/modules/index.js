@@ -1,8 +1,9 @@
-import { INITMENU } from '../mutation-types'
-import { menu } from  '../../service/api'
+import { INITMENU,USERINFO } from '../mutation-types'
+import { menu,user } from  '../../service/api'
 // initial state
 const state = {
-  menu:[]
+  menu:[],
+  user:{}
 };
 
 // getters
@@ -14,6 +15,9 @@ const getters = {
 const mutations = {
   [INITMENU](state,payload){
     state.menu = payload;
+  },
+  [USERINFO](state,payload){
+    state.user = payload;
   }
 };
 
@@ -22,6 +26,11 @@ const actions = {
   initMenu( { commit } ,payload) {
     menu({},true).then(res => {
       commit(INITMENU ,res);
+    });
+  },
+  userInfo( { commit } ,payload){
+    user({},true).then(res => {
+      commit(USERINFO ,res);
     });
   }
 };

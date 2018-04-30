@@ -182,8 +182,17 @@ Mock.mock('menus', 'post', {
   "respDesc": "success",
   "data": [
     {
+      "respDesc":"success",
+      "data":{
+      "userName":"周大侠",
+      "userIcon":"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524760673136&di=3b75c08b91e70155a19775050473c868&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2Fa5c27d1ed21b0ef45f4d2b59d7c451da81cb3e0b.jpg"
+      }
+      ,
+      "respCode":"0000"
+    },
+    {
       "menuName": "表单页",
-      "menuIcon":"",
+      "menuIcon":"compose",
       "menuCode": "form",
       "menuUrl": "",
       "subMenus": [
@@ -198,7 +207,7 @@ Mock.mock('menus', 'post', {
         }]
     }, {
       "menuName": "列表页",
-      "menuIcon":"",
+      "menuIcon":"ios-grid-view",
       "menuCode": "list",
       "menuUrl": "",
       "subMenus": [
@@ -213,7 +222,7 @@ Mock.mock('menus', 'post', {
         }]
     }, {
       "menuName": "详情页",
-      "menuIcon":"",
+      "menuIcon":"ios-list-outline",
       "menuCode": "detail",
       "menuUrl": "",
       "subMenus": [
@@ -228,7 +237,7 @@ Mock.mock('menus', 'post', {
         }]
     }, {
       "menuName": "结果页",
-      "menuIcon":"",
+      "menuIcon":"ios-checkmark-outline",
       "menuCode": "result",
       "menuUrl": "",
       "subMenus": [
