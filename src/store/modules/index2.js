@@ -25,6 +25,8 @@ const state = {
 
 // getters
 const getters = {
+  getMenu:state => state.menu,
+  getSubMenu:state => state.subMenu,
   getCrumbs:state => {
     let data = [],
         id = '';
