@@ -1,9 +1,5 @@
 <template>
   <div class="layout-form">
-    <div class="tips">
-      <h2>基础表单</h2>
-      <div>表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。</div>
-    </div>
     <Form class="base-form" ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80" style="width: 600px">
       <FormItem label="用户名" prop="name">
         <Input v-model="formValidate.name" placeholder="请输入用户名"/>

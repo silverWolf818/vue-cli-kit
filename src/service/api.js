@@ -1,56 +1,83 @@
 import request from '../assets/js/request'
-const config = {
-  type:ENV_TYPE,
-  serverUrl () {
-    switch (this.type) {
-      case 'dev'://开发
-        return 'http://47.94.134.239:8080/';
-      case 'test'://测试
-        return 'http://www.neepp.net/';
-    }
-  },
-  api (type) {
-    let url = this.serverUrl();
-    switch (type) {
-      case 'menu':
-        return url + 'pages/user/menus';
-      case 'upload':
-        return url + 'rest/upload/uploadfiletooss';
-      case 'down':
-        return url + 'rest/download';
-      default:
-        return url + 'rest/service/routing/';
-    }
-  },
-};
-//参数说明
-// url:后端接口地址url
-// data:接口入参
-// option:axios options
+
+//通用请求方法，一般用于组件使用
+
 //查询
-async function queryApi(url,data,option) {
-  return request(config.api() + url,data,option);
+export async function queryApi(url,params,mock) {
+  return request(url,{
+    mock:mock ? mock : false,
+    body:{
+      ...params
+    }
+  });
 }
 //新增
-async function addApi(url,data,option) {
-  return request(config.api() + url,data,option);
+export async function addApi(url,params,mock) {
+  return request(url,{
+    mock:mock ? mock : false,
+    body:{
+      ...params
+    }
+  });
 }
 //删除
-async function removeApi(url,data,option) {
-  return request(config.api() + url,data,option);
+export async function removeApi(url,params,mock) {
+  return request(url,{
+    mock:mock ? mock : false,
+    body:{
+      ...params
+    }
+  });
 }
 //更新
-async function updateApi(url,data,option) {
-  return request(config.api() + url,data,option);
+export async function updateApi(url,params,mock) {
+  return request(url,{
+    mock:mock ? mock : false,
+    body:{
+      ...params
+    }
+  });
 }
+
+//自定义请求接口
+
 //请求菜单
-async function queryMenu(option) {
-  return request(config.api('menu'),{},option);
+export async function queryMenu(params) {
+  return request('menu');
 }
-export {
-  queryApi,
-  addApi,
-  removeApi,
-  updateApi,
-  queryMenu
+
+export async function menu(params,mock) {
+  return request('menu',{
+    mock:mock ? mock : false,
+    body:{
+      ...params
+    }
+  });
+}
+
+export async function user(params,mock) {
+  return request('user',{
+    mock:mock ? mock : false,
+    body:{
+      ...params
+    }
+  });
+}
+
+
+export async function queryTest(params) {
+  return request('test',{
+    mock:true,
+    body:{
+      ...params
+    }
+  });
+}
+export async function queryPerms(params) {
+  return request('havePerms',{
+    body:{
+      method:'GET',
+      ...params
+    }
+  });
 }

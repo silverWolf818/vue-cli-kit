@@ -102,7 +102,9 @@
             clearTimeout(this.timer1);
             this.timer1 = setTimeout(()=>{
               queryApi('QrySpecializedCompListBusiService',{
-                compName:query
+                data:{
+                  compName:query
+                }
               }).then((res) => {
                 this.loading1 = false;
                 this.options1 = res;
@@ -118,7 +120,9 @@
             clearTimeout(this.timer2);
             this.timer2 = setTimeout(()=>{
               queryApi('QrySpecializedCompListBusiService',{
-                compName:query
+                data:{
+                  compName:query
+                }
               }).then((res) => {
                 this.loading2 = false;
                 this.options2 = res;

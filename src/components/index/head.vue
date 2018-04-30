@@ -26,9 +26,10 @@
           ]),
           selection(data) {
             this.changeSubMenu(data);
-            if(data === 'home'){
+            console.log(data);
+            if(data === 'index'){
               this.$router.push({
-                name:data
+                name:'index'
               })
             }
           }

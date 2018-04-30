@@ -6,14 +6,45 @@
 
 import axios from 'axios'
 import qs from 'qs'
-import { Spin,Modal } from 'iview'
+import { Modal } from 'iview'
 
+//mock地址
+const mockUrl = 'http://yapi.demo.qunar.com/mock/6440/';
+
+//http请求地址配置
+const config = {
+  type:ENV_TYPE,
+  serverUrl () {
+    switch (this.type) {
+      case 'build':
+        return location.origin;
+      case 'dev'://开发
+        return 'http://39.107.101.54:8080';
+      case 'test'://测试
+        return 'http://www.neepp.net';
+    }
+  },
+  api (param) {
+    let url = this.serverUrl();
+    switch (param) {
+      case 'menu':
+        return url + '/pages/user/menus';
+      case 'upload':
+        return url + '/rest/upload/uploadfiletooss';
+      case 'down':
+        return url + '/rest/download';
+      case 'havePerms':
+        return url + '/rest/user/havePerms?';
+      default:
+        return url + '/rest/service/routing/' + param;
+    }
+  }
+};
+
+//axios默认参数配置
 axios.defaults.timeout = 1000 * 50;
 //添加一个请求拦截器
 axios.interceptors.request.use(function (config) {
-  Spin.show({
-    size:'large'
-  });
   if(config.method === "post") {
     config.data = qs.stringify(config.data);
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -25,7 +56,6 @@ axios.interceptors.request.use(function (config) {
 //添加一个响应拦截器
 axios.interceptors.response.use(function (res) {
   let result;
-  Spin.hide();
   switch (res.status) {
     case 404:
       console.log("404");
@@ -51,20 +81,20 @@ axios.interceptors.response.use(function (res) {
   //在这里对返回的数据进行处理
   return result;
 }, function (error) {
-  Spin.hide();
   return Promise.reject(error);
 });
 
-export default function request(url,data,option) {
+export default function request(url,option) {
+  const httpUrl = option.mock ? mockUrl + url : config.api(url);
+  const reqUrl = option.body.method === 'GET' ? httpUrl + option.body.data : httpUrl;
   const defaultOptions = {
-    method:'POST'
+    method:'POST',
+    url:reqUrl
   };
-  const newOptions = { ...defaultOptions, ...option };
+  const newOptions = { ...defaultOptions, ...option.body };
   return axios({
-    method:newOptions.method,
-    url:url,
-    data:data
-  }).then((response) => {
-      return response
+    ...newOptions
+  }).then((res) => {
+      return res
   })
 }
