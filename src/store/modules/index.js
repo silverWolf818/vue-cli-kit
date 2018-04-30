@@ -8,7 +8,7 @@ const state = {
 
 // getters
 const getters = {
-
+  getMenu:state => state.menu
 };
 
 // mutations

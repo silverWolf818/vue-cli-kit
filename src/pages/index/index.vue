@@ -5,7 +5,7 @@
         <p class="logo-title">Vue admin</p>
       </div>
       <Menu theme="dark" width="auto" :class="menuitemClasses" :accordion="true" @on-select="select" @on-open-change="changed">
-        <Submenu v-for="(sub,index) in menu" :name="sub.menuCode" :key="sub.menuCode">
+        <Submenu v-for="(sub,index) in getMenu" :name="sub.menuCode" :key="sub.menuCode">
           <template slot="title">
             <Icon :type="sub.menuIcon"></Icon>
             <span v-if="!isCollapsed">{{ sub.menuName }}</span>
@@ -44,9 +44,9 @@
       }
     },
     computed: {
-      menu() {
-        return this.$store.state.index.menu;
-      },
+      ...mapGetters([
+        'getMenu'
+      ]),
       rotateIcon () {
         return [
           'menu-icon',
