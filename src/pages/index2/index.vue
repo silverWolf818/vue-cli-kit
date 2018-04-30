@@ -1,93 +1,43 @@
 <template>
-  <Layout style="height: 100%">
-    <Sider ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :width="256">
-      <div class="layout-logo">
-        <p class="logo-title">Vue admin</p>
-      </div>
-      <Menu theme="dark" width="auto" :class="menuitemClasses" :accordion="true" @on-select="select" @on-open-change="changed">
-        <Submenu v-for="(sub,index) in menu" :name="sub.menuCode" :key="sub.menuCode">
-          <template slot="title">
-            <Icon :type="sub.menuIcon"></Icon>
-            <span v-if="!isCollapsed">{{ sub.menuName }}</span>
-          </template>
-          <div v-if="!isCollapsed">
-            <MenuItem v-for="(item,index) in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
-              {{ item.menuName }}
-            </MenuItem>
-          </div>
-        </Submenu>
-      </Menu>
-    </Sider>
-    <Layout>
-      <Header :style="{padding: 0}" class="layout-header-bar">
-        <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
-        <Avator></Avator>
-      </Header>
-      <Content style="margin: 24px 24px 0;">
-        <router-view />
-      </Content>
-    </Layout>
-  </Layout>
+  <div class="layout-app">
+    <div class="layout-header">
+      <Head :menu="getMenu"></Head>
+      <Crumbs :step="getCrumbs"></Crumbs>
+    </div>
+    <div class="layout-sider">
+      <Side :menu="getSubMenu"></Side>
+    </div>
+    <div class="layout-content">
+      <router-view/>
+    </div>
+  </div>
 </template>
-
 <script>
   import './index.scss'
-  import Avator from '../../components/avator'
   import { mapGetters,mapActions } from 'vuex'
+  import Head from '@/components/index/head'
+  import Crumbs from '@/components/index/crumbs'
+  import Side from '@/components/index/side'
   export default {
     components:{
-      Avator
-    },
-    data () {
-      return {
-        isCollapsed: false
-      }
+      Head,
+      Crumbs,
+      Side
     },
     computed: {
-      menu() {
-        return this.$store.state.index.menu;
-      },
-      rotateIcon () {
-        return [
-          'menu-icon',
-          this.isCollapsed ? 'rotate-icon' : ''
-        ];
-      },
-      menuitemClasses () {
-        return [
-          'menu-item',
-          this.isCollapsed ? 'collapsed-menu' : ''
-        ]
-      }
+      ...mapGetters([
+        'getMenu',
+        'getSubMenu',
+        'getCrumbs'
+      ])
     },
     methods: {
       ...mapActions([
-        'initMenu',
-        'userInfo'
-      ]),
-      collapsedSider () {
-        this.$refs.side.toggleCollapse();
-      },
-      select(data) {
-        this.$router.push({
-          name:data
-        });
-      },
-      changed() {
-        if(this.isCollapsed){
-
-        }else{
-
-        }
-      }
+        'initMenu'
+      ])
     },
-    created() {
+    created(){
       this.initMenu();
-      this.userInfo();
     }
   }
 </script>
-
-<style scoped>
-
-</style>

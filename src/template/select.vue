@@ -51,7 +51,7 @@
 </template>
 
 <script>
-    import { queryApi } from "../../service/api";
+    import { queryApi } from "../service/api";
     export default {
       data () {
         return {
