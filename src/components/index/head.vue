@@ -29,7 +29,7 @@
             console.log(data);
             if(data === 'index'){
               this.$router.push({
-                name:'index'
+                name:'index2'
               })
             }
           }

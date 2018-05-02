@@ -86,7 +86,12 @@ axios.interceptors.response.use(function (res) {
 
 export default function request(url,option) {
   const httpUrl = option.mock ? mockUrl + url : config.api(url);
-  const reqUrl = option.body.method === 'GET' ? httpUrl + option.body.data : httpUrl;
+  let reqUrl = '';
+  if(option.body.method === 'GET'){
+    reqUrl = httpUrl + '?' + (option.body.data ? qs.stringify(option.body.data) :'');
+  }else{
+    reqUrl = httpUrl;
+  }
   const defaultOptions = {
     method:'POST',
     url:reqUrl

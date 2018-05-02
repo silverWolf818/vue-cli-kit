@@ -1,7 +1,7 @@
 <template>
   <div class="layout-app">
     <div class="layout-header">
-      <Head :menu="getMenu"></Head>
+      <Head :menu="getMenu2"></Head>
       <Crumbs :step="getCrumbs"></Crumbs>
     </div>
     <div class="layout-sider">
@@ -26,18 +26,18 @@
     },
     computed: {
       ...mapGetters([
-        'getMenu',
+        'getMenu2',
         'getSubMenu',
         'getCrumbs'
       ])
     },
     methods: {
       ...mapActions([
-        'initMenu'
+        'initMenu2'
       ])
     },
     created(){
-      this.initMenu();
+      this.initMenu2();
     }
   }
 </script>

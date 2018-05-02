@@ -1,5 +1,6 @@
-import '../../assets/js/request'
-import axios from 'axios'
+import { INITMENU2,CHANGESUBMENU,CHANGEITEM } from '../mutation-types'
+import { menu2 } from '../../service/api'
+
 // initial state
 const state = {
   isCollapsed: false,
@@ -25,7 +26,7 @@ const state = {
 
 // getters
 const getters = {
-  getMenu:state => state.menu,
+  getMenu2:state => state.menu,
   getSubMenu:state => state.subMenu,
   getCrumbs:state => {
     let data = [],
@@ -48,15 +49,15 @@ const getters = {
 
 // mutations
 const mutations = {
-  initMenu(state,param){
+  INITMENU2(state,param){
     state.menu = param;
   },
-  changeSubMenu(state,param){
+  CHANGESUBMENU(state,param){
     state.flag = true;
     state.item1 = param;
     state.subMenu = state.menu.filter(item => item.menuCode === param)[0].subMenus;
   },
-  changeItem(state,param){
+  CHANGEITEM(state,param){
     state.flag = false;
     state.item2 = param;
   }
@@ -64,17 +65,22 @@ const mutations = {
 
 // actions
 const actions = {
-  initMenu({ commit }){
-    axios.post('menu').then(res => {
-      commit('initMenu',res);
-      commit('changeSubMenu','index');
+  initMenu2({ commit }){
+    menu2({
+      data:{
+        a:'x',
+        b:'c'
+      }
+    }).then(res => {
+      commit(INITMENU2,res);
+      commit(CHANGESUBMENU,'index');
     });
   },
   changeSubMenu({ commit },param){
-    commit('changeSubMenu',param);
+    commit(CHANGESUBMENU,param);
   },
   changeItem({ commit },param){
-    commit('changeItem',param);
+    commit(CHANGEITEM,param);
   }
 };
 
