@@ -68,7 +68,6 @@ export async function user(params) {
   });
 }
 
-
 export async function queryTest(params) {
   return request('test',{
     mock:true,
