@@ -33,7 +33,7 @@ const mutations = {
 // actions
 const actions = {
   initMenu( { commit } ,payload) {
-    menu({}).then(res => {
+    menu({},true).then(res => {
       commit(INITMENU ,res);
       payload.$nextTick(()=> {
         payload.$refs.menu.updateOpened();
@@ -42,7 +42,7 @@ const actions = {
     });
   },
   userInfo( { commit } ){
-    user({}).then(res => {
+    user({},true).then(res => {
       commit(USERINFO ,res);
     });
   }

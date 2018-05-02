@@ -115,8 +115,6 @@
         table:{
           mock:true,
           url:'list',
-          pageNo:1,
-          pageSize:10,
           columns: [
             {
               type: 'selection',
