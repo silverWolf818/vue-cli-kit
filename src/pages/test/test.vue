@@ -26,7 +26,7 @@ export default {
       name:'z',
       ee:'z'
     }
-    queryTest({ data:obj });
+    queryTest(obj);
     queryApi('list',{},true);
   },
   methods: {

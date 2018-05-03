@@ -7,7 +7,7 @@ export async function queryApi(url,params,mock) {
   return request(url,{
     mock:mock ? mock : false,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -16,7 +16,7 @@ export async function addApi(url,params,mock) {
   return request(url,{
     mock:mock ? mock : false,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -25,7 +25,7 @@ export async function removeApi(url,params,mock) {
   return request(url,{
     mock:mock ? mock : false,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -34,7 +34,7 @@ export async function updateApi(url,params,mock) {
   return request(url,{
     mock:mock ? mock : false,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -44,7 +44,7 @@ export async function menu(params) {
   return request('menu',{
     mock:true,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -54,7 +54,7 @@ export async function menu2(params) {
     mock:true,
     body:{
       method:'GET',
-      ...params
+      data:params
     }
   });
 }
@@ -63,7 +63,7 @@ export async function user(params) {
   return request('user',{
     mock:true,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -72,7 +72,7 @@ export async function queryTest(params) {
   return request('test',{
     mock:true,
     body:{
-      ...params
+      data:params
     }
   });
 }
@@ -80,7 +80,7 @@ export async function queryPerms(params) {
   return request('havePerms',{
     body:{
       method:'GET',
-      ...params
+      data:params
     }
   });
 }

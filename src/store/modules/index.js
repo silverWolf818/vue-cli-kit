@@ -1,5 +1,6 @@
 import { INITMENU,USERINFO,CRUMBINFO } from '../mutation-types'
 import { menu,user } from  '../../service/api'
+
 // initial state
 const state = {
   menu:[],
@@ -58,7 +59,7 @@ const mutations = {
 // actions
 const actions = {
   initMenu( { commit } ,payload) {
-    menu({},true).then(res => {
+    menu().then(res => {
       commit(INITMENU ,res);
       payload.$nextTick(()=> {
         payload.$refs.menu.updateOpened();
@@ -70,7 +71,7 @@ const actions = {
     commit(CRUMBINFO ,payload);
   },
   userInfo( { commit } ){
-    user({},true).then(res => {
+    user().then(res => {
       commit(USERINFO ,res);
     });
   }

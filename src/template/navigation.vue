@@ -152,7 +152,7 @@
     },
     methods: {
       initMenu() {
-        queryMenu({ method:'GET' }).then((res)=>{
+        queryMenu().then((res)=>{
           this.menu = res;
           this.initSubMenu();
           this.$nextTick(()=> {
