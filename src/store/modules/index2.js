@@ -66,12 +66,7 @@ const mutations = {
 // actions
 const actions = {
   initMenu2({ commit }){
-    menu2({
-      data:{
-        a:'x',
-        b:'c'
-      }
-    }).then(res => {
+    menu2({}).then(res => {
       commit(INITMENU2,res);
       commit(CHANGESUBMENU,'index');
     });

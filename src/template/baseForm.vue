@@ -49,13 +49,6 @@
         <Button type="primary" size="large" @click="handleSubmit('formValidate')">提交</Button>
         <Button type="ghost" size="large" @click="handleReset('formValidate')" style="margin-left: 8px">重置</Button>
       </FormItem>
-      <Tooltip placement="top">
-        <Button>Multiple lines</Button>
-        <div slot="content">
-          <p>Display multiple lines of information</p>
-          <p><i>Can customize the style</i></p>
-        </div>
-      </Tooltip>
     </Form>
   </div>
 </template>
