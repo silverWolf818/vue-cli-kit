@@ -4,14 +4,21 @@
       <div class="layout-logo">
         <p class="logo-title">Vue admin</p>
       </div>
-      <Menu theme="dark" width="auto" :class="menuitemClasses" :accordion="true" @on-select="select" @on-open-change="changed">
-        <Submenu v-for="(sub,index) in getMenu" :name="sub.menuCode" :key="sub.menuCode">
+      <Menu
+        theme="dark" width="auto"
+        ref="menu"
+        :active-name="getActiveName"
+        :open-names="[getOpenNames]"
+        :class="menuitemClasses"
+        :accordion="true"
+        @on-select="select">
+        <Submenu v-for="sub in getMenu" :name="sub.menuCode" :key="sub.menuCode">
           <template slot="title">
             <Icon :type="sub.menuIcon"></Icon>
             <span v-if="!isCollapsed">{{ sub.menuName }}</span>
           </template>
           <div v-if="!isCollapsed">
-            <MenuItem v-for="(item,index) in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
+            <MenuItem v-for="item in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
               {{ item.menuName }}
             </MenuItem>
           </div>
@@ -21,9 +28,10 @@
     <Layout>
       <Header :style="{padding: 0}" class="layout-header-bar">
         <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
-        <Avator></Avator>
+        <Crumbs :step="getCrumb"></Crumbs>
+        <Avator v-bind="getUser"></Avator>
       </Header>
-      <Content style="margin: 24px 24px 0;">
+      <Content style="overflow-x: hidden; height: 100%;padding: 24px 24px 0px;">
         <router-view />
       </Content>
     </Layout>
@@ -32,20 +40,26 @@
 
 <script>
   import './index.scss'
-  import Avator from '../../components/avator'
+  import Avator from '../../components/index/avator'
+  import Crumbs from '../../components/index/crumbs'
   import { mapGetters,mapActions } from 'vuex'
   export default {
     components:{
-      Avator
+      Avator,
+      Crumbs
     },
     data () {
       return {
-        isCollapsed: false
+        isCollapsed: false,
       }
     },
     computed: {
       ...mapGetters([
-        'getMenu'
+        'getMenu',
+        'getOpenNames',
+        'getActiveName',
+        'getUser',
+        'getCrumb'
       ]),
       rotateIcon () {
         return [
@@ -63,26 +77,25 @@
     methods: {
       ...mapActions([
         'initMenu',
+        'crumbInfo',
         'userInfo'
       ]),
       collapsedSider () {
         this.$refs.side.toggleCollapse();
+        this.$nextTick(()=> {
+          this.$refs.menu.updateActiveName();
+        });
       },
       select(data) {
+        this.crumbInfo(data);
+        sessionStorage.setItem('activeName',data);
         this.$router.push({
           name:data
         });
-      },
-      changed() {
-        if(this.isCollapsed){
-
-        }else{
-
-        }
       }
     },
     created() {
-      this.initMenu();
+      this.initMenu(this);
       this.userInfo();
     }
   }

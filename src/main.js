@@ -10,7 +10,6 @@ import lodash from 'lodash'
 import moment from 'moment'
 import 'iview/dist/styles/iview.css'
 import './assets/css/layout.scss'
-import './mock/mocks'
 import plugin from './plugin'
 
 Vue.config.productionTip = false
@@ -19,6 +18,15 @@ window._ = lodash
 Vue.use(plugin)
 Vue.use(iView)
 Vue.use(iviewArea)
+
+router.beforeEach((to, from, next) => {
+  iView.LoadingBar.start();
+  next();
+});
+
+router.afterEach(route => {
+  iView.LoadingBar.finish();
+});
 
 /* eslint-disable no-new */
 new Vue({
