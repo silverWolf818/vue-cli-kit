@@ -14,7 +14,8 @@ const state = {
     name:''
   },{
     name:''
-  }]
+  }],
+  temp:''
 };
 
 // getters
@@ -23,36 +24,24 @@ const getters = {
   getActiveName: state => state.activeName,
   getMenu:state => state.menu,
   getUser:state => state.user,
-  getCrumb:state => {
-    if(state.menu.length > 0){
-      let pid = '';
-      state.menu.forEach(value => {
-        let a = value.subMenus.filter(item => item.menuCode === state.activeName);
-        if(a.length === 1){
-          pid = a[0].parentId;
-          state.step[2].name = a[0].menuName;
-        }
-      });
-      state.step[1].name = state.menu.filter(item => item.autoId === pid)[0].menuName;
-      return state.step;
-    }
-  }
+  getCrumb:state => state.step
+
 };
 
 // mutations
 const mutations = {
   [INITMENU](state,payload){
-    let openNames = sessionStorage.getItem('openNames');
     let activeName = sessionStorage.getItem('activeName');
     state.menu = payload;
-    state.openNames = openNames ? openNames : payload[0].menuCode;
     state.activeName = activeName ? activeName : payload[0].subMenus[0].menuCode;
+    changeMenu();
   },
   [USERINFO](state,payload){
     state.user = payload;
   },
   [CRUMBINFO](state,payload){
     state.activeName = payload;
+    changeMenu();
   }
 };
 
@@ -76,6 +65,25 @@ const actions = {
     });
   }
 };
+
+function changeMenu(){
+    queryCode(state.menu,'menuCode',state.activeName);//查询当前菜单信息
+    state.step[2].name = state.temp.menuName;//面包屑三级
+    queryCode(state.menu,'autoId',state.temp.parentId);//查询当前父级节点菜单信息
+    state.step[1].name = state.temp.menuName;//面包屑二级
+    state.openNames = state.temp.menuCode;//当前展开的菜单
+}
+
+function queryCode(menu,code,active){
+  menu.forEach(item => {
+    if(item[code] === active){
+      state.temp = item;
+      return item;
+    }else if(item.subMenus.length > 0){
+      queryCode(item.subMenus,code,active);
+    }
+  });
+}
 
 export default {
   state,

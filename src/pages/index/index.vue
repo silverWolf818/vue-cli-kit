@@ -11,8 +11,7 @@
         :open-names="[getOpenNames]"
         :class="menuitemClasses"
         :accordion="true"
-        @on-select="select"
-        @on-open-change="change">
+        @on-select="select">
         <Submenu v-for="sub in getMenu" :name="sub.menuCode" :key="sub.menuCode">
           <template slot="title">
             <Icon :type="sub.menuIcon"></Icon>
@@ -32,7 +31,7 @@
         <Crumbs :step="getCrumb"></Crumbs>
         <Avator v-bind="getUser"></Avator>
       </Header>
-      <Content style="overflow-x: hidden; height: 100%;padding: 24px 24px 0px">
+      <Content style="overflow-x: hidden; height: 100%;padding: 24px 24px 0px;">
         <router-view />
       </Content>
     </Layout>
@@ -86,9 +85,6 @@
         this.$nextTick(()=> {
           this.$refs.menu.updateActiveName();
         });
-      },
-      change(data) {
-        sessionStorage.setItem('openNames',data);
       },
       select(data) {
         this.crumbInfo(data);
