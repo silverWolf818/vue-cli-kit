@@ -1,8 +1,7 @@
-import { INITMENU,USERINFO,CRUMBINFO } from '../mutation-types'
+import { INITMENU,USERINFO,CRUMBINFO,RESET_START } from '../mutation-types'
 import { menu,user } from  '../../service/api'
 
-// initial state
-const state = {
+const initState = {
   menu:[],
   user:{},
   openNames:'',
@@ -16,7 +15,9 @@ const state = {
     name:''
   }],
   temp:''
-};
+}
+// initial state
+const state = JSON.parse(JSON.stringify(initState));
 
 // getters
 const getters = {
@@ -42,6 +43,9 @@ const mutations = {
   [CRUMBINFO](state,payload){
     state.activeName = payload;
     changeMenu();
+  },
+  [RESET_START](state){
+    Object.assign(state,JSON.parse(JSON.stringify(initState)));
   }
 };
 
@@ -63,6 +67,9 @@ const actions = {
     user().then(res => {
       commit(USERINFO ,res);
     });
+  },
+  resetStates:function ({ commit }) {
+    commit(RESET_START);
   }
 };
 
