@@ -40,7 +40,7 @@
           </Col>
         </Row>
         <Row :gutter="8" class="query-btns">
-          <Col span="8">
+          <Col span="24">
           <Button type="primary" @click="search"><Icon type="ios-search-strong"></Icon> 查询</Button>
           <Button @click="reset"><Icon type="refresh"></Icon> 重置</Button>
           <Button type="text" @click="toggle">展开 <Icon :type="isToggle"></Icon></Button>
@@ -48,7 +48,7 @@
         </Row>
       </Form>
       <Row :gutter="8" class="op-btns">
-        <Col span="8" offset="16">
+        <Col span="16" offset="8">
         <Button type="primary"><Icon type="plus"></Icon> 新增</Button>
         <Button type="primary" @click="modify"><Icon type="edit"></Icon> 修改</Button>
         <Button type="primary"><Icon type="trash-a"></Icon> 删除</Button>
