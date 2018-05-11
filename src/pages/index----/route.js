@@ -1,6 +1,6 @@
-const Index2 =()=>import('./index')
-// const Advform =()=>import('../../template/advForm')
+const Index =()=>import('./index')
 // const Baseform =()=>import('../../template/baseForm')
+// const Advform =()=>import('../../template/advForm')
 // const Basequery =()=>import('../../template/baseQuery')
 // const Tabquery =()=>import('../../template/tabQuery')
 // const BaseDetail =()=>import('../../template/baseDetail')
@@ -14,9 +14,9 @@ const Index2 =()=>import('./index')
 // const Upload =()=>import('../../template/upload')
 // const Texteditor =()=>import('../../template/textEditor')
 export default {
-  path:'/index2',
-  name:'index2',
-  component:Index2,
+  path:'/index',
+  name:'index',
+  component:Index,
   // children:[{
   //   path: 'baseForm',
   //   name: 'baseForm',
@@ -37,41 +37,5 @@ export default {
   //   path:'baseDetail',
   //   name:'baseDetail',
   //   component:BaseDetail
-  // },{
-  //   path:'input',
-  //   name:'input',
-  //   component:Input
-  // },{
-  //   path:'radio',
-  //   name:'radio',
-  //   component:Radio
-  // },{
-  //   path:'checkbox',
-  //   name:'checkbox',
-  //   component:Checkbox
-  // },{
-  //   path:'select',
-  //   name:'select',
-  //   component:Select
-  // },{
-  //   path:'date',
-  //   name:'date',
-  //   component:Date
-  // },{
-  //   path:'cascader',
-  //   name:'cascader',
-  //   component:Cascader
-  // },{
-  //   path:'area',
-  //   name:'area',
-  //   component:Area
-  // },{
-  //   path:'upload',
-  //   name:'upload',
-  //   component:Upload
-  // },{
-  //   path:'textEditor',
-  //   name:'textEditor',
-  //   component:Texteditor
   // }]
 }

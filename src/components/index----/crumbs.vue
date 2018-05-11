@@ -1,5 +1,5 @@
 <template>
-  <Breadcrumb class="layout-breadCrumb">
+  <Breadcrumb class="layout-crumb">
     <BreadcrumbItem v-for="(item,index) in step" :key="index">{{ item.name }}</BreadcrumbItem>
   </Breadcrumb>
 </template>
@@ -18,5 +18,10 @@
 </script>
 
 <style scoped>
-
+  .layout-crumb {
+    position: absolute;
+    top: 0;
+    margin-left: 80px;
+    font-size: 14px;
+  }
 </style>

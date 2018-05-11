@@ -86,7 +86,8 @@ export default function request(url,option) {
   const httpUrl = option.mock ? mockUrl + url : config.api(url);
   let reqUrl = '';
   if(option.body.method === 'GET'){
-    reqUrl = httpUrl + '?' + (option.body.data ? qs.stringify(option.body.data) :'');
+    reqUrl = httpUrl;
+    // reqUrl = httpUrl + '?' + (option.body.data ? qs.stringify(option.body.data) :'');
   }else{
     reqUrl = httpUrl;
   }

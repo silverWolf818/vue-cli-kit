@@ -21,7 +21,10 @@ Vue.use(iviewArea)
 
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start();
-  if (to.matched.length === 0) {
+  if(to.name === 'index'){
+    next({ name:'home' });
+  }
+  else if (to.matched.length === 0) {
     next('/');
   } else {
     next();

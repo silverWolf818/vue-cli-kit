@@ -1,106 +1,90 @@
 <template>
-  <Layout style="height: 100%">
-    <Sider ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :width="256">
-      <div class="layout-logo">
-        <p class="logo-title">Vue admin</p>
-      </div>
-      <Menu
-        theme="dark" width="auto"
-        ref="menu"
-        :active-name="getActiveName"
-        :open-names="[getOpenNames]"
-        :class="menuitemClasses"
-        :accordion="true"
-        @on-select="select">
-        <Submenu v-for="sub in getMenu" :name="sub.menuCode" :key="sub.menuCode">
-          <template slot="title">
-            <Icon :type="sub.menuIcon"></Icon>
-            <span v-if="!isCollapsed">{{ sub.menuName }}</span>
-          </template>
-          <div v-if="!isCollapsed">
+  <div class="layout-app">
+    <div class="layout-header">
+      <Menu ref="menu" mode="horizontal" :active-name="getActiveNav" theme="dark" @on-select="selection">
+        <div class="layout-logo" @click="home"></div>
+        <div class="layout-nav">
+          <MenuItem v-for="item in getMenu2" :name="item.menuCode" :key="item.menuCode">
+            {{ item.menuName }}
+          </MenuItem>
+        </div>
+      </Menu>
+      <Crumbs :step="getCrumbs"></Crumbs>
+    </div>
+    <div class="layout-sider">
+      <Sider hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
+        <Menu :accordion="true" :open-names="[getOpenName]" :active-name="getActiveName" ref="sub" theme="light" width="auto" @on-select="selectItem">
+          <Submenu v-for="sub in getSubMenu" :name="sub.menuCode" :key="sub.menuCode">
+            <template slot="title">
+              {{ sub.menuName }}
+            </template>
             <MenuItem v-for="item in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
               {{ item.menuName }}
             </MenuItem>
-          </div>
-        </Submenu>
-      </Menu>
-    </Sider>
-    <Layout>
-      <Header :style="{padding: 0}" class="layout-header-bar">
-        <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
-        <Crumbs :step="getCrumb"></Crumbs>
-        <Avator v-bind="getUser"></Avator>
-      </Header>
-      <Content style="overflow-x: hidden; height: 100%;padding: 24px 24px 0px;">
-        <router-view />
-      </Content>
-    </Layout>
-  </Layout>
+          </Submenu>
+        </Menu>
+      </Sider>
+    </div>
+    <div class="layout-content">
+      <router-view/>
+    </div>
+  </div>
 </template>
-
 <script>
   import './index.scss'
-  import Avator from '../../components/index/avator'
-  import Crumbs from '../../components/index/crumbs'
   import { mapGetters,mapActions } from 'vuex'
+  import Crumbs from '@/components/index/crumbs'
   export default {
     components:{
-      Avator,
-      Crumbs
-    },
-    data () {
-      return {
-        isCollapsed: false,
-      }
+      Crumbs,
     },
     computed: {
       ...mapGetters([
-        'getMenu',
-        'getOpenNames',
+        'getMenu2',
+        'getSubMenu',
+        'getCrumbs',
+        'getOpenName',
         'getActiveName',
-        'getUser',
-        'getCrumb'
-      ]),
-      rotateIcon () {
-        return [
-          'menu-icon',
-          this.isCollapsed ? 'rotate-icon' : ''
-        ];
-      },
-      menuitemClasses () {
-        return [
-          'menu-item',
-          this.isCollapsed ? 'collapsed-menu' : ''
-        ]
-      }
+        'getActiveNav'
+      ])
     },
     methods: {
       ...mapActions([
-        'initMenu',
-        'crumbInfo',
-        'userInfo'
+        'initMenu2',
+        'changeSubMenu',
+        'changeItem',
+        'reset'
       ]),
-      collapsedSider () {
-        this.$refs.side.toggleCollapse();
+      selection(data) {
+        this.changeSubMenu(data);
+        this.$nextTick(()=> {
+          this.$refs.sub.updateOpened();
+          this.$refs.sub.updateActiveName();
+        });
+
+      },
+      selectItem(data) {
+        this.changeItem(data);
+        this.$router.push({
+          name:data
+        });
         this.$nextTick(()=> {
           this.$refs.menu.updateActiveName();
         });
       },
-      select(data) {
-        this.crumbInfo(data);
-        sessionStorage.setItem('activeName',data);
+      home(){
         this.$router.push({
-          name:data
+          name:'home'
+        });
+        this.reset();
+        this.$nextTick(()=> {
+          this.$refs.sub.updateOpened();
+          this.$refs.sub.updateActiveName();
         });
       }
     },
-    created() {
-      this.initMenu(this);
-      this.userInfo();
+    created(){
+      this.initMenu2(this);
     }
   }
 </script>
-
-<style scoped>
-
-</style>
