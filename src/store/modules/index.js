@@ -9,16 +9,7 @@ const state = {
   openName:'',
   menu:[],
   subMenu:[],
-  step:[{
-    menuName:'',
-    menuUrl:'/'
-  },{
-    menuName:'',
-    menuUrl:'/'
-  },{
-    menuName:'',
-    menuUrl:'/'
-  }],
+  step:[],
   temp:''
 };
 
@@ -32,29 +23,19 @@ const getters = {
   getActiveName: state => state.activeName,
   getActiveNav:state => state.activeNav,
   getCrumbs:state => {
-    if(state.menu.length){
+    if(state.menu.length && state.activeName){
+      state.step = [];
       let active = state.activeName;
       let l1 = level1(active);
       let l2 = level2(active);
       let l3 = level3(active);
-
-      console.log(l1);
+      state.step = [l1,l2,l3];
+      return state.step;
+    }else{
+      return state.step = [{
+        menuName:'首页'
+      }];
     }
-    // let data = [],
-    //     id = '';
-    // if(state.menu.length !== 0 && state.item1){
-    //   state.step[0].name = state.menu.filter(item => item.menuCode === state.item1)[0].menuName;
-    //   state.item2 && state.subMenu.forEach(value => {
-    //     data = value.subMenus.filter(item => item.menuCode === state.item2)[0];
-    //     if(data && value.autoId === data.parentId){
-    //       state.step[1].name = value.menuName;
-    //       state.step[1].route = '/';
-    //       state.step[2].name = data.menuName;
-    //       state.step[2].route = '/';
-    //     }
-    //   });
-    //   return state.flag ? state.step.filter((item,index) => index === 0) : state.step;
-    // }
   }
 };
 
@@ -70,13 +51,21 @@ const mutations = {
     }
     //过滤左侧菜单
     state.subMenu = state.menu.filter(item => item.menuCode === payload.data)[0].subMenus;
-    //激活头部导航
-    state.activeNav = payload.data;
     //激活展开菜单
     state.openName = state.subMenu[0].menuCode;
-    if(payload.initialize && activeName){//初始化执行
-      state.openName = level2(activeName).menuCode
+    if(payload.initialize){//初始化执行
+      if(activeName){
+        //激活头部导航
+        state.activeNav = payload.data;
+        //激活展开菜单
+        state.openName = level2(activeName).menuCode;
+      }else{
+        state.openName = '';
+      }
     }else{
+      //激活头部导航
+      state.activeNav = payload.data;
+      //根据当前1级菜单判断二级菜单是否展开
       level1(state.activeName) === payload.data && (state.openName = level2(state.activeName).menuCode);
     }
   },
@@ -133,7 +122,7 @@ function level1(data){
   return state.temp;
 }
 
-function level2(data) {
+function level2(data){
   queryCode(state.menu,'menuCode',data);
   queryCode(state.menu,'autoId',state.temp.parentId);
   return state.temp;
