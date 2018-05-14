@@ -3,7 +3,9 @@
     <div class="layout-header">
       <Operate></Operate>
       <Menu ref="menu" mode="horizontal" :active-name="getActiveNav" theme="dark" @on-select="selection">
-        <div class="layout-logo" @click="home"></div>
+        <div class="layout-logo" @click="home">
+          <p>昊天平台</p>
+        </div>
         <div class="layout-nav">
           <MenuItem v-for="item in getMenu2" :name="item.menuCode" :key="item.menuCode">
             {{ item.menuName }}

@@ -10,6 +10,14 @@ ol,ul {
   display: table;
   clear: both;
 }
+//重写ivivew样式，通常用rw-*(rewrite)表示
+.rw-badge .ivu-badge-count{
+  top: -5px;
+  height: 14px;
+  line-height:12px;
+  padding: 0 3px;
+  box-shadow: inherit;
+}
 .ivu-menu-vertical.ivu-menu-light:after{
   background: inherit;
 }

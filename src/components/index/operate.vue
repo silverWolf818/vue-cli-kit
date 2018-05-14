@@ -3,8 +3,8 @@
       <ul class="fix">
         <li>个人中心</li>
         <li>
-          <Badge dot>
-            <Icon type="ios-bell-outline" :size="24"></Icon>
+          <Badge class="rw-badge" count="200">
+            <Icon type="ios-bell" :size="24"></Icon>
           </Badge>
         </li>
         <li>

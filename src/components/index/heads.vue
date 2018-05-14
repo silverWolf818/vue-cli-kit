@@ -1,6 +1,6 @@
 <template>
   <Menu mode="horizontal" theme="dark" @on-select="selection">
-    <div class="layout-logo"></div>
+    <div class="layout-logo">昊天平台</div>
     <div class="layout-nav">
       <MenuItem name="home" key="home">首页</MenuItem>
       <MenuItem v-for="item in menu" :name="item.menuCode" :key="item.menuCode">
