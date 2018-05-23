@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-form">
+  <div class="l-form">
     <div class="tips">
       <h2>日期选择器</h2>
       <div>选择或输入日期，支持年、月、日期等类型，支持选择范围。</div>

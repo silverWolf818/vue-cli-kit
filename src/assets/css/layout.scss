@@ -10,31 +10,6 @@ ol,ul {
   display: table;
   clear: both;
 }
-//重写ivivew样式，通常用rw-*(rewrite)表示
-.rw-badge .ivu-badge-count{
-  top: -5px;
-  height: 14px;
-  line-height:12px;
-  padding: 0 3px;
-  box-shadow: inherit;
-}
-.ivu-menu-vertical.ivu-menu-light:after{
-  background: inherit;
-}
-.layout-form{
-  background: #fff;
-  padding: 25px 15px 15px 15px;
-  margin-bottom: 10px;
-}
-.tips{
-  padding-bottom: 24px;
-  margin-bottom: 24px;
-  border-bottom: 1px solid #d7dde5;
-  div{
-    margin-top: 5px;
-    font-size: 14px;
-  }
-}
 .layout-queryPanel{
   background: #fff;
   padding: 20px;

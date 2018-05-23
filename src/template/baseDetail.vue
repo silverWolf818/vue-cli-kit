@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-form">
+  <div class="l-form">
     <div class="tips">
       <h2>基础详情页</h2>
     </div>

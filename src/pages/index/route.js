@@ -3,6 +3,7 @@ const Home =()=>import('../home/index')
 const Advform =()=>import('../../template/advForm')
 const Baseform =()=>import('../../template/baseForm')
 const Basequery =()=>import('../../template/baseQuery')
+const Basequery1 =()=>import('../../template/baseQuery1')
 const Tabquery =()=>import('../../template/tabQuery')
 const BaseDetail =()=>import('../../template/baseDetail')
 const Input =()=>import('../../template/input')
@@ -34,6 +35,10 @@ export default {
     path: 'baseQuery',
     name: 'baseQuery',
     component: Basequery
+  },{
+    path: 'baseQuery1',
+    name: 'baseQuery1',
+    component: Basequery1
   },{
     path:'tabQuery',
     name:'tabQuery',

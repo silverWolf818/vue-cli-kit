@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-form">
+  <div class="l-form">
     <Form class="base-form" ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80" style="width: 600px">
       <FormItem label="用户名" prop="name">
         <Input v-model="formValidate.name" placeholder="请输入用户名"/>

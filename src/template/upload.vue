@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-form">
+    <div class="l-form">
       <div class="tips">
         <h2>上传</h2>
         <div>文件选择上传和拖拽上传控件。</div>

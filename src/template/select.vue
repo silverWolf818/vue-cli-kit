@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-form">
+  <div class="l-form">
     <div class="tips">
       <h2>选择器</h2>
       <div>使用模拟的增强下拉选择器来代替浏览器原生的选择器。 选择器支持单选、多选、搜索，以及键盘快捷操作。</div>

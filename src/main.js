@@ -9,6 +9,8 @@ import iviewArea from 'iview-area'
 import lodash from 'lodash'
 import moment from 'moment'
 import './assets/css/layout.scss'
+import './assets/css/custom.scss'
+// import '../my-theme/index.less'
 import plugin from './plugin'
 
 Vue.config.productionTip = false

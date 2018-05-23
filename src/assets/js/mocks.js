@@ -103,6 +103,13 @@ Mock.mock('menu', 'post', {
             "menuCode": "tabQuery",
             "menuUrl": "tabQuery",
             "subMenus":[]
+          },{
+            "autoId": 10202,
+            "parentId": 102,
+            "menuName": "中台查询页",
+            "menuCode": "baseQuery1",
+            "menuUrl": "baseQuery1",
+            "subMenus":[]
           }]
         },{
           "autoId": 103,

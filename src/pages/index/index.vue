@@ -1,12 +1,12 @@
 <template>
-  <div class="layout-app">
-    <div class="layout-header">
+  <div class="l-app">
+    <div class="l-header">
       <Operate></Operate>
       <Menu ref="menu" mode="horizontal" :active-name="getActiveNav" theme="dark" @on-select="selection">
-        <div class="layout-logo" @click="home">
-          <p>昊天平台</p>
+        <div class="c-logo" @click="home">
+          <span class="u-logo"><img src="../../assets/images/logo.png"></span><span>昊天平台</span>
         </div>
-        <div class="layout-nav">
+        <div class="c-nav">
           <MenuItem v-for="item in getMenu2" :name="item.menuCode" :key="item.menuCode">
             {{ item.menuName }}
           </MenuItem>
@@ -14,9 +14,9 @@
       </Menu>
       <Crumbs :step="getCrumbs" :style="{ paddingLeft:menuToggle }"></Crumbs>
     </div>
-    <div class="layout-sider" :style="{ width:menuToggle }">
-      <Sider :width="199" ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :style="{background: '#fff'}">
-        <div class="toggle">
+    <div class="l-sider" :style="{ width:menuToggle }">
+      <Sider :width="200" ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+        <div class="u-toggle">
           <Icon :class="rotateIcon" @click.native="collapsedSider"  type="navicon-round" :size="20"></Icon>
         </div>
         <Menu
@@ -39,7 +39,7 @@
         </Menu>
       </Sider>
     </div>
-    <div class="layout-content" :style="{ left:menuToggle }">
+    <div class="l-content" :style="{ left:menuToggle }">
       <router-view/>
     </div>
   </div>
@@ -133,11 +133,3 @@
     }
   }
 </script>
-<style scoped lang="scss">
-  .toggle{
-    height: 47px;
-    line-height: 47px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-  }
-</style>

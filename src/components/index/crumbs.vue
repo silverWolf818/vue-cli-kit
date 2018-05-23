@@ -1,5 +1,5 @@
 <template>
-  <Breadcrumb class="layout-breadCrumb">
+  <Breadcrumb class="c-breadCrumb">
     <BreadcrumbItem v-for="(item,index) in step" :key="index">{{ item.menuName }}</BreadcrumbItem>
   </Breadcrumb>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-form">
+    <div class="l-form">
       <div class="tips">
         <h2>级联选择</h2>
         <div>从一组相关联的数据集合中进行选择，常用于省市区、公司级层、事务分类等。 相比 Select 组件，可以一次性完成选择，体验更好。</div>
