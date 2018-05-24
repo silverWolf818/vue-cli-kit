@@ -1,0 +1,37 @@
+$var1: 1px;
+$var2: 2px;
+$var5: 5px;
+$var10: 10px;
+$var15: 15px;
+$var20: 20px;
+$var30: 30px;
+$var40: 40px;
+$var50: 50px;
+$green: #39AA00;
+$red:#E33900;
+$blue:#4A89DC;
+$gray:#E4E4E4;
+
+$varlist:(
+  1:$var1,
+  2:$var2,
+  5:$var5,
+  10:$var10,
+  15:$var15,
+  20:$var20,
+  30:$var30,
+  40:$var40,
+  50:$var50
+);
+
+@each $i,$var in $varlist {
+  .f-w#{$i}{
+    width: $var;
+  }
+  .f-mt#{$i}{
+    margin-top:$var;
+  }
+  .f-pt#{$i}{
+    padding-top: $var;
+  }
+}
