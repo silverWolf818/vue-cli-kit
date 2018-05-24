@@ -147,21 +147,26 @@
   color: #4988dc;
   border-left: 2px solid #4988dc;
 }
-.c-query{
-  padding:16px 5px 0 5px;
-  background: #fcfcfc;
-  border: 1px solid #e2e2e2;
-  .ivu-form .ivu-form-item-label{
-    padding: 10px 0;
-  }
-  .ivu-form-item{
-    margin-bottom: 16px;
-  }
+.c-operation{
+  padding: 10px 0;
+}
+.c-query,.c-form{
   .ivu-form-item-label{
     width: 120px;
   }
   .ivu-form-item-content{
     margin-left: 120px;
+  }
+  .ivu-form .ivu-form-item-label{
+    padding: 10px 0;
+  }
+}
+.c-query{
+  padding:16px 5px 0 5px;
+  background: #fcfcfc;
+  border: 1px solid #e2e2e2;
+  .ivu-form-item{
+    margin-bottom: 16px;
   }
   .ivu-form-inline .ivu-form-item{
     float: left;
@@ -169,8 +174,26 @@
     width: 32%;
   }
 }
-.c-operation{
-  padding: 10px 0;
+.c-form{
+  border-top: 1px solid #e2e2e2;
+  padding: 32px 100px 0 100px;
+}
+.f-single{
+  margin: 0 auto;
+  .ivu-form-item{
+    display: block;
+  }
+}
+.f-double{
+  margin: 0 auto;
+  .ivu-form-item{
+    float: left;
+    display: block;
+    width: 48%;
+  }
+  .f-row{
+    width: 96%;
+  }
 }
 //重写ivivew样式，通常用rw-*(rewrite)表示
 .rw-badge .ivu-badge-count{

@@ -1,7 +1,7 @@
 <template>
     <div>
       <Tips></Tips>
-      <div class="c-query fix">
+      <div class="c-query">
         <Form ref="query" inline>
           <FormItem label="组织机构名称：">
             <Input type="text" placeholder="Username"/>
@@ -27,7 +27,7 @@
         </Form>
       </div>
       <div class="c-operation">
-        <Button type="success"><Icon type="plus-circled"></Icon> 新增</Button>
+        <Button type="success" @click="add"><Icon type="plus-circled"></Icon> 新增</Button>
       </div>
       <BaseTable v-bind="table" ref="basetable"></BaseTable>
     </div>
@@ -92,6 +92,11 @@
     methods:{
       search(){
         this.$refs['basetable'].query(this.query);
+      },
+      add(){
+        this.$router.push({
+          name:'form1'
+        });
       }
     }
   }
