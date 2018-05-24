@@ -1,10 +1,15 @@
 <template>
-    <div class="c-tips">菜单管理</div>
+    <div class="c-tips">{{ title }}</div>
 </template>
 
 <script>
     export default {
-
+      props:{
+        title:{
+          type: String,
+          default:'title'
+        }
+      }
     }
 </script>
 

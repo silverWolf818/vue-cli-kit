@@ -1,6 +1,6 @@
 <template>
     <div>
-      <Tips></Tips>
+      <Tips :title="title"></Tips>
       <div class="c-form f-double">
         <Form ref="form" inline>
           <FormItem label="组织机构名称：">
@@ -73,6 +73,11 @@
     export default {
       components: {
         Tips
+      },
+      data(){
+        return {
+          title:'新增组织机构'
+        }
       }
     }
 </script>

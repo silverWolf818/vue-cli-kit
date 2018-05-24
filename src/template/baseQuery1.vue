@@ -1,6 +1,6 @@
 <template>
     <div>
-      <Tips></Tips>
+      <Tips :title="title"></Tips>
       <div class="c-query">
         <Form ref="query" inline>
           <FormItem label="组织机构名称：">
@@ -43,6 +43,7 @@
     },
     data() {
       return {
+        title:'菜单管理',
         query:{},
         table:{
           mock:true,
