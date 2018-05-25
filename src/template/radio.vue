@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-form">
+    <div class="l-form">
       <div class="tips">
         <h2>单选框</h2>
         <div>基本组件-单选框。主要用于一组可选项单项选择，或者单独用于切换到选中状态。</div>

@@ -1,69 +1,75 @@
 <template>
-  <Layout style="height: 100%">
-    <Sider ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed" :width="256">
-      <div class="layout-logo">
-        <p class="logo-title">Vue admin</p>
-      </div>
-      <Menu
-        theme="dark" width="auto"
-        ref="menu"
-        :active-name="getActiveName"
-        :open-names="[getOpenNames]"
-        :class="menuitemClasses"
-        :accordion="true"
-        @on-select="select">
-        <Submenu v-for="sub in getMenu" :name="sub.menuCode" :key="sub.menuCode">
-          <template slot="title">
-            <Icon :type="sub.menuIcon"></Icon>
-            <span v-if="!isCollapsed">{{ sub.menuName }}</span>
-          </template>
-          <div v-if="!isCollapsed">
-            <MenuItem v-for="item in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
-              {{ item.menuName }}
-            </MenuItem>
-          </div>
-        </Submenu>
+  <div class="l-app">
+    <div class="l-header">
+      <Operate></Operate>
+      <Menu ref="menu" mode="horizontal" :active-name="getActiveNav" theme="dark" @on-select="selection">
+        <div class="c-logo" @click="home">
+          <span class="u-logo"><img src="../../assets/images/logo.png"></span><span>昊天平台</span>
+        </div>
+        <div class="c-nav">
+          <MenuItem v-for="item in getMenu2" :name="item.menuCode" :key="item.menuCode">
+            {{ item.menuName }}
+          </MenuItem>
+        </div>
       </Menu>
-    </Sider>
-    <Layout>
-      <Header :style="{padding: 0}" class="layout-header-bar">
-        <Icon @click.native="collapsedSider" :class="rotateIcon" :style="{margin: '20px 20px 0'}" type="navicon-round" size="24"></Icon>
-        <Crumbs :step="getCrumb"></Crumbs>
-        <Avator v-bind="getUser"></Avator>
-      </Header>
-      <Content style="overflow-x: hidden; height: 100%;padding: 24px 24px 0px;">
-        <router-view />
-      </Content>
-    </Layout>
-  </Layout>
+      <Crumbs :step="getCrumbs" :style="{ paddingLeft:menuToggle }"></Crumbs>
+    </div>
+    <div class="l-sider" :style="{ width:menuToggle }">
+      <Sider :width="200" ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+        <div class="u-toggle">
+          <Icon :class="rotateIcon" @click.native="collapsedSider"  type="navicon-round" :size="20"></Icon>
+        </div>
+        <Menu
+          :accordion="true"
+          :open-names="[getOpenName]"
+          :active-name="getActiveName"
+          :class="menuitemClasses"
+          ref="sub" theme="light" width="auto" @on-select="selectItem">
+          <Submenu v-for="sub in getSubMenu" :name="sub.menuCode" :key="sub.menuCode">
+            <template slot="title">
+              <Icon type="android-checkbox-outline"></Icon>
+              <span v-if="!isCollapsed">{{ sub.menuName }}</span>
+            </template>
+            <div v-if="!isCollapsed">
+              <MenuItem v-for="item in sub.subMenus" :name="item.menuCode" :key="item.menuCode">
+                {{ item.menuName }}
+              </MenuItem>
+            </div>
+          </Submenu>
+        </Menu>
+      </Sider>
+    </div>
+    <div class="l-content" :style="{ left:menuToggle }">
+      <router-view/>
+    </div>
+  </div>
 </template>
-
 <script>
   import './index.scss'
-  import Avator from '../../components/index/avator'
-  import Crumbs from '../../components/index/crumbs'
   import { mapGetters,mapActions } from 'vuex'
+  import Crumbs from '@/components/index/crumbs'
+  import Operate from '@/components/index/operate'
   export default {
     components:{
-      Avator,
-      Crumbs
+      Crumbs,
+      Operate
     },
-    data () {
+    data() {
       return {
         isCollapsed: false,
       }
     },
     computed: {
       ...mapGetters([
-        'getMenu',
-        'getOpenNames',
+        'getMenu2',
+        'getSubMenu',
+        'getCrumbs',
+        'getOpenName',
         'getActiveName',
-        'getUser',
-        'getCrumb'
+        'getActiveNav'
       ]),
       rotateIcon () {
         return [
-          'menu-icon',
           this.isCollapsed ? 'rotate-icon' : ''
         ];
       },
@@ -72,35 +78,58 @@
           'menu-item',
           this.isCollapsed ? 'collapsed-menu' : ''
         ]
-      }
+      },
+      menuToggle() {
+        return this.isCollapsed ? '79px' : '200px';
+      },
     },
     methods: {
       ...mapActions([
-        'initMenu',
-        'crumbInfo',
-        'userInfo'
+        'initMenu2',
+        'changeSubMenu',
+        'changeItem',
+        'reset'
       ]),
-      collapsedSider () {
-        this.$refs.side.toggleCollapse();
+      //点击一级菜单
+      selection(data) {
+        this.changeSubMenu(data);
+        this.$nextTick(()=> {
+          this.$refs.sub.updateOpened();
+          this.$refs.sub.updateActiveName();
+        });
+
+      },
+      //点击三级菜单
+      selectItem(data) {
+        this.changeItem(data);
+        this.$router.push({
+          name:data
+        });
         this.$nextTick(()=> {
           this.$refs.menu.updateActiveName();
         });
       },
-      select(data) {
-        this.crumbInfo(data);
-        sessionStorage.setItem('activeName',data);
+      //首页
+      home(){
         this.$router.push({
-          name:data
+          name:'home'
         });
-      }
+        this.reset();
+        this.$nextTick(()=> {
+          this.$refs.sub.updateOpened();
+          this.$refs.sub.updateActiveName();
+        });
+      },
+      //收起菜单
+      collapsedSider () {
+        this.$refs.side.toggleCollapse();
+        this.$nextTick(()=> {
+          this.$refs.sub.updateActiveName();
+        });
+      },
     },
-    created() {
-      this.initMenu(this);
-      this.userInfo();
+    created(){
+      this.initMenu2(this);
     }
   }
 </script>
-
-<style scoped>
-
-</style>

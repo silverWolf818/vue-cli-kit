@@ -53,7 +53,6 @@ export async function menu2(params) {
   return request('menu2',{
     mock:true,
     body:{
-      method:'GET',
       data:params
     }
   });

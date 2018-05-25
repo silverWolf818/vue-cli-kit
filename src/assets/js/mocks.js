@@ -50,8 +50,16 @@ Mock.mock('menu', 'post', {
       "autoId": 8,
       "parentId": 1,
       "menuName": "首页",
-      "menuCode": "index",
-      "menuUrl": "/index",
+      "menuCode": "home",
+      "menuUrl": "",
+      "subMenus":[]
+    },
+    {
+      "autoId": 8,
+      "parentId": 1,
+      "menuName": "基础组件",
+      "menuCode": "base",
+      "menuUrl": "",
       "subMenus": [
         {
           "autoId": 100,
@@ -65,13 +73,15 @@ Mock.mock('menu', 'post', {
             "parentId": 100,
             "menuName": "基础表单",
             "menuCode": "baseForm",
-            "menuUrl": "/form/baseForm"
+            "menuUrl": "baseForm",
+            "subMenus":[]
           }, {
             "autoId": 10003,
             "parentId": 100,
             "menuName": "高级表单",
             "menuCode": "advForm",
-            "menuUrl": "/form/advForm"
+            "menuUrl": "advForm",
+            "subMenus":[]
           }]
         },{
           "autoId": 102,
@@ -84,13 +94,22 @@ Mock.mock('menu', 'post', {
             "parentId": 102,
             "menuName": "基础查询页",
             "menuCode": "baseQuery",
-            "menuUrl": "query/baseQuery"
+            "menuUrl": "baseQuery",
+            "subMenus":[]
           }, {
             "autoId": 10201,
             "parentId": 102,
             "menuName": "带选项卡查询页",
             "menuCode": "tabQuery",
-            "menuUrl": "query/tabQuery"
+            "menuUrl": "tabQuery",
+            "subMenus":[]
+          },{
+            "autoId": 10202,
+            "parentId": 102,
+            "menuName": "中台查询页",
+            "menuCode": "baseQuery1",
+            "menuUrl": "baseQuery1",
+            "subMenus":[]
           }]
         },{
           "autoId": 103,
@@ -103,7 +122,8 @@ Mock.mock('menu', 'post', {
             "parentId": 103,
             "menuName": "基础详情页",
             "menuCode": "baseDetail",
-            "menuUrl": "detail/baseDetail"
+            "menuUrl": "baseDetail",
+            "subMenus":[]
           }]
         }]
     },{
@@ -122,55 +142,64 @@ Mock.mock('menu', 'post', {
           "parentId": 201,
           "menuName": "输入框",
           "menuCode": "input",
-          "menuUrl": "/formComponent/input"
+          "menuUrl": "input",
+          "subMenus":[]
         },{
           "autoId": 2002,
           "parentId": 201,
           "menuName": "单选框",
           "menuCode": "radio",
-          "menuUrl": "/formComponent/radio"
+          "menuUrl": "radio",
+          "subMenus":[]
         },{
           "autoId": 2003,
           "parentId": 201,
           "menuName": "多选框",
           "menuCode": "checkbox",
-          "menuUrl": "/formComponent/checkbox"
+          "menuUrl": "checkbox",
+          "subMenus":[]
         },{
           "autoId": 2004,
           "parentId": 201,
           "menuName": "选择框",
           "menuCode": "select",
-          "menuUrl": "/formComponent/select"
+          "menuUrl": "select",
+          "subMenus":[]
         },{
           "autoId": 2005,
           "parentId": 201,
           "menuName": "日期选择器",
           "menuCode": "date",
-          "menuUrl": "/formComponent/date"
+          "menuUrl": "date",
+          "subMenus":[]
         },{
           "autoId": 2006,
           "parentId": 201,
           "menuName": "级联选择",
           "menuCode": "cascader",
-          "menuUrl": "/formComponent/cascader"
+          "menuUrl": "cascader",
+          "subMenus":[]
         },{
           "autoId": 2007,
           "parentId": 201,
           "menuName": "地址选择",
           "menuCode": "area",
-          "menuUrl": "/formComponent/area"
+          "menuUrl": "area",
+          "subMenus":[]
         },{
           "autoId": 2007,
           "parentId": 201,
           "menuName": "上传",
           "menuCode": "upload",
-          "menuUrl": "/formComponent/upload"
+          "menuUrl": "upload",
+          "subMenus":[]
         },{
           "autoId": 2008,
           "parentId": 201,
           "menuName": "富文本编辑器",
           "menuCode": "textEditor",
-          "menuUrl": "/formComponent/textEditor"
+          "menuUrl": "textEditor",
+          "subMenus":[]
         }]
       }]
     }],

@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-form">
+  <div class="l-form">
     <Form class="base-form" :model="form" :label-width="80" style="width: 600px">
       <FormItem label="用户名" prop="a">
         <Input v-model="form.purchaseAccount" placeholder="请输入用户名"/>

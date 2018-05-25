@@ -1,7 +1,8 @@
 <template>
   <Menu mode="horizontal" theme="dark" @on-select="selection">
-    <div class="layout-logo"></div>
+    <div class="layout-logo">昊天平台</div>
     <div class="layout-nav">
+      <MenuItem name="home" key="home">首页</MenuItem>
       <MenuItem v-for="item in menu" :name="item.menuCode" :key="item.menuCode">
         {{ item.menuName }}
       </MenuItem>
@@ -25,12 +26,12 @@
             'changeSubMenu'
           ]),
           selection(data) {
-            this.changeSubMenu(data);
-            console.log(data);
-            if(data === 'index'){
+            if(data === 'home'){
               this.$router.push({
-                name:'index2'
+                name:'home'
               })
+            }else{
+              this.changeSubMenu(data);
             }
           }
         }

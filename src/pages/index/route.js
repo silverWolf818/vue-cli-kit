@@ -1,7 +1,10 @@
 const Index =()=>import('./index')
-const Baseform =()=>import('../../template/baseForm')
+const Home =()=>import('../home/index')
 const Advform =()=>import('../../template/advForm')
+const Baseform =()=>import('../../template/baseForm')
 const Basequery =()=>import('../../template/baseQuery')
+const Basequery1 =()=>import('../../template/baseQuery1')
+const Form1 =()=>import('../../template/form1')
 const Tabquery =()=>import('../../template/tabQuery')
 const BaseDetail =()=>import('../../template/baseDetail')
 const Input =()=>import('../../template/input')
@@ -18,6 +21,10 @@ export default {
   name:'index',
   component:Index,
   children:[{
+    path: 'home',
+    name: 'home',
+    component: Home
+  },{
     path: 'baseForm',
     name: 'baseForm',
     component: Baseform
@@ -30,6 +37,14 @@ export default {
     name: 'baseQuery',
     component: Basequery
   },{
+    path: 'baseQuery1',
+    name: 'baseQuery1',
+    component: Basequery1
+  },{
+    path: 'form1',
+    name: 'form1',
+    component: Form1
+  },{
     path:'tabQuery',
     name:'tabQuery',
     component:Tabquery
@@ -37,5 +52,41 @@ export default {
     path:'baseDetail',
     name:'baseDetail',
     component:BaseDetail
+  },{
+    path:'input',
+    name:'input',
+    component:Input
+  },{
+    path:'radio',
+    name:'radio',
+    component:Radio
+  },{
+    path:'checkbox',
+    name:'checkbox',
+    component:Checkbox
+  },{
+    path:'select',
+    name:'select',
+    component:Select
+  },{
+    path:'date',
+    name:'date',
+    component:Date
+  },{
+    path:'cascader',
+    name:'cascader',
+    component:Cascader
+  },{
+    path:'area',
+    name:'area',
+    component:Area
+  },{
+    path:'upload',
+    name:'upload',
+    component:Upload
+  },{
+    path:'textEditor',
+    name:'textEditor',
+    component:Texteditor
   }]
 }

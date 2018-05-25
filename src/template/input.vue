@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-form">
+  <div class="l-form">
     <div class="tips">
       <h2>输入框</h2>
       <div>基本表单组件，支持 input 和 textarea，并在原生控件基础上进行了功能扩展，可以组合使用。</div>

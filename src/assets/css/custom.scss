@@ -1,0 +1,205 @@
+//页面骨架布局
+.l-app{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.l-header{
+  box-sizing: border-box;
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 99px;
+  z-index: 20;
+  transition: padding .3s;
+  background: #f2f2f2;
+  .ivu-menu-dark{
+    background: #163a54;
+  }
+  .ivu-menu-item{
+    border-left: 1px solid #0c2d4b;
+  }
+  .ivu-menu-item:last-child{
+    border-right: 1px solid #0c2d4b;
+  }
+  .ivu-menu-item:hover{
+    background: #1c4e7c;
+  }
+  .ivu-menu-dark.ivu-menu-horizontal .ivu-menu-item-active{
+    background: #4a89dc;
+  }
+}
+.l-sider{
+  height: 100%;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  z-index: 21;
+  transition: width .3s;
+  border-right: 1px solid #dddee1;
+  .ivu-layout-sider{
+    background: #fff;
+  }
+  .u-toggle{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+  .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
+    width: 199px;
+    padding: 9px 24px;
+    border-bottom: 1px solid #eee;
+  }
+  .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
+    width: 199px;
+    color: #fff;
+    background: #4988dc;
+    border-right: inherit;
+  }
+}
+.l-content{
+  position: absolute;
+  top: 99px;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  z-index: 1;
+  transition: left .3s;
+  left: 200px;
+  padding: 10px 26px;
+}
+.l-form{
+  padding: 10px;
+  background: #fff;
+}
+.c-breadCrumb{
+  transition: padding .3s;
+  margin-left: 20px;
+  line-height: 40px;
+  padding-left: 200px;
+}
+.ivu-breadcrumb{
+  font-size: 12px;
+}
+.c-logo{
+  text-align: center;
+  font-size: 16px;
+  width: 200px;
+  height: 60px;
+  color: #fff;
+  float: left;
+  cursor: pointer;
+  .u-logo{
+    line-height: 60px;
+    font-size: 0;
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  img{
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+  }
+}
+.menu-icon{
+  transition: all .3s;
+}
+.rotate-icon{
+  transform: rotate(-90deg);
+}
+.menu-item span{
+  display: inline-block;
+  overflow: hidden;
+  width: 69px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+  transition: width .2s ease .2s;
+}
+.menu-item i{
+  transform: translateX(0px);
+  transition: font-size .2s ease, transform .2s ease;
+  vertical-align: middle;
+  font-size: 16px;
+}
+.collapsed-menu .ivu-icon-ios-arrow-down{
+  display: none;
+}
+.collapsed-menu span{
+  width: 0;
+  transition: width .2s ease;
+}
+.collapsed-menu i{
+  transform: translateX(5px);
+  transition: font-size .2s ease .2s, transform .2s ease .2s;
+  vertical-align: middle;
+  font-size: 22px;
+}
+.c-tips{
+  font-size: 16px;
+  padding-left: 16px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 1;
+  color: #4988dc;
+  border-left: 2px solid #4988dc;
+}
+.c-operation{
+  padding: 10px 0;
+}
+.c-query,.c-form{
+  .ivu-form-item-label{
+    width: 120px;
+  }
+  .ivu-form-item-content{
+    margin-left: 120px;
+  }
+  .ivu-form .ivu-form-item-label{
+    padding: 10px 0;
+  }
+}
+.c-query{
+  padding:16px 5px 0 5px;
+  background: #fcfcfc;
+  border: 1px solid #e2e2e2;
+  .ivu-form-item{
+    margin-bottom: 16px;
+  }
+  .ivu-form-inline .ivu-form-item{
+    float: left;
+    display: block;
+    width: 32%;
+  }
+}
+.c-form{
+  border-top: 1px solid #e2e2e2;
+  padding: 32px 100px 0 100px;
+}
+.f-single{
+  margin: 0 auto;
+  .ivu-form-item{
+    display: block;
+  }
+}
+.f-double{
+  margin: 0 auto;
+  .ivu-form-item{
+    float: left;
+    display: block;
+    width: 48%;
+  }
+  .f-row{
+    width: 96%;
+  }
+}
+//重写ivivew样式，通常用rw-*(rewrite)表示
+.rw-badge .ivu-badge-count{
+  top: -5px;
+  height: 14px;
+  line-height:12px;
+  padding: 0 3px;
+  box-shadow: inherit;
+}

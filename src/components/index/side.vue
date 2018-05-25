@@ -1,6 +1,6 @@
 <template>
   <Sider hide-trigger collapsible :collapsed-width="78" :style="{background: '#fff'}">
-    <Menu ref="sub" theme="light" width="auto" @on-select="selectItem">
+    <Menu :open-names="['forms']" ref="sub" theme="light" width="auto" @on-select="selectItem">
       <Submenu v-for="sub in menu" :name="sub.menuCode" :key="sub.menuCode">
         <template slot="title">
           {{ sub.menuName }}
@@ -34,6 +34,12 @@
               name:data
             });
           }
+        },
+        created(){
+          this.$nextTick(()=> {
+            this.$refs.sub.updateOpened();
+            this.$refs.sub.updateActiveName();
+          });
         }
     }
 </script>

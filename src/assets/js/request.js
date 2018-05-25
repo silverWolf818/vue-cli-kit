@@ -85,8 +85,8 @@ axios.interceptors.response.use(function (res) {
 export default function request(url,option) {
   const httpUrl = option.mock ? mockUrl + url : config.api(url);
   let reqUrl = '';
-  if(option.body.method === 'GET'){
-    reqUrl = httpUrl + '?' + (option.body.data ? qs.stringify(option.body.data) :'');
+  if(option.body.method === 'GET' && option.body.data){
+    reqUrl = httpUrl + '?' + qs.stringify(option.body.data);
   }else{
     reqUrl = httpUrl;
   }

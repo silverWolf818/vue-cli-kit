@@ -8,8 +8,9 @@ import iView from 'iview'
 import iviewArea from 'iview-area'
 import lodash from 'lodash'
 import moment from 'moment'
-import 'iview/dist/styles/iview.css'
 import './assets/css/layout.scss'
+import './assets/css/custom.scss'
+// import '../my-theme/index.less'
 import plugin from './plugin'
 
 Vue.config.productionTip = false
@@ -21,7 +22,14 @@ Vue.use(iviewArea)
 
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start();
-  next();
+  if(to.name === 'index'){
+    next({ name:'home' });
+  }
+  else if (to.matched.length === 0) {
+    next('/');
+  } else {
+    next();
+  }
 });
 
 router.afterEach(route => {
