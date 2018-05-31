@@ -1,4 +1,5 @@
 //页面骨架布局
+@import "variable.scss";
 .l-app{
   position: absolute;
   width: 100%;
@@ -12,21 +13,21 @@
   height: 99px;
   z-index: 20;
   transition: padding .3s;
-  background: #f2f2f2;
+  background: $gray1;
   .ivu-menu-dark{
-    background: #163a54;
+    background: $blue3;
   }
   .ivu-menu-item{
-    border-left: 1px solid #0c2d4b;
+    border-left: 1px solid $blue4;
   }
   .ivu-menu-item:last-child{
-    border-right: 1px solid #0c2d4b;
+    border-right: 1px solid $blue4;
   }
   .ivu-menu-item:hover{
-    background: #1c4e7c;
+    background: $blue1;
   }
   .ivu-menu-dark.ivu-menu-horizontal .ivu-menu-item-active{
-    background: #4a89dc;
+    background: $blue;
   }
 }
 .l-sider{
@@ -36,27 +37,30 @@
   left: 0;
   z-index: 21;
   transition: width .3s;
-  border-right: 1px solid #dddee1;
+  border-right: 1px solid $gray5;
   .ivu-layout-sider{
-    background: #fff;
+    background: $white;
   }
   .u-toggle{
     height: 40px;
     line-height: 40px;
     text-align: center;
-    border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    border-right: 1px solid $gray5;
+    border-bottom: 1px solid $gray5;
   }
   .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
     width: 199px;
     padding: 9px 24px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid $gray5;
   }
   .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
     width: 199px;
-    color: #fff;
-    background: #4988dc;
+    color: $white;
+    background: $blue;
     border-right: inherit;
+  }
+  .ivu-menu-opened>*>.ivu-menu-submenu-title-icon{
+    transform: rotate(0deg);
   }
 }
 .l-content{
@@ -68,11 +72,11 @@
   z-index: 1;
   transition: left .3s;
   left: 200px;
-  padding: 10px 26px;
+  padding: 0 24px 10px;
 }
 .l-form{
   padding: 10px;
-  background: #fff;
+  background: $white;
 }
 .c-breadCrumb{
   transition: padding .3s;
@@ -86,9 +90,9 @@
 .c-logo{
   text-align: center;
   font-size: 16px;
-  width: 200px;
+  width: 199px;
   height: 60px;
-  color: #fff;
+  color: $white;
   float: left;
   cursor: pointer;
   .u-logo{
@@ -120,7 +124,7 @@
   transition: width .2s ease .2s;
 }
 .menu-item i{
-  transform: translateX(0px);
+  transform:rotate(-90deg) translateX(0px);
   transition: font-size .2s ease, transform .2s ease;
   vertical-align: middle;
   font-size: 16px;
@@ -139,16 +143,19 @@
   font-size: 22px;
 }
 .c-tips{
-  font-size: 16px;
-  padding-left: 16px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  line-height: 1;
-  color: #4988dc;
-  border-left: 2px solid #4988dc;
+  padding: 20px 0;
+  border-bottom: 1px solid $gray5;
+  p{
+    padding-left: 16px;
+    font-size: 16px;
+    color: $blue;
+    height: 16px;
+    line-height: 1;
+    border-left: 2px solid $blue;
+  }
 }
 .c-operation{
-  padding: 10px 0;
+  padding-top: 8px;
 }
 .c-query,.c-form{
   .ivu-form-item-label{
@@ -162,9 +169,10 @@
   }
 }
 .c-query{
+  margin-top: 8px;
   padding:16px 5px 0 5px;
-  background: #fcfcfc;
-  border: 1px solid #e2e2e2;
+  background: $gray3;
+  border: 1px solid $gray5;
   .ivu-form-item{
     margin-bottom: 16px;
   }
@@ -173,12 +181,53 @@
     display: block;
     width: 32%;
   }
+  .ivu-date-picker{
+    width: 100%;
+  }
+}
+.c-query-1{
+  padding:16px 5px 0 15px;
+  background: $gray3;
+  border: 1px solid $gray5;
+  .ivu-form-item-label{
+    width: 120px;
+  }
+  .ivu-form .ivu-form-item-label{
+    padding: 10px 0;
+  }
+  .ivu-form-item{
+    margin-bottom: 16px;
+  }
+}
+.c-query-twoCol{
+  padding:16px 5px 0 5px;
+  background: $gray3;
+  border: 1px solid $gray5;
+  margin-bottom: 10px;
+  .ivu-form .ivu-form-item-label{
+    padding: 10px 0;
+  }
+  .ivu-form-item{
+    margin-bottom: 16px;
+  }
+  .ivu-form-item-label{
+    width: 120px;
+  }
+  .ivu-form-item-content{
+    margin-left: 120px;
+  }
+  .ivu-form-inline .ivu-form-item{
+    float: left;
+    display: block;
+    width: 48%;
+  }
 }
 .c-form{
-  border-top: 1px solid #e2e2e2;
   padding: 32px 100px 0 100px;
 }
 .f-single{
+  padding: 0;
+  width: 600px;
   margin: 0 auto;
   .ivu-form-item{
     display: block;
@@ -195,6 +244,8 @@
     width: 96%;
   }
 }
+
+
 //重写ivivew样式，通常用rw-*(rewrite)表示
 .rw-badge .ivu-badge-count{
   top: -5px;
@@ -202,4 +253,14 @@
   line-height:12px;
   padding: 0 3px;
   box-shadow: inherit;
+}
+//设置直角
+.l-content input,//输入框
+.l-content button,//按钮
+.l-content textarea,//文本框
+.l-content .ivu-select-selection,//下拉框直角
+.l-content .ivu-input-group-append,//复合型输入框右
+.l-content .ivu-input-group-prepend//复合型输入框左
+{
+  border-radius: 0!important;
 }
