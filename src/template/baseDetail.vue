@@ -1,44 +1,49 @@
 <template>
-  <div class="l-form">
-    <div class="tips">
-      <h2>基础详情页</h2>
+  <div>
+    <Tips :title="title"></Tips>
+    <div class="c-form f-single">
+      <Form ref="formValidate" :model="formValue">
+        <FormItem label="用户名：">
+          <p>{{ formValue.name }}</p>
+        </FormItem>
+        <FormItem label="邮箱：">
+          <p>{{ formValue.email }}</p>
+        </FormItem>
+        <FormItem label="手机号：">
+          <p>{{ formValue.tel }}</p>
+        </FormItem>
+        <FormItem label="订单号：">
+          <p>{{ formValue.order }}</p>
+        </FormItem>
+        <FormItem label="下单时间：">
+          <p>{{ formValue.time }}</p>
+        </FormItem>
+        <FormItem label="采购单位：">
+          <p>{{ formValue.unit }}</p>
+        </FormItem>
+        <FormItem label="供应商：">
+          <p>{{ formValue.supplier }}</p>
+        </FormItem>
+        <FormItem label="支付方式：">
+          <p>{{ formValue.type }}</p>
+        </FormItem>
+        <FormItem label="送达时间：">
+          <p>{{ formValue.send }}</p>
+        </FormItem>
+      </Form>
     </div>
-    <Form ref="formValidate" :model="formValue" :label-width="80" style="margin-left: 200px">
-      <FormItem label="用户名：">
-        <p>{{ formValue.name }}</p>
-      </FormItem>
-      <FormItem label="邮箱：">
-        <p>{{ formValue.email }}</p>
-      </FormItem>
-      <FormItem label="手机号：">
-        <p>{{ formValue.tel }}</p>
-      </FormItem>
-      <FormItem label="订单号：">
-        <p>{{ formValue.order }}</p>
-      </FormItem>
-      <FormItem label="下单时间：">
-        <p>{{ formValue.time }}</p>
-      </FormItem>
-      <FormItem label="采购单位：">
-        <p>{{ formValue.unit }}</p>
-      </FormItem>
-      <FormItem label="供应商：">
-        <p>{{ formValue.supplier }}</p>
-      </FormItem>
-      <FormItem label="支付方式：">
-        <p>{{ formValue.type }}</p>
-      </FormItem>
-      <FormItem label="送达时间：">
-        <p>{{ formValue.send }}</p>
-      </FormItem>
-    </Form>
   </div>
 </template>
 
 <script>
+  import Tips from '@/components/tips'
   export default {
+    components: {
+      Tips
+    },
     data() {
       return {
+        title:'基本详情页',
         formValue: {
           name: '呵呵哒',
           email:'363420113@qq.com',

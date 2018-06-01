@@ -1,48 +1,53 @@
 <template>
-  <div class="l-form">
-    <Form class="base-form" :model="form" :label-width="80" style="width: 600px">
-      <FormItem label="用户名" prop="a">
-        <Input v-model="form.purchaseAccount" placeholder="请输入用户名"/>
-      </FormItem>
-      <FormItem label="邮箱" prop="b">
-        <Input v-model="form.planName" placeholder="请输入邮箱"/>
-      </FormItem>
-      <FormItem>
-        <Button type="primary" size="large" @click="handleSubmit">提交</Button>
-      </FormItem>
-    </Form>
+  <div>
+    <Tips :title="title"></Tips>
+    <div class="c-form f-single">
+      <Form ref="form" inline>
+        <FormItem label="组织机构名称：">
+          <Input type="text" placeholder="请输入"/>
+        </FormItem>
+        <FormItem label="组织机构名称：">
+          <Input type="text" placeholder="请输入"/>
+        </FormItem>
+        <FormItem label="组织机构名称：">
+          <Input type="text" placeholder="请输入"/>
+        </FormItem>
+        <FormItem label="组织机构名称：">
+          <Input type="text" placeholder="请输入"/>
+        </FormItem>
+        <FormItem label="组织机构名称：">
+          <Input type="text" placeholder="请输入"/>
+        </FormItem>
+        <FormItem label="组织机构名称：">
+          <Input type="text" placeholder="请输入"/>
+        </FormItem>
+        <FormItem class="f-row" label="组织机构名称：">
+          <Input type="text" placeholder="请输入"/>
+        </FormItem>
+        <FormItem class="f-row" label="组织机构名称：">
+          <Input type="textarea" :autosize="{minRows: 5,maxRows: 10}" placeholder="请输入" />
+        </FormItem>
+        <FormItem>
+          <Button type="primary">提交</Button>
+          <Button type="primary">返回</Button>
+        </FormItem>
+      </Form>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters,mapActions } from 'vuex'
-export default {
-  created() {
-    this.init('wz');
-  },
-  computed: {
-    ...mapGetters([
-      'form'
-    ])
-  },
-  methods: {
-    ...mapActions([
-      'setForm',
-      'init'
-    ]),
-    handleSubmit(){
-      console.log(this.form);
-    }
-  },
-  watch: {
-    form: {
-      handler (value, oldValue) {
-        this.setForm(value);
-      },
-      deep: true
+  import Tips from '@/components/tips'
+  export default {
+    components: {
+      Tips
+    },
+    data(){
+      return {
+        title:'双列表单'
+      }
     }
   }
-}
 </script>
 
 <style scoped>

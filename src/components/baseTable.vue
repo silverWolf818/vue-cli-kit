@@ -1,5 +1,5 @@
 <template>
- <div class="baseTable">
+ <div class="baseTable" style="margin-top: 10px;">
    <Table :loading="loading" border v-bind="$props"
           :data="props_data"
           @on-selection-change="selectionChange"></Table>

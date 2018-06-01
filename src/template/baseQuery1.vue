@@ -4,22 +4,22 @@
       <div class="c-query">
         <Form ref="query" inline>
           <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="Username"/>
+            <Input type="text" placeholder="请输入"/>
           </FormItem>
           <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="Password"/>
+            <Input type="text" placeholder="请输入"/>
           </FormItem>
           <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="Password"/>
+            <Input type="text" placeholder="请输入"/>
           </FormItem>
           <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="Username"/>
+            <Input type="text" placeholder="请输入"/>
           </FormItem>
           <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="Password"/>
+            <Input type="text" placeholder="请输入"/>
           </FormItem>
           <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="Password"/>
+            <Input type="text" placeholder="请输入"/>
           </FormItem>
           <FormItem>
             <Button type="primary" @click="search"><Icon type="ios-search-strong"></Icon> 搜索</Button>
