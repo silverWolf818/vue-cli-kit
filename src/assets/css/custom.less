@@ -1,68 +1,10 @@
-//页面骨架布局
-$var1: 1px;
-$var2: 2px;
-$var5: 5px;
-$var10: 10px;
-$var15: 15px;
-$var20: 20px;
-$var30: 30px;
-$var40: 40px;
-$var50: 50px;
-$white:#fff;
-$green: #39AA00;
-$green1: #349D00;
-$red:#E33900;
-$red1:#CE3400;
-$blue:#4A89DC;
-$blue1:#1C4E7C;
-$blue2:#3270C3;
-$blue3:#153A5C;
-$blue4:#0C2D4B;
-$gray:#E4E4E4;
-$gray1:#F2F2F2;
-$gray2:#F8F8F8;
-$gray3:#FCFCFC;
-$gray4:#EFEFEF;
-$gray5:#D7D7D7;
-$gray6:#666;
-$gray7:#999;
-$gray8:#FAFAFA;
-$gray9:#F5F7F9;
-$gray10:#E3E3E3;
-$gray11:#949494;
-$gray12:#BCBCBC;
-
-
-$varlist:(
-  1:$var1,
-  2:$var2,
-  5:$var5,
-  10:$var10,
-  15:$var15,
-  20:$var20,
-  30:$var30,
-  40:$var40,
-  50:$var50
-);
-
-@each $i,$var in $varlist {
-  .f-w#{$i}{
-    width: $var;
-  }
-  .f-mt#{$i}{
-    margin-top:$var;
-  }
-  .f-pt#{$i}{
-    padding-top: $var;
-  }
-}
-
+@import "variable";
 html,body{
   height: 100%;
 }
 ol,ul {
   padding: 0;
-  list-style: none
+  list-style: none;
 }
 .fix:after,.c-query:after,.c-form:after{
   content: '';
@@ -82,22 +24,7 @@ ol,ul {
   height: 99px;
   z-index: 20;
   transition: padding .3s;
-  background: $gray1;
-  .ivu-menu-dark{
-    background: $blue3;
-  }
-  .ivu-menu-item{
-    border-left: 1px solid $blue4;
-  }
-  .ivu-menu-item:last-child{
-    border-right: 1px solid $blue4;
-  }
-  .ivu-menu-item:hover{
-    background: $blue1;
-  }
-  .ivu-menu-dark.ivu-menu-horizontal .ivu-menu-item-active{
-    background: $blue;
-  }
+  background: #F2F2F2;
 }
 .l-sider{
   height: 100%;
@@ -106,29 +33,17 @@ ol,ul {
   left: 0;
   z-index: 21;
   transition: width .3s;
-  border-right: 1px solid $gray5;
-  .ivu-layout-sider{
-    background: $white;
-  }
+  border-right: 1px solid #dddee1;
   .u-toggle{
     height: 40px;
     line-height: 40px;
     text-align: center;
-    border-right: 1px solid $gray5;
-    border-bottom: 1px solid $gray5;
-  }
-  .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
-    padding: 9px 24px;
-    border-bottom: 1px solid $gray5;
+    background: #fff;
+    border-bottom: 1px solid #dddee1;
+    border-right: 1px solid #dddee1;
   }
   .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
     width: 199px;
-    color: $white;
-    background: $blue;
-    border-right: inherit;
-  }
-  .ivu-menu-opened>*>.ivu-menu-submenu-title-icon{
-    transform: rotate(0deg);
   }
 }
 .l-content{
@@ -144,7 +59,7 @@ ol,ul {
 }
 .l-form{
   padding: 10px;
-  background: $white;
+  //background: $white;
 }
 .c-breadCrumb{
   transition: padding .3s;
@@ -160,7 +75,7 @@ ol,ul {
   font-size: 16px;
   width: 199px;
   height: 60px;
-  color: $white;
+  color: #fff;
   float: left;
   cursor: pointer;
   .u-logo{
@@ -212,14 +127,14 @@ ol,ul {
 }
 .c-tips{
   padding: 20px 0;
-  border-bottom: 1px solid $gray5;
+  border-bottom: 1px solid #D7D7D7;
   p{
     padding-left: 16px;
     font-size: 16px;
-    color: $blue;
+    color: #4A89DC;
     height: 16px;
     line-height: 1;
-    border-left: 2px solid $blue;
+    border-left: 2px solid #4A89DC;
   }
 }
 .c-operation{
@@ -239,8 +154,8 @@ ol,ul {
 .c-query{
   margin-top: 8px;
   padding:16px 5px 0 5px;
-  background: $gray3;
-  border: 1px solid $gray5;
+  background: #FCFCFC;
+  border: 1px solid #D7D7D7;
   .ivu-form-item{
     margin-bottom: 16px;
   }
@@ -251,43 +166,6 @@ ol,ul {
   }
   .ivu-date-picker{
     width: 100%;
-  }
-}
-.c-query-1{
-  padding:16px 5px 0 15px;
-  background: $gray3;
-  border: 1px solid $gray5;
-  .ivu-form-item-label{
-    width: 120px;
-  }
-  .ivu-form .ivu-form-item-label{
-    padding: 10px 0;
-  }
-  .ivu-form-item{
-    margin-bottom: 16px;
-  }
-}
-.c-query-twoCol{
-  padding:16px 5px 0 5px;
-  background: $gray3;
-  border: 1px solid $gray5;
-  margin-bottom: 10px;
-  .ivu-form .ivu-form-item-label{
-    padding: 10px 0;
-  }
-  .ivu-form-item{
-    margin-bottom: 16px;
-  }
-  .ivu-form-item-label{
-    width: 120px;
-  }
-  .ivu-form-item-content{
-    margin-left: 120px;
-  }
-  .ivu-form-inline .ivu-form-item{
-    float: left;
-    display: block;
-    width: 48%;
   }
 }
 .c-form{
@@ -321,14 +199,4 @@ ol,ul {
   line-height:12px;
   padding: 0 3px;
   box-shadow: inherit;
-}
-//设置直角
-.l-content input,//输入框
-.l-content button,//按钮
-.l-content textarea,//文本框
-.l-content .ivu-select-selection,//下拉框直角
-.l-content .ivu-input-group-append,//复合型输入框右
-.l-content .ivu-input-group-prepend//复合型输入框左
-{
-  border-radius: 0!important;
 }

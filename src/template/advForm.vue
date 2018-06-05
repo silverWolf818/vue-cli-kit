@@ -1,7 +1,7 @@
 <template>
   <div>
     <Tips :title="title"></Tips>
-    <div class="c-form f-single">
+    <div class="c-form f-double">
       <Form ref="form" inline>
         <FormItem label="组织机构名称：">
           <Input type="text" placeholder="请输入"/>
