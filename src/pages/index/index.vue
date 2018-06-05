@@ -45,7 +45,6 @@
   </div>
 </template>
 <script>
-  import './index.scss'
   import { mapGetters,mapActions } from 'vuex'
   import Crumbs from '@/components/index/crumbs'
   import Operate from '@/components/index/operate'
@@ -80,7 +79,7 @@
         ]
       },
       menuToggle() {
-        return this.isCollapsed ? '79px' : '200px';
+        return this.isCollapsed ? '78px' : '200px';
       },
     },
     methods: {

@@ -5,12 +5,12 @@ import App from './App'
 import store from './store'
 import router from './router'
 import iView from 'iview'
-import iviewArea from 'iview-area'
+// import iviewArea from 'iview-area'
 import lodash from 'lodash'
 import moment from 'moment'
-import './assets/css/layout.scss'
-import './assets/css/custom.scss'
-// import '../my-theme/index.less'
+import './assets/css/theme.less'
+import './assets/css/custom.less'
+
 import plugin from './plugin'
 
 Vue.config.productionTip = false
@@ -18,7 +18,7 @@ window.moment = moment
 window._ = lodash
 Vue.use(plugin)
 Vue.use(iView)
-Vue.use(iviewArea)
+// Vue.use(iviewArea)
 
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start();
