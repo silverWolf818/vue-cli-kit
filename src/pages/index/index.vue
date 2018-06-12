@@ -1,7 +1,5 @@
 <template>
   <div class="l-app">
-    <!--<div class="l-mask"></div>-->
-    <!--<div class="c-popover" :class="popoverClasses" @mouseenter="handleEnter" @mouseleave="handleLeave"></div>-->
     <div class="l-header">
       <Operate></Operate>
       <Menu ref="menu" mode="horizontal" :active-name="getActiveNav" theme="primary" @on-select="selection">
@@ -9,7 +7,7 @@
           <span>组件工程</span>
         </div>
         <div class="c-nav">
-          <MenuItem v-for="item in getMenu2" :name="item.menuCode" :key="item.menuCode">
+          <MenuItem v-for="item in getMenu" :name="item.menuCode" :key="item.menuCode">
             {{ item.menuName }}
           </MenuItem>
         </div>
@@ -62,7 +60,7 @@
     },
     computed: {
       ...mapGetters([
-        'getMenu2',
+        'getMenu',
         'getSubMenu',
         'getCrumbs',
         'getOpenName',
@@ -86,7 +84,7 @@
     },
     methods: {
       ...mapActions([
-        'initMenu2',
+        'initMenu',
         'changeSubMenu',
         'changeItem',
         'reset'
@@ -124,7 +122,7 @@
       }
     },
     created(){
-      this.initMenu2(this);
+      this.initMenu(this);
     }
   }
 </script>
