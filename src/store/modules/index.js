@@ -1,6 +1,5 @@
-import { INITMENU2,CHANGESUBMENU,CHANGEITEM,RESET } from '../mutation-types'
-import { menu2 } from '../../service/api'
-
+import { INITMENU,CHANGESUBMENU,CHANGEITEM,RESET } from '../mutation-types'
+import { menu } from '../../service/api'
 // initial state
 const state = {
   isCollapsed: false,
@@ -17,7 +16,7 @@ const activeName = sessionStorage.getItem('activeName');
 
 // getters
 const getters = {
-  getMenu2:state => state.menu,
+  getMenu:state => state.menu,
   getSubMenu:state => state.subMenu,
   getOpenName:state => state.openName,
   getActiveName: state => state.activeName,
@@ -41,7 +40,7 @@ const getters = {
 
 // mutations
 const mutations = {
-  INITMENU2(state,payload){
+  INITMENU(state,payload){
     state.menu = payload;
     state.activeName = activeName || '';
   },
@@ -87,9 +86,9 @@ const mutations = {
 
 // actions
 const actions = {
-  initMenu2({ commit },payload){
-    menu2({}).then(res => {
-      commit(INITMENU2,res);
+  initMenu({ commit },payload){
+    menu({}).then(res => {
+      commit(INITMENU,res);
       commit(CHANGESUBMENU,{
         data:res[0].menuCode,
         initialize:true

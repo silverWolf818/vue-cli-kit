@@ -2,24 +2,24 @@
     <div>
       <Tips :title="title"></Tips>
       <div class="c-query">
-        <Form ref="query" inline>
-          <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="请输入"/>
+        <Form ref="query" inline :model="query">
+          <FormItem label="名称：">
+            <Input type="text" placeholder="请输入" v-model="query.name"/>
           </FormItem>
-          <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="请输入"/>
+          <FormItem label="日期查询：">
+            <DatePicker type="date" placeholder="请输入" v-model="query.email"></DatePicker>
           </FormItem>
-          <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="请输入"/>
+          <FormItem label="地址：">
+            <Input type="text" placeholder="请输入" v-model="query.address"/>
           </FormItem>
-          <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="请输入"/>
+          <FormItem label="年龄：">
+            <Input type="text" placeholder="请输入" v-model="query.age"/>
           </FormItem>
-          <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="请输入"/>
+          <FormItem label="邮箱：">
+            <Input type="text" placeholder="请输入" v-model="query.name"/>
           </FormItem>
-          <FormItem label="组织机构名称：">
-            <Input type="text" placeholder="请输入"/>
+          <FormItem label="备注：">
+            <Input type="text" placeholder="请输入" v-model="query.desc"/>
           </FormItem>
           <FormItem>
             <Button type="primary" @click="search"><Icon type="ios-search-strong"></Icon> 搜索</Button>
@@ -44,7 +44,14 @@
     data() {
       return {
         title:'菜单管理',
-        query:{},
+        query:{
+          name:'',
+          address:'',
+          age:'',
+          email:'',
+          date:'',
+          desc:''
+        },
         table:{
           mock:true,
           url:'list',
@@ -68,23 +75,17 @@
               key: 'age',
             },{
               title: '职业',
-              key: 'occupation'
+              key: 'work'
             },{
               title: '邮箱',
               key: 'email',
-            },{
-              title: '收入',
-              key: 'income',
-            },{
-              title: '类型',
-              key: 'type',
             },
             {
               title: '时间',
-              key: 'date',
-              render:(h,{row,column,index}) => {
-                return h('div', moment(row.signTime).format("YYYY-MM-DD"));
-              }
+              key: 'date'
+            },{
+              title: '备注',
+              key: 'desc',
             }
           ]
         }
@@ -92,6 +93,8 @@
     },
     methods:{
       search(){
+        //日期格式需要按照接口规范格式化moment(this.query.date).format("YYYY-MM-DD")  moment不懂请看http://momentjs.cn/
+        //这里只提供示例，复杂的条件这里不做描述
         this.$refs['basetable'].query(this.query);
       },
       add(){

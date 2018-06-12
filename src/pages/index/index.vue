@@ -2,18 +2,18 @@
   <div class="l-app">
     <div class="l-header">
       <Operate></Operate>
-      <Menu ref="menu" mode="horizontal" :active-name="getActiveNav" theme="dark" @on-select="selection">
+      <Menu ref="menu" mode="horizontal" :active-name="getActiveNav" theme="primary" @on-select="selection">
         <div class="c-logo" @click="home">
-          <span class="u-logo"><img src="../../assets/images/logo.png"></span><span>昊天平台</span>
+          <span>组件工程</span>
         </div>
         <div class="c-nav">
-          <MenuItem v-for="item in getMenu2" :name="item.menuCode" :key="item.menuCode">
+          <MenuItem v-for="item in getMenu" :name="item.menuCode" :key="item.menuCode">
             {{ item.menuName }}
           </MenuItem>
         </div>
       </Menu>
-      <Crumbs :step="getCrumbs" :style="{ paddingLeft:menuToggle }"></Crumbs>
     </div>
+    <Crumbs :step="getCrumbs" :style="{ paddingLeft:menuToggle }"></Crumbs>
     <div class="l-sider" :style="{ width:menuToggle }">
       <Sider :width="200" ref="side" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
         <div class="u-toggle">
@@ -55,12 +55,12 @@
     },
     data() {
       return {
-        isCollapsed: false,
+        isCollapsed: false
       }
     },
     computed: {
       ...mapGetters([
-        'getMenu2',
+        'getMenu',
         'getSubMenu',
         'getCrumbs',
         'getOpenName',
@@ -80,11 +80,11 @@
       },
       menuToggle() {
         return this.isCollapsed ? '78px' : '200px';
-      },
+      }
     },
     methods: {
       ...mapActions([
-        'initMenu2',
+        'initMenu',
         'changeSubMenu',
         'changeItem',
         'reset'
@@ -110,14 +110,8 @@
       },
       //首页
       home(){
-        this.$router.push({
-          name:'home'
-        });
         this.reset();
-        this.$nextTick(()=> {
-          this.$refs.sub.updateOpened();
-          this.$refs.sub.updateActiveName();
-        });
+        location.href = '/';
       },
       //收起菜单
       collapsedSider () {
@@ -125,10 +119,10 @@
         this.$nextTick(()=> {
           this.$refs.sub.updateActiveName();
         });
-      },
+      }
     },
     created(){
-      this.initMenu2(this);
+      this.initMenu(this);
     }
   }
 </script>

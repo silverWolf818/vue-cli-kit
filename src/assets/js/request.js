@@ -9,9 +9,9 @@ import qs from 'qs'
 import { Modal } from 'iview'
 
 //mock地址
-const mockUrl = 'http://yapi.demo.qunar.com/mock/6440/';
+const mockUrl = 'http://39.107.52.108:8001/app/mock/20/';
 
-const serverUrl = '/';
+const serverUrl = '';
 //axios默认参数配置
 axios.defaults.timeout = 1000 * 50;
 //添加一个请求拦截器
@@ -27,12 +27,12 @@ axios.interceptors.request.use(function (config) {
 //添加一个响应拦截器
 axios.interceptors.response.use(function (res) {
   let data = res.data;
-  if (data.respCode === '0000') {
+  if (data.code === 0) {
     return data.data;
   }else{
     Modal.error({
       title: '错误',
-      content: data.respDesc ? data.respDesc :'网络繁忙！'
+      content: data.message ? data.message :'网络繁忙！'
     });
   }
 }, function (error) {

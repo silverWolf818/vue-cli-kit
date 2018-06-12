@@ -22,7 +22,7 @@
         props:{
           height: {
             type: [Number, String],
-            default: 300
+            default: 450
           },
           mock:{
             type: Boolean,
