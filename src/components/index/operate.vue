@@ -9,9 +9,8 @@
         </li>
         <li>
           <Tooltip placement="bottom">
-            <span class="avator-image"><img alt=""></span><span>而我二翁人</span>
+            <span class="avator-image"><img alt=""></span><span>管理员</span>
             <div class="avator-info" slot="content">
-              <p>不知道</p>
               <p>退出登录</p>
             </div>
           </Tooltip>
