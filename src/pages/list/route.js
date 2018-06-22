@@ -1,7 +1,7 @@
 const List =()=>import('./list')
 
-export default {
+export default [{
   path:'/list',
   name:'list',
   component:List
-}
+}]

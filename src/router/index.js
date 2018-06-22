@@ -4,11 +4,11 @@ const Index =()=>import('../pages/index/index')
 Vue.use(Router)
 
 function importRoutes(r) {
-  return r.keys().map(key => r(key).default);
+  let routes=r.keys().map(key => r(key).default);
+  return _.flatten(routes);
 }
 
 const children = importRoutes(require.context('../', true, /^\.\/pages\/((?!\/)[\s\S])+\/route\.js$/));
-
 export default  new Router({
   routes: [
     ...[

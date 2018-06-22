@@ -1,7 +1,7 @@
 const Test =()=>import('./test')
 
-export default {
+export default [{
   path:'/test',
   name:'test',
   component:Test
-}
+}]

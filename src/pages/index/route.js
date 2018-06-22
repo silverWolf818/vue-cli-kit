@@ -1,5 +1,4 @@
 const Index =()=>import('./index')
-const Home =()=>import('../home/index')
 const Advform =()=>import('../../template/advForm')
 const Baseform =()=>import('../../template/baseForm')
 const Basequery =()=>import('../../template/baseQuery')
@@ -16,15 +15,11 @@ const Cascader =()=>import('../../template/cascader')
 const Area =()=>import('../../template/area')
 const Upload =()=>import('../../template/upload')
 const Texteditor =()=>import('../../template/textEditor')
-export default {
+export default [{
   path:'/index',
   name:'index',
   component:Index,
   children:[{
-    path: 'home',
-    name: 'home',
-    component: Home
-  },{
     path: 'baseForm',
     name: 'baseForm',
     component: Baseform
@@ -89,4 +84,4 @@ export default {
     name:'textEditor',
     component:Texteditor
   }]
-}
+}]
