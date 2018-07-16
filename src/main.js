@@ -5,9 +5,9 @@ import App from './App'
 import store from './store'
 import router from './router'
 import iView from 'iview'
-import iviewArea from 'iview-area'
 import lodash from 'lodash'
 import moment from 'moment'
+// import TreeTable from 'vue-table-with-tree-grid'
 import './assets/css/theme.less'
 import './assets/css/custom.less'
 
@@ -18,14 +18,10 @@ window.moment = moment
 window._ = lodash
 Vue.use(plugin)
 Vue.use(iView)
-Vue.use(iviewArea)
 
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start();
-  if(to.name === 'index'){
-    next({ name:'home' });
-  }
-  else if (to.matched.length === 0) {
+  if (to.matched.length === 0) {
     next('/');
   } else {
     next();
@@ -44,3 +40,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+Vue.component('treeselect', VueTreeselect.Treeselect)

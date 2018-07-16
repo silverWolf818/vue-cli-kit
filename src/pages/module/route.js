@@ -1,7 +1,7 @@
 const Module =()=>import('./module')
 
-export default {
+export default [{
   path:'/module',
   name:'module',
   component:Module
-}
+}]
